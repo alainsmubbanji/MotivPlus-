@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MotivPlus</title>
+
+<style>
+:root{
+--primary:#6750A4;
+--onPrimary:#FFFFFF;
+--background:#F8F9FF;
+--surface:#FFFFFF;
+--text:#1C1B1F;
+--outline:#E7E0EC;
+--shadow:0 8px 24px rgba(0,0,0,.08);
+}
+
+.dark{
+--background:#101114;
+--surface:#1C1B1F;
+--text:#E6E1E5;
+--outline:#313033;
+--shadow:0 8px 24px rgba(0,0,0,.3);
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:system-ui,sans-serif;
+}
+
+body{
+background:var(--background);
+color:var(--text);
+transition:.3s;
+}
+
+header{
+padding:80px 20px;
+text-align:center;
+}
+
+.logo{
+width:100px;
+height:100px;
+border-radius:28px;
+background:var(--primary);
+color:white;
+font-size:42px;
+font-weight:bold;
+display:flex;
+align-items:center;
+justify-content:center;
+margin:auto;
+margin-bottom:20px;
+box-shadow:var(--shadow);
+}
+
+h1{
+font-size:3rem;
+}
+
+.subtitle{
+max-width:700px;
+margin:15px auto;
+font-size:1.1rem;
+opacity:.8;
+}
+
+.btn{
+display:inline-block;
+margin-top:25px;
+padding:14px 24px;
+background:var(--primary);
+color:white;
+text-decoration:none;
+border-radius:24px;
+font-weight:600;
+transition:.3s;
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+.theme-btn{
+position:fixed;
+top:20px;
+right:20px;
+width:55px;
+height:55px;
+border:none;
+border-radius:50%;
+background:var(--surface);
+color:var(--text);
+font-size:22px;
+cursor:pointer;
+box-shadow:var(--shadow);
+}
+
+section{
+padding:70px 20px;
+max-width:1200px;
+margin:auto;
+}
+
+.section-title{
+font-size:2rem;
+margin-bottom:30px;
+text-align:center;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.card{
+background:var(--surface);
+padding:25px;
+border-radius:28px;
+box-shadow:var(--shadow);
+border:1px solid var(--outline);
+animation:fadeUp .8s ease;
+}
+
+.card h3{
+margin-bottom:10px;
+}
+
+.screens{
+display:flex;
+overflow-x:auto;
+gap:20px;
+padding-bottom:10px;
+}
+
+.screen{
+min-width:220px;
+height:450px;
+border-radius:30px;
+background:var(--surface);
+border:1px solid var(--outline);
+box-shadow:var(--shadow);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:18px;
+font-weight:bold;
+}
+
+.ai-card{
+background:var(--surface);
+padding:40px;
+border-radius:32px;
+box-shadow:var(--shadow);
+text-align:center;
+border:1px solid var(--outline);
+}
+
+.ai-icon{
+font-size:60px;
+animation:float 3s infinite ease-in-out;
+}
+
+footer{
+text-align:center;
+padding:40px;
+opacity:.7;
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes float{
+0%,100%{
+transform:translateY(0);
+}
+50%{
+transform:translateY(-10px);
+}
+}
+
+@media(max-width:600px){
+h1{
+font-size:2.2rem;
+}
+
+.screen{
+min-width:180px;
+height:370px;
+}
+}
+</style>
+</head>
+<body>
+
+<button class="theme-btn" onclick="toggleTheme()">🌙</button>
+
+<header>
+
+<div class="logo">M</div>
+
+<h1>MotivPlus</h1>
+
+<p class="subtitle">
+La plateforme sociale de motivation et d'intelligence artificielle.
+Discutez avec Lunaris AI, partagez vos réussites et inspirez le monde.
+</p>
+
+<a href="#" class="btn">
+Télécharger l'application
+</a>
+
+</header>
+
+<section>
+
+<h2 class="section-title">
+Pourquoi MotivPlus ?
+</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>💡 Motivation Quotidienne</h3>
+<p>
+Des citations, conseils et contenus inspirants chaque jour.
+</p>
+</div>
+
+<div class="card">
+<h3>🌍 Communauté</h3>
+<p>
+Publiez et interagissez avec des personnes du monde entier.
+</p>
+</div>
+
+<div class="card">
+<h3>🔔 Notifications</h3>
+<p>
+Ne manquez aucune publication importante.
+</p>
+</div>
+
+<div class="card">
+<h3>💬 Messagerie</h3>
+<p>
+Discutez librement avec vos amis et contacts.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h2 class="section-title">
+Lunaris AI
+</h2>
+
+<div class="ai-card">
+
+<div class="ai-icon">
+🤖
+</div>
+
+<h3>Votre assistant intelligent</h3>
+
+<p style="margin-top:15px;">
+Lunaris AI peut répondre aux questions,
+aider à la rédaction et accompagner les utilisateurs.
+</p>
+
+</div>
+
+</section>
+
+<section>
+
+<h2 class="section-title">
+Captures d'écran
+</h2>
+
+<div class="screens">
+
+<div class="screen">
+Accueil
+</div>
+
+<div class="screen">
+Publications
+</div>
+
+<div class="screen">
+Lunaris AI
+</div>
+
+<div class="screen">
+Profil
+</div>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 MotivPlus • Tous droits réservés
+</footer>
+
+<script>
+function toggleTheme(){
+document.body.classList.toggle("dark");
+
+const btn=document.querySelector(".theme-btn");
+
+btn.innerHTML=
+document.body.classList.contains("dark")
+? "☀️"
+: "🌙";
+}
+</script>
+
+</body>
+  </html>
