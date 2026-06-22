@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MotivPlus Docs</title>
+<style>
+:root{
+--primary:#6750A4;
+--surface:#FFFBFE;
+--surface-container:#F3EDF7;
+--outline:#CAC4D0;
+--text:#1D1B20;
+--radius:28px;
+}
+*{box-sizing:border-box;font-family:Arial,sans-serif}
+body{margin:0;background:var(--surface);color:var(--text)}
+.topbar{
+position:sticky;top:0;display:flex;align-items:center;gap:12px;
+padding:16px;background:var(--surface);border-bottom:1px solid var(--outline);z-index:10;
+}
+.menu-btn{border:none;background:none;font-size:24px;cursor:pointer}
+.drawer{
+position:fixed;left:-320px;top:0;width:300px;height:100%;
+background:var(--surface-container);transition:.3s;padding:20px;overflow:auto;z-index:20;
+}
+.drawer.open{left:0}
+.overlay{
+display:none;position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:15;
+}
+.overlay.show{display:block}
+.drawer a{
+display:block;padding:12px;margin:6px 0;text-decoration:none;color:black;
+border-radius:20px;
+}
+.drawer a:hover{background:#e8def8}
+.hero,.card{
+margin:20px;padding:24px;background:white;border-radius:var(--radius);
+box-shadow:0 1px 4px rgba(0,0,0,.08);
+}
+.search{width:100%;padding:14px;border-radius:18px;border:1px solid var(--outline)}
+details{margin:10px 0;padding:14px;background:#f7f2fa;border-radius:16px}
+footer{text-align:center;padding:30px;color:#666}
+</style>
+</head>
+<body>
+
+<div id="overlay" class="overlay"></div>
+
+<nav id="drawer" class="drawer">
+<h2>📖 MotivPlus Docs</h2>
+<a href="#intro">🚀 Introduction</a>
+<a href="#lunaris">🤖 Lunaris AI</a>
+<a href="#account">👤 Compte utilisateur</a>
+<a href="#posts">✨ Publications</a>
+<a href="#points">💰 Points</a>
+<a href="#security">🔒 Confidentialité</a>
+<a href="#faq">❓ FAQ</a>
+<a href="#changelog">📜 Changelog</a>
+</nav>
+
+<header class="topbar">
+<button id="menuBtn" class="menu-btn">☰</button>
+<h3>MotivPlus Docs</h3>
+</header>
+
+<section class="hero">
+<h1>Documentation officielle de MotivPlus</h1>
+<p>Découvrez toutes les fonctionnalités de MotivPlus et de Lunaris AI.</p>
+<input class="search" placeholder="Rechercher dans la documentation...">
+</section>
+
+<section id="intro" class="card">
+<h2>🚀 Introduction</h2>
+<p>‎MotivPlus est une plateforme de motivation et de développement personnel conçue pour aider les utilisateurs à progresser au quotidien. L'application combine des contenus inspirants, une communauté interactive et des outils intelligents pour accompagner chacun dans l'atteinte de ses objectifs.</p>
+
+<p>Pourquoi MotivPlus ?
+‎MotivPlus a été créé pour offrir un espace positif où les utilisateurs peuvent trouver de la motivation, partager leurs expériences et bénéficier d'un accompagnement numérique adapté à leurs besoins.</p>
+<h3>Vision du projet</h3>
+<ul>
+<li>Inspirer chaque jour.</li>
+<li>Créer une communauté positive.</li>
+<li>Accompagner les utilisateurs grâce à l'IA.</li>
+</ul>
+</section>
+
+<section id="lunaris" class="card">
+<h2>🤖 Lunaris AI</h2>
+<p>Lunaris est l'assistant intelligent intégré à MotivPlus.</p>
+<h3>Exemples de prompts</h3>
+<ul>
+<li>Donne-moi une motivation pour aujourd'hui.</li>
+<li>Aide-moi à organiser ma semaine.</li>
+<li>Comment rester concentré ?</li>
+</ul>
+<p>⚠️ Lunaris AI n'est pas encore opérationnelle.</p>
+</section>
+
+<section id="account" class="card">
+<h2>👤 Compte utilisateur</h2>
+<p>Créez un compte, connectez-vous et personnalisez votre profil.</p>
+<h3>Comment créer un compte</h3>
+<ul>
+<li>Lisez les conditions d'utilisation et la politique de confidentialité puis acceptez les</li>
+<li>Continuer avec l'inscription avec email et mot de passe</li>
+<li>Entré votre nom d'utilisateur, votre adresse email, votre mot de passe et le code de référence</li>
+<li> Si vous n'avez pas de code de référence vous pouvez utiliser le code de référence officiel de MotivPlus "gnPUH265" </li>
+<li>Puis appuyez sur le bouton en bas à la droite</li>
+<li>Après l'inscription vous recevez automatiquement 20 points.</li>
+</ul>
+</section>
+
+<section id="posts" class="card">
+<h2>✨ Publications</h2>
+<p>Partagez des publications inspirantes, commentez et interagissez avec la communauté.</p>
+<h3>Comment créer une publication ?</h3>
+<ul>
+<li>Si vous êtes à la page d'accueil appuyez sur le bouton en bas à la droite</li>
+<li>Écrivez votre inspiration dans le champ "Écrivez..."</li>
+<li>Modifier votre taille de police avec le slider </li>
+<li>Choisissez une image en background ou taper l'URL de votre photo dans le champ "URL"</li>
+<li>Sélectionnez une catégorie pour votre publication,puis appuyez sur "Publier" c'est fait ✓.</li>
+</ul>
+</section>
+
+<section id="points" class="card">
+<h2>💰 Points</h2>
+<p>Certaines fonctionnalité utilise vos points</p>
+<h3>Qu'elles sont les fonctionnalités utilisant de point ?</h3>
+<ul>
+<li>A chaque fois que vous publiez l'application soutire 1 point si vous n'utilisez pas html mais si vous l'utilisez l'application soutire 2 points.</li>
+</ul>
+</section>
+
+<section id="security" class="card">
+<h2>🔒 Confidentialité et sécurité</h2>
+<p>MotivPlus protège les données des utilisateurs et applique des mesures de sécurité adaptées.</p>
+<p>Vos conversation, Commentaires sont chiffré de bout en bout.</p>
+</section>
+
+<section id="faq" class="card">
+<h2>❓ FAQ</h2>
+
+<details>
+<summary>MotivPlus est-il gratuit ?</summary>
+<p>Oui, les fonctionnalités principales sont gratuites et accessibles à tous les utilisateurs.</p>
+</details>
+
+<details>
+<summary>Comment utiliser Lunaris ?</summary>
+<p>Ouvrez le profil de Lunaris, appuyez sur Message et envoyez votre question.</p>
+</details>
+
+<details>
+<summary>Dois-je créer un compte pour utiliser MotivPlus ?</summary>
+<p>Certaines fonctionnalités sont accessibles sans compte, mais un compte est recommandé pour profiter pleinement de l'expérience.</p>
+</details>
+
+<details>
+<summary>Comment créer un compte ?</summary>
+<p>Appuyez sur "Créer un compte", remplissez les informations demandées puis validez votre inscription.</p>
+</details>
+
+<details>
+<summary>J'ai oublié mon mot de passe, que faire ?</summary>
+<p>Utilisez l'option "Mot de passe oublié" disponible sur l'écran de connexion.</p>
+</details>
+
+<details>
+<summary>Comment modifier mon profil ?</summary>
+<p>Accédez à votre profil puis utilisez le bouton "Modifier le profil".</p>
+</details>
+
+<details>
+<summary>Comment changer ma photo de profil ?</summary>
+<p>Depuis votre profil, appuyez sur votre photo actuelle puis sélectionnez une nouvelle image.</p>
+</details>
+
+<details>
+<summary>Comment créer une publication ?</summary>
+<p>Appuyez sur le bouton "+" ou "Créer une publication", rédigez votre contenu puis publiez-le.</p>
+</details>
+
+<details>
+<summary>Puis-je modifier une publication après sa publication ?</summary>
+<p>Oui, les publications peuvent être modifiées depuis le menu d'options de la publication.</p>
+</details>
+
+<details>
+<summary>Comment supprimer une publication ?</summary>
+<p>Ouvrez les options de la publication puis choisissez "Supprimer".</p>
+</details>
+
+<details>
+<summary>Comment commenter une publication ?</summary>
+<p>Appuyez sur l'icône de commentaire située sous la publication.</p>
+</details>
+
+<details>
+<summary>Comment partager une publication ?</summary>
+<p>Utilisez le bouton de partage disponible sous chaque publication.</p>
+</details>
+
+<details>
+<summary>Mes données sont-elles sécurisées ?</summary>
+<p>Oui, MotivPlus applique différentes mesures de sécurité afin de protéger les informations des utilisateurs.</p>
+</details>
+
+<details>
+<summary>Une connexion Internet est-elle nécessaire ?</summary>
+<p>Oui, plusieurs fonctionnalités nécessitent une connexion Internet pour fonctionner correctement.</p>
+</details>
+
+<details>
+<summary>Comment recevoir des notifications ?</summary>
+<p>Assurez-vous que les notifications sont activées dans les paramètres de votre appareil et de l'application.</p>
+</details>
+
+<details>
+<summary>Puis-je désactiver les notifications ?</summary>
+<p>Oui, les notifications peuvent être gérées depuis les paramètres de MotivPlus.</p>
+</details>
+
+<details>
+<summary>Quels types de questions puis-je poser à Lunaris ?</summary>
+<p>Vous pouvez demander des conseils, des motivations, de l'aide pour vos études, votre organisation ou votre développement personnel.</p>
+</details>
+
+<details>
+<summary>Pourquoi Lunaris ne répond-il pas ?</summary>
+<p>Vérifiez votre connexion Internet et réessayez quelques instants plus tard.</p>
+</details>
+
+<details>
+<summary>Comment contacter l'assistance ?</summary>
+<p>Utilisez la section Contact ou Support disponible dans l'application.</p>
+</details>
+
+<details>
+<summary>Comment signaler un problème ou un bug ?</summary>
+<p>Vous pouvez envoyer un rapport depuis la section Support de l'application.</p>
+</details>
+
+</section>
+
+<section id="changelog" class="card">
+<h2>📜 Changelog</h2>
+<p><b>Version 1.3.7 2026_06 release (29)</b></p>
+<p><b>Version de la documentation 1.0 2026_06 release</b></p>
+<ul>
+<li>Intégration de Lunaris AI.</li>
+<li>Interface Material 3.</li>
+<li>Ajout des la page de conversation (chat) dans MotivPlus et bien d'autre.</li>
+</ul>
+</section>
+
+
+<script>
+const drawer=document.getElementById('drawer');
+const overlay=document.getElementById('overlay');
+document.getElementById('menuBtn').onclick=()=>{
+drawer.classList.add('open');
+overlay.classList.add('show');
+};
+overlay.onclick=()=>{
+drawer.classList.remove('open');
+overlay.classList.remove('show');
+};
+</script>
+
+
+<footer>
+© 2026 MotivPlus • GO Studio LLC Tous droits réservés.
+</footer>
+
+<script>
+const drawer=document.getElementById('drawer');
+const overlay=document.getElementById('overlay');
+document.getElementById('menuBtn').onclick=()=>{
+draw
