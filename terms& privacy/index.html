@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MotivPlus Legal Center</title>
+
+  <!-- CSS sera collé ici avant -->
+  <style>
+/* =========================
+   MOTIVPLUS LEGAL CENTER
+   DESIGN SYSTEM
+========================= */
+
+:root {
+  --bg: #0f1220;
+  --bg2: #151a2e;
+  --card: rgba(255,255,255,0.06);
+  --text: #ffffff;
+  --muted: rgba(255,255,255,0.7);
+  --primary: #674FA3;
+  --secondary: #674FA3;
+  --border: rgba(255,255,255,0.12);
+  --shadow: 0 10px 30px rgba(0,0,0,0.4);
+  --radius: 16px;
+}
+
+/* LIGHT MODE */
+body.light {
+  --bg: #f5f6fa;
+  --bg2: #ffffff;
+  --card: rgba(0,0,0,0.04);
+  --text: #1a1a1a;
+  --muted: rgba(0,0,0,0.6);
+  --border: rgba(0,0,0,0.1);
+}
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, var(--bg), var(--bg2));
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  backdrop-filter: blur(15px);
+  background: rgba(0,0,0,0.3);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 18px;
+  font-weight: bold;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-actions {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  border: none;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  background: var(--card);
+  color: var(--text);
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* =========================
+   CONTAINER
+========================= */
+.container {
+  max-width: 1100px;
+  margin: 100px auto;
+  padding: 20px;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.hero h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  color: var(--muted);
+}
+
+/* =========================
+   SEARCH BAR
+========================= */
+.search-box {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.search-box input {
+  width: 100%;
+  max-width: 500px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  outline: none;
+}
+
+/* =========================
+   CARDS
+========================= */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* =========================
+   SECTION
+========================= */
+.section {
+  margin-top: 60px;
+  padding: 20px;
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+  text-align: center;
+  padding: 30px;
+  margin-top: 50px;
+  color: var(--muted);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+<div class="navbar">
+  <div class="logo">MotivPlus Legal Center</div>
+
+  <div class="nav-actions">
+    <button onclick="toggleTheme()">🌙 Mode</button>
+    <button onclick="scrollToTop()">⬆ Haut</button>
+  </div>
+</div>
+
+<!-- =========================
+     CONTAINER PRINCIPAL
+========================= -->
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>Centre juridique MotivPlus</h1>
+    <p>Politique de confidentialité, conditions d'utilisation et règles de l'application</p>
+
+    <!-- SEARCH -->
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Rechercher une section...">
+    </div>
+  </div>
+
+  <!-- =========================
+       CARTES NAVIGATION
+  ========================== -->
+  <div class="grid">
+
+    <div class="card" onclick="scrollToSection('privacy')">
+      <h3>🔒 Confidentialité</h3>
+      <p>Comment nous collectons et utilisons vos données</p>
+    </div>
+
+    <div class="card" onclick="scrollToSection('terms')">
+      <h3>📜 Conditions</h3>
+      <p>Règles d'utilisation de MotivPlus</p>
+    </div>
+
+    <div class="card" onclick="scrollToSection('ai-policy')">
+      <h3>🤖 Lunaris AI</h3>
+      <p>Utilisation de l'intelligence artificielle</p>
+    </div>
+
+    <div class="card" onclick="scrollToSection('data-delete')">
+      <h3>🗑️ Données</h3>
+      <p>Suppression et gestion des données</p>
+    </div>
+
+  </div>
+
+  <!-- =========================
+       POLITIQUE DE CONFIDENTIALITÉ
+  ========================== -->
+<div id="privacy" class="section">
+  <h2>🔒 Politique de confidentialité</h2>
+
+  <p><strong>Dernière mise à jour :</strong> 01 juillet 2026</p>
+
+  <p>
+    MotivPlus (ci-après « l’Application ») respecte la vie privée de ses utilisateurs.
+    Cette politique explique quelles données sont collectées, comment elles sont utilisées
+    et quels sont vos droits.
+  </p>
+
+  <h3>1. Données collectées</h3>
+  <p>
+    Nous pouvons collecter les informations suivantes :
+  </p>
+  <ul>
+    <li>Informations de compte (nom, email, identifiant)</li>
+    <li>Données d’utilisation de l’application</li>
+    <li>Données de connexion (logs techniques)</li>
+    <li>Informations sur l’appareil (modèle, système, version)</li>
+  </ul>
+
+  <h3>2. Utilisation des données</h3>
+  <p>
+    Les données sont utilisées pour :
+  </p>
+  <ul>
+    <li>Améliorer l’expérience utilisateur</li>
+    <li>Assurer la sécurité du service</li>
+    <li>Fournir les fonctionnalités de l’application</li>
+    <li>Personnaliser le contenu</li>
+  </ul>
+
+  <h3>3. Lunaris AI</h3>
+  <p>
+    Les conversations avec Lunaris AI peuvent être traitées pour améliorer la qualité des réponses.
+    L’IA ne doit pas être utilisée pour des décisions médicales, juridiques ou financières.
+  </p>
+
+  <h3>4. Services tiers</h3>
+  <p>
+    MotivPlus peut utiliser des services tiers comme Firebase pour l’authentification,
+    le stockage et les notifications.
+  </p>
+
+  <h3>5. Sécurité</h3>
+  <p>
+    Nous mettons en place des mesures de sécurité pour protéger vos données.
+    Cependant, aucun système n’est totalement sécurisé à 100%.
+  </p>
+
+  <h3>6. Conservation des données</h3>
+  <p>
+    Les données sont conservées aussi longtemps que nécessaire pour fournir le service.
+  </p>
+
+  <h3>7. Suppression des données</h3>
+  <p>
+    L’utilisateur peut demander la suppression de son compte et de ses données à tout moment.
+  </p>
+
+  <h3>8. Droits des utilisateurs</h3>
+  <p>
+    Vous avez le droit d’accéder, modifier ou supprimer vos données personnelles.
+  </p>
+
+  <h3>9. Contact</h3>
+  <p>
+    Pour toute question : contactez l’équipe MotivPlus.
+  </p>
+</div>
+  <!-- =========================
+       CONDITIONS D'UTILISATION
+  ========================== -->
+<div id="terms" class="section">
+  <h2>📜 Conditions d’utilisation</h2>
+
+  <p><strong>Dernière mise à jour :</strong> 01 juillet 2026</p>
+
+  <p>
+    En accédant ou en utilisant MotivPlus, vous acceptez pleinement ces conditions d’utilisation.
+    Si vous n’acceptez pas ces conditions, vous devez cesser d’utiliser l’application.
+  </p>
+
+  <h3>1. Objet du service</h3>
+  <p>
+    MotivPlus est une plateforme numérique offrant des services de productivité,
+    d’assistance IA (Lunaris AI), et de gestion utilisateur.
+  </p>
+
+  <h3>2. Création de compte</h3>
+  <ul>
+    <li>Vous devez fournir des informations exactes</li>
+    <li>Vous êtes responsable de la sécurité de votre compte</li>
+    <li>Vous ne devez pas partager vos identifiants</li>
+  </ul>
+
+  <h3>3. Utilisation autorisée</h3>
+  <p>Vous acceptez d’utiliser MotivPlus uniquement pour des usages légaux et personnels.</p>
+
+  <h3>4. Utilisation interdite</h3>
+  <ul>
+    <li>Hacking ou tentative d’accès non autorisé</li>
+    <li>Utilisation abusive ou frauduleuse</li>
+    <li>Harcèlement ou abus envers d’autres utilisateurs</li>
+    <li>Exploitation du système ou de l’IA</li>
+  </ul>
+
+  <h3>5. Intelligence artificielle</h3>
+  <p>
+    Lunaris AI fournit des réponses générées automatiquement.
+    Ces réponses peuvent être incorrectes ou incomplètes.
+    L’utilisateur reste responsable de leur utilisation.
+  </p>
+
+  <h3>6. Contenus et responsabilités</h3>
+  <p>
+    L’utilisateur est responsable de tout contenu qu’il crée ou partage via l’application.
+    MotivPlus ne peut être tenu responsable des contenus générés par les utilisateurs.
+  </p>
+
+  <h3>7. Suspension et résiliation</h3>
+  <p>
+    Nous nous réservons le droit de suspendre ou supprimer un compte en cas de violation des règles.
+  </p>
+
+  <h3>8. Disponibilité du service</h3>
+  <p>
+    L’application peut être interrompue temporairement pour maintenance ou mise à jour.
+  </p>
+
+  <h3>9. Limitation de responsabilité</h3>
+  <p>
+    MotivPlus est fourni « tel quel » sans garantie de performance continue ou sans erreur.
+  </p>
+
+  <h3>10. Propriété intellectuelle</h3>
+  <p>
+    Tous les éléments de l’application appartiennent à GO Studio LLC ou à ses partenaires.
+  </p>
+
+  <h3>11. Modification des conditions</h3>
+  <p>
+    Ces conditions peuvent être modifiées à tout moment.
+  </p>
+
+  <h3>12. Droit applicable</h3>
+  <p>
+    Ces conditions sont régies par les lois applicables à l’activité de GO Studio LLC.
+  </p>
+
+  <h3>13. Contact</h3>
+  <p>
+    Pour toute question : support officiel MotivPlus.
+  </p>
+</div>
+  <!-- =========================
+       LUNARIS AI
+  ========================== -->
+<div id="ai-policy" class="section">
+  <h2>🤖 Politique d'utilisation de Lunaris AI</h2>
+
+  <p><strong>Dernière mise à jour :</strong> 01 juillet 2026</p>
+
+  <p>
+    Lunaris AI est un assistant intelligent intégré à MotivPlus. Il génère des réponses automatiquement
+    à partir de modèles d’intelligence artificielle.
+  </p>
+
+  <h3>1. Nature du service</h3>
+  <p>
+    Lunaris AI ne représente pas une personne réelle et ne garantit pas l’exactitude totale des informations fournies.
+  </p>
+
+  <h3>2. Utilisation responsable</h3>
+  <ul>
+    <li>Ne pas utiliser l’IA pour des activités illégales</li>
+    <li>Ne pas dépendre de l’IA pour des décisions médicales, juridiques ou financières</li>
+    <li>Vérifier les informations importantes</li>
+  </ul>
+
+  <h3>3. Données et conversations</h3>
+  <p>
+    Les conversations peuvent être analysées pour améliorer la qualité du service et la sécurité.
+  </p>
+
+  <h3>4. Limitation</h3>
+  <p>
+    Lunaris AI peut produire des erreurs, des informations incomplètes ou obsolètes.
+    L’utilisateur reste entièrement responsable de l’utilisation des réponses.
+  </p>
+</div>
+  <!-- =========================
+       GESTION DES DONNÉES
+  ========================== -->
+ <div id="data-delete" class="section">
+  <h2>🗑️ Suppression des données</h2>
+
+  <p>
+    Les utilisateurs peuvent demander la suppression complète de leur compte et de leurs données personnelles.
+  </p>
+
+  <h3>1. Données supprimées</h3>
+  <ul>
+    <li>Compte utilisateur</li>
+    <li>Messages et interactions</li>
+    <li>Données stockées sur serveur</li>
+  </ul>
+
+  <h3>2. Délai</h3>
+  <p>
+    La suppression peut prendre jusqu’à 30 jours selon les sauvegardes système.
+  </p>
+
+  <h3>3. Données conservées</h3>
+  <p>
+    Certaines données techniques peuvent être conservées pour des raisons de sécurité et légales.
+  </p>
+
+  <h3>4. Demande</h3>
+  <p>
+    L’utilisateur peut envoyer une demande via le support officiel MotivPlus.
+  </p>
+</div>
+  <!-- =========================
+       CONTACT
+  ========================== -->
+  <div class="section">
+    <h2>📞 Contact</h2>
+    <p>
+      Pour toute question, contactez l'équipe MotivPlus.
+    </p>
+  </div>
+
+</div>
+
+<!-- =========================
+     FOOTER
+========================= -->
+<footer>
+  © 2026 MotivPlus - GO Studio LLC. Tous droits réservés.
+</footer>
