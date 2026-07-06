@@ -504,3 +504,96 @@ footer {
 <footer>
   © 2026 MotivPlus - GO Studio LLC. Tous droits réservés.
 </footer>
+<!-- =========================
+     JAVASCRIPT (MODULE 3)
+========================= -->
+<script>
+
+/* =========================
+   MODE SOMBRE / CLAIR
+========================= */
+function toggleTheme() {
+  document.body.classList.toggle("light");
+  
+  // sauvegarde du choix
+  if (document.body.classList.contains("light")) {
+    localStorage.setItem("theme", "light");
+  } else {
+    localStorage.setItem("theme", "dark");
+  }
+}
+
+/* Charger le thème au démarrage */
+window.onload = function () {
+  const theme = localStorage.getItem("theme");
+  if (theme === "light") {
+    document.body.classList.add("light");
+  }
+};
+
+/* =========================
+   SCROLL VERS LE HAUT
+========================= */
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+/* =========================
+   NAVIGATION VERS SECTION
+========================= */
+function scrollToSection(id) {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({
+      behavior: "smooth"
+    });
+  }
+}
+
+/* =========================
+   RECHERCHE DYNAMIQUE
+========================= */
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("input", function () {
+  const value = this.value.toLowerCase();
+  const sections = document.querySelectorAll(".section");
+
+  sections.forEach(section => {
+    const text = section.innerText.toLowerCase();
+
+    if (text.includes(value)) {
+      section.style.display = "block";
+    } else {
+      section.style.display = "none";
+    }
+  });
+});
+
+/* =========================
+   ANIMATION AU SCROLL
+========================= */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = "1";
+      entry.target.style.transform = "translateY(0)";
+    }
+  });
+});
+
+/* appliquer animation aux sections */
+document.querySelectorAll(".section, .card").forEach(el => {
+  el.style.opacity = "0";
+  el.style.transform = "translateY(20px)";
+  el.style.transition = "0.6s ease";
+  observer.observe(el);
+});
+
+</script>
+
+</body>
+</html>ᅠ
