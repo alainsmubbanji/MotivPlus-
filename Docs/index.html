@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MotivPlus Docs</title>
-  
+
+<title>MotivPlus — Documentation</title>
+
 <meta name="description" content="Documentation officielle de MotivPlus, l'assistante intelligente de MotivPlus développée par GO Studio. Découvrez les guides d'utilisation.">
 
 <meta name="keywords" content="MotivPlus, Lunaris AI,Documentation, GO Studio">
@@ -14,279 +15,4192 @@
 <meta name="theme-color" content="#2563eb">
 
 <link rel="icon" href="https://raw.githubusercontent.com/alainsmubbanji/MotivPlus-/refs/heads/main/file_00000000815c722f9a95edd0340cf61d.png">
-  
+
+<!-- =====================================================
+     GOOGLE MATERIAL SYMBOLS
+===================================================== -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,300..700,0..1,0..200"
+    rel="stylesheet"
+>
+
 <style>
-:root{
---primary:#6750A4;
---surface:#FFFBFE;
---surface-container:#F3EDF7;
---outline:#CAC4D0;
---text:#1D1B20;
---radius:28px;
+
+/* =====================================================
+   MOTIVPLUS DOCUMENTATION V3
+   GO STUDIO LLC
+   Material 3 inspired
+===================================================== */
+
+:root {
+
+    --primary: #6750A4;
+    --on-primary: #FFFFFF;
+
+    --primary-container: #EADDFF;
+    --on-primary-container: #21005D;
+
+    --secondary: #625B71;
+    --on-secondary: #FFFFFF;
+
+    --secondary-container: #E8DEF8;
+    --on-secondary-container: #1D192B;
+
+    --tertiary: #7D5260;
+    --tertiary-container: #FFD8E4;
+
+    --background: #FFFBFE;
+    --on-background: #1C1B1F;
+
+    --surface: #FFFBFE;
+    --surface-container-low: #F7F2FA;
+    --surface-container: #F3EDF7;
+    --surface-container-high: #ECE6F0;
+    --surface-container-highest: #E6E0E9;
+
+    --on-surface: #1C1B1F;
+    --on-surface-variant: #49454F;
+
+    --outline: #79747E;
+    --outline-variant: #CAC4D0;
+
+    --success: #386A20;
+    --success-container: #B9F397;
+
+    --error: #BA1A1A;
+    --error-container: #FFDAD6;
+
+    --shadow: rgba(0,0,0,.12);
+
+    --radius-xs: 8px;
+    --radius-sm: 12px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 32px;
+
+    --header-height: 72px;
+    --drawer-width: 292px;
 }
-*{box-sizing:border-box;font-family:Arial,sans-serif}
-body{margin:0;background:var(--surface);color:var(--text)}
-.topbar{
-position:sticky;top:0;display:flex;align-items:center;gap:12px;
-padding:16px;background:var(--surface);border-bottom:1px solid var(--outline);z-index:10;
+
+body.dark {
+
+    --primary: #D0BCFF;
+    --on-primary: #381E72;
+
+    --primary-container: #4F378B;
+    --on-primary-container: #EADDFF;
+
+    --secondary: #CCC2DC;
+    --on-secondary: #332D41;
+
+    --secondary-container: #4A4458;
+    --on-secondary-container: #E8DEF8;
+
+    --tertiary: #EFB8C8;
+    --tertiary-container: #633B48;
+
+    --background: #141218;
+    --on-background: #E6E0E9;
+
+    --surface: #141218;
+    --surface-container-low: #1D1B20;
+    --surface-container: #211F26;
+    --surface-container-high: #2B2930;
+    --surface-container-highest: #36343B;
+
+    --on-surface: #E6E0E9;
+    --on-surface-variant: #CAC4D0;
+
+    --outline: #938F99;
+    --outline-variant: #49454F;
+
+    --success: #9CD67D;
+    --success-container: #205B0B;
+
+    --error: #FFB4AB;
+    --error-container: #93000A;
+
+    --shadow: rgba(0,0,0,.35);
 }
-.menu-btn{border:none;background:none;font-size:24px;cursor:pointer}
-.drawer{
-position:fixed;left:-320px;top:0;width:300px;height:100%;
-background:var(--surface-container);transition:.3s;padding:20px;overflow:auto;z-index:20;
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
-.drawer.open{left:0}
-.overlay{
-display:none;position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:15;
+
+html {
+    scroll-behavior: smooth;
 }
-.overlay.show{display:block}
-.drawer a{
-display:block;padding:12px;margin:6px 0;text-decoration:none;color:black;
-border-radius:20px;
+
+body {
+    min-width: 0;
+    overflow-x: hidden;
+
+    background: var(--background);
+    color: var(--on-background);
+
+    font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    line-height: 1.6;
+
+    transition:
+        background .25s ease,
+        color .25s ease;
 }
-.drawer a:hover{background:#e8def8}
-.hero,.card{
-margin:20px;padding:24px;background:white;border-radius:var(--radius);
-box-shadow:0 1px 4px rgba(0,0,0,.08);
+
+button,
+input {
+    font: inherit;
 }
-.search{width:100%;padding:14px;border-radius:18px;border:1px solid var(--outline)}
-details{margin:10px 0;padding:14px;background:#f7f2fa;border-radius:16px}
-footer{text-align:center;padding:30px;color:#666}
+
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.material-symbols-rounded {
+    font-family: "Material Symbols Rounded";
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+
+    letter-spacing: normal;
+    text-transform: none;
+
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+
+    direction: ltr;
+
+    -webkit-font-feature-settings: "liga";
+    -webkit-font-smoothing: antialiased;
+
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 500,
+        'GRAD' 0,
+        'opsz' 24;
+}
+
+
+/* =====================================================
+   TOP APP BAR
+===================================================== */
+
+.topbar {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: var(--header-height);
+
+    z-index: 100;
+
+    display: flex;
+    align-items: center;
+
+    background: color-mix(
+        in srgb,
+        var(--surface) 92%,
+        transparent
+    );
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border-bottom:
+        1px solid var(--outline-variant);
+}
+
+.topbar-inner {
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 0 18px;
+}
+
+
+/* =====================================================
+   BRAND
+===================================================== */
+
+.brand {
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    min-width: 210px;
+}
+
+.brand-icon {
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--primary);
+    color: var(--on-primary);
+
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.brand-text {
+
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.brand-text span {
+    color: var(--primary);
+}
+
+.brand-subtitle {
+
+    display: block;
+
+    color: var(--on-surface-variant);
+
+    font-size: 10px;
+    font-weight: 500;
+}
+
+
+/* =====================================================
+   TOP SEARCH
+===================================================== */
+
+.top-search {
+
+    position: relative;
+
+    flex: 1;
+
+    max-width: 540px;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.top-search .material-symbols-rounded {
+
+    position: absolute;
+
+    left: 15px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: var(--on-surface-variant);
+
+    pointer-events: none;
+}
+
+.top-search input {
+
+    width: 100%;
+    height: 46px;
+
+    border: 0;
+    outline: 0;
+
+    border-radius: 24px;
+
+    padding: 0 18px 0 48px;
+
+    background: var(--surface-container);
+
+    color: var(--on-surface);
+
+    font-size: 13px;
+
+    transition: .2s;
+}
+
+.top-search input:focus {
+
+    background: var(--surface-container-high);
+
+    box-shadow:
+        0 0 0 2px var(--primary);
+}
+
+
+/* =====================================================
+   TOP ACTIONS
+===================================================== */
+
+.top-actions {
+
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+}
+
+.icon-button {
+
+    width: 44px;
+    height: 44px;
+
+    border: 0;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+
+    color: var(--on-surface);
+
+    cursor: pointer;
+
+    transition: background .2s, transform .15s;
+}
+
+.icon-button:hover {
+    background: var(--surface-container);
+}
+
+.icon-button:active {
+    transform: scale(.93);
+}
+
+.mobile-menu {
+    display: none;
+}
+
+
+/* =====================================================
+   DRAWER
+===================================================== */
+
+.drawer {
+
+    position: fixed;
+
+    top: var(--header-height);
+    left: 0;
+    bottom: 0;
+
+    width: var(--drawer-width);
+
+    padding: 18px 12px 30px;
+
+    overflow-y: auto;
+
+    background: var(--surface);
+
+    border-right:
+        1px solid var(--outline-variant);
+
+    z-index: 90;
+}
+
+.drawer-label {
+
+    padding: 10px 14px 8px;
+
+    color: var(--on-surface-variant);
+
+    font-size: 11px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: .8px;
+}
+
+.drawer-link {
+
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    min-height: 48px;
+
+    padding: 0 15px;
+
+    margin: 3px 0;
+
+    border-radius: 24px;
+
+    color: var(--on-surface-variant);
+
+    font-size: 13px;
+    font-weight: 550;
+
+    transition: .2s;
+}
+
+.drawer-link .material-symbols-rounded {
+    font-size: 21px;
+}
+
+.drawer-link:hover {
+    background: var(--surface-container);
+}
+
+.drawer-link.active {
+
+    background: var(--secondary-container);
+
+    color: var(--on-secondary-container);
+
+    font-weight: 700;
+}
+
+.drawer-link.active .material-symbols-rounded {
+
+    font-variation-settings:
+        'FILL' 1,
+        'wght' 600,
+        'GRAD' 0,
+        'opsz' 24;
+}
+
+.drawer-divider {
+
+    height: 1px;
+
+    margin: 17px 12px;
+
+    background: var(--outline-variant);
+}
+
+
+/* =====================================================
+   MOBILE DRAWER OVERLAY
+===================================================== */
+
+.overlay {
+
+    position: fixed;
+
+    inset: var(--header-height) 0 0 0;
+
+    z-index: 80;
+
+    background: rgba(0,0,0,.40);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: .25s;
+}
+
+.overlay.show {
+
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+main {
+
+    min-width: 0;
+
+    margin-left: var(--drawer-width);
+
+    padding-top: var(--header-height);
+}
+
+.content {
+
+    width: min(100%, 1050px);
+
+    margin: auto;
+
+    padding:
+        28px 34px
+        90px;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+
+    padding:
+        55px 0
+        60px;
+
+    text-align: center;
+}
+
+.hero-icon {
+
+    width: 86px;
+    height: 86px;
+
+    margin: 0 auto 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 27px;
+
+    background: var(--primary);
+    color: var(--on-primary);
+
+    box-shadow:
+        0 12px 30px var(--shadow);
+}
+
+.hero-icon .material-symbols-rounded {
+
+    font-size: 42px;
+
+    font-variation-settings:
+        'FILL' 1,
+        'wght' 600,
+        'GRAD' 0,
+        'opsz' 40;
+}
+
+.hero-badge {
+
+    display: inline-flex;
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 7px 13px;
+
+    border-radius: 50px;
+
+    background: var(--primary-container);
+
+    color: var(--on-primary-container);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: .4px;
+}
+
+.hero h1 {
+
+    margin-top: 19px;
+
+    font-size: clamp(40px, 7vw, 68px);
+
+    line-height: 1.05;
+
+    letter-spacing: -2.5px;
+}
+
+.hero h1 span {
+    color: var(--primary);
+}
+
+.hero-description {
+
+    max-width: 680px;
+
+    margin: 17px auto 0;
+
+    color: var(--on-surface-variant);
+
+    font-size: 15px;
+}
+
+.hero-actions {
+
+    display: flex;
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 27px;
+}
+
+
+/* =====================================================
+   M3 BUTTONS
+===================================================== */
+
+.btn {
+
+    min-height: 46px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 0 20px;
+
+    border: 0;
+
+    border-radius: 50px;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.btn .material-symbols-rounded {
+    font-size: 20px;
+}
+
+.btn-filled {
+
+    background: var(--primary);
+
+    color: var(--on-primary);
+}
+
+.btn-tonal {
+
+    background: var(--secondary-container);
+
+    color: var(--on-secondary-container);
+}
+
+.btn-outlined {
+
+    background: transparent;
+
+    color: var(--primary);
+
+    border:
+        1px solid var(--outline);
+}
+
+.btn:hover {
+    box-shadow: 0 3px 10px var(--shadow);
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    transform: scale(.97);
+}
+
+
+/* =====================================================
+   QUICK CARDS
+===================================================== */
+
+.quick-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0,1fr));
+
+    gap: 12px;
+
+    margin-bottom: 45px;
+}
+
+.quick-card {
+
+    min-width: 0;
+
+    padding: 18px;
+
+    border-radius: 20px;
+
+    background: var(--surface-container);
+
+    border:
+        1px solid var(--outline-variant);
+}
+
+.quick-icon {
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 12px;
+
+    border-radius: 12px;
+
+    background: var(--primary-container);
+
+    color: var(--on-primary-container);
+}
+
+.quick-icon .material-symbols-rounded {
+    font-size: 20px;
+}
+
+.quick-card strong {
+
+    display: block;
+
+    font-size: 13px;
+}
+
+.quick-card span {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: var(--on-surface-variant);
+
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   SECTIONS
+===================================================== */
+
+.section {
+
+    scroll-margin-top: 92px;
+
+    padding:
+        48px 0;
+
+    border-top:
+        1px solid var(--outline-variant);
+}
+
+.section-heading {
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 14px;
+
+    margin-bottom: 10px;
+}
+
+.section-heading-icon {
+
+    width: 44px;
+    height: 44px;
+
+    flex: 0 0 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: var(--primary-container);
+
+    color: var(--on-primary-container);
+}
+
+.section-heading-icon .material-symbols-rounded {
+    font-size: 23px;
+}
+
+.section-title {
+
+    font-size: clamp(26px, 5vw, 36px);
+
+    line-height: 1.2;
+
+    letter-spacing: -.9px;
+}
+
+.section-description {
+
+    margin:
+        8px 0
+        24px;
+
+    color: var(--on-surface-variant);
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   CONTENT CARDS
+===================================================== */
+
+.cards {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0,1fr));
+
+    gap: 13px;
+}
+
+.card {
+
+    min-width: 0;
+
+    padding: 21px;
+
+    border-radius: 22px;
+
+    background: var(--surface-container-low);
+
+    border:
+        1px solid var(--outline-variant);
+
+    transition: .2s;
+}
+
+.card:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px var(--shadow);
+}
+
+.card-icon {
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 14px;
+
+    border-radius: 13px;
+
+    background: var(--secondary-container);
+
+    color: var(--on-secondary-container);
+}
+
+.card h3 {
+
+    margin-bottom: 6px;
+
+    font-size: 16px;
+}
+
+.card p {
+
+    color: var(--on-surface-variant);
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   CALLOUTS
+===================================================== */
+
+.callout {
+
+    display: flex;
+
+    gap: 14px;
+
+    margin: 22px 0;
+
+    padding: 18px;
+
+    border-radius: 20px;
+
+    background: var(--primary-container);
+
+    color: var(--on-primary-container);
+}
+
+.callout-icon {
+
+    flex: 0 0 auto;
+}
+
+.callout-icon .material-symbols-rounded {
+    font-size: 23px;
+}
+
+.callout strong {
+
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: 13px;
+}
+
+.callout p {
+
+    margin: 0;
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   STEP FLOW
+===================================================== */
+
+.steps {
+
+    display: grid;
+
+    gap: 10px;
+}
+
+.step {
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 13px;
+
+    padding: 15px;
+
+    border-radius: 18px;
+
+    background: var(--surface-container);
+
+    border:
+        1px solid var(--outline-variant);
+}
+
+.step-number {
+
+    width: 31px;
+    height: 31px;
+
+    flex: 0 0 31px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--primary);
+
+    color: var(--on-primary);
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.step h3 {
+
+    margin-bottom: 2px;
+
+    font-size: 13px;
+}
+
+.step p {
+
+    color: var(--on-surface-variant);
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   AI FEATURE
+===================================================== */
+
+.ai-panel {
+
+    padding: 27px;
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary-container),
+            var(--surface-container)
+        );
+
+    border:
+        1px solid var(--outline-variant);
+}
+
+.ai-header {
+
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 15px;
+}
+
+.ai-logo {
+
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    background: var(--primary);
+
+    color: var(--on-primary);
+}
+
+.ai-logo .material-symbols-rounded {
+
+    font-size: 29px;
+
+    font-variation-settings:
+        'FILL' 1,
+        'wght' 600,
+        'GRAD' 0,
+        'opsz' 32;
+}
+
+.ai-panel h3 {
+    font-size: 19px;
+}
+
+.ai-panel p {
+
+    color: var(--on-surface-variant);
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   CODE
+===================================================== */
+
+.code-block {
+
+    margin: 20px 0;
+
+    overflow: hidden;
+
+    border-radius: 19px;
+
+    background: #17151A;
+
+    border:
+        1px solid var(--outline-variant);
+}
+
+.code-header {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 9px 13px;
+
+    background: rgba(255,255,255,.05);
+
+    color: #BDB8C2;
+
+    font-size: 10px;
+}
+
+.copy-btn {
+
+    display: inline-flex;
+    align-items: center;
+
+    gap: 5px;
+
+    border: 0;
+
+    padding: 6px 9px;
+
+    border-radius: 9px;
+
+    background: rgba(255,255,255,.08);
+
+    color: #E8E4EA;
+
+    cursor: pointer;
+
+    font-size: 10px;
+}
+
+.copy-btn .material-symbols-rounded {
+    font-size: 15px;
+}
+
+.code-block pre {
+
+    margin: 0;
+
+    padding: 18px;
+
+    overflow-x: auto;
+
+    color: #F5F1F7;
+
+    font-family:
+        "SFMono-Regular",
+        Consolas,
+        monospace;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* =====================================================
+   SCREENSHOTS
+===================================================== */
+
+.screenshots {
+
+    display: flex;
+
+    gap: 15px;
+
+    overflow-x: auto;
+
+    padding: 5px 3px 17px;
+
+    scroll-snap-type: x mandatory;
+}
+
+.screenshot {
+
+    width: 190px;
+    height: 380px;
+
+    flex: 0 0 190px;
+
+    overflow: hidden;
+
+    scroll-snap-align: start;
+
+    border-radius: 28px;
+
+    background: var(--surface-container);
+
+    border:
+        1px solid var(--outline-variant);
+
+    box-shadow:
+        0 8px 22px var(--shadow);
+}
+
+.screenshot img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+/* =====================================================
+   FAQ
+===================================================== */
+
+.faq-list {
+
+    display: grid;
+
+    gap: 9px;
+}
+
+.faq {
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    border:
+        1px solid var(--outline-variant);
+
+    background: var(--surface-container);
+}
+
+.faq-question {
+
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 16px;
+
+    border: 0;
+
+    background: transparent;
+
+    color: var(--on-surface);
+
+    text-align: left;
+
+    cursor: pointer;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.faq-question .material-symbols-rounded {
+
+    color: var(--primary);
+
+    transition: transform .2s;
+}
+
+.faq-answer {
+
+    display: none;
+
+    padding:
+        0 16px
+        17px;
+}
+
+.faq-answer p {
+
+    color: var(--on-surface-variant);
+
+    font-size: 12px;
+}
+
+.faq.open .faq-answer {
+    display: block;
+}
+
+.faq.open
+.faq-question
+.material-symbols-rounded {
+
+    transform: rotate(180deg);
+}
+
+
+/* =====================================================
+   CHANGELOG
+===================================================== */
+
+.timeline {
+
+    position: relative;
+
+    display: grid;
+
+    gap: 15px;
+}
+
+.release {
+
+    position: relative;
+
+    padding: 20px 21px;
+
+    border-radius: 20px;
+
+    background: var(--surface-container);
+
+    border:
+        1px solid var(--outline-variant);
+}
+
+.release-version {
+
+    color: var(--primary);
+
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.release-date {
+
+    margin: 2px 0 10px;
+
+    color: var(--on-surface-variant);
+
+    font-size: 10px;
+}
+
+.release ul {
+
+    padding-left: 18px;
+
+    color: var(--on-surface-variant);
+
+    font-size: 12px;
+}
+
+.release li {
+    margin-bottom: 5px;
+}
+
+
+/* =====================================================
+   TABLE
+===================================================== */
+
+.info-table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    overflow: hidden;
+
+    border-radius: 17px;
+
+    background: var(--surface-container);
+
+    font-size: 12px;
+}
+
+.info-table th,
+.info-table td {
+
+    padding: 13px;
+
+    text-align: left;
+
+    border-bottom:
+        1px solid var(--outline-variant);
+}
+
+.info-table th {
+
+    color: var(--on-surface);
+
+    font-weight: 750;
+}
+
+.info-table td {
+
+    color: var(--on-surface-variant);
+}
+
+
+/* =====================================================
+   SEARCH RESULTS
+===================================================== */
+
+.search-results {
+
+    display: none;
+
+    margin:
+        10px 0
+        20px;
+
+    padding: 15px;
+
+    border-radius: 18px;
+
+    background: var(--surface-container);
+
+    color: var(--on-surface-variant);
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+
+    margin-left: var(--drawer-width);
+
+    padding:
+        45px 20px;
+
+    text-align: center;
+
+    border-top:
+        1px solid var(--outline-variant);
+}
+
+.footer-logo {
+
+    width: 46px;
+    height: 46px;
+
+    margin: 0 auto 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 15px;
+
+    background: var(--primary);
+
+    color: var(--on-primary);
+
+    font-weight: 800;
+}
+
+footer h2 {
+
+    font-size: 18px;
+}
+
+footer p {
+
+    margin-top: 4px;
+
+    color: var(--on-surface-variant);
+
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   NO RESULTS
+===================================================== */
+
+.no-results {
+
+    display: none;
+
+    padding: 35px 20px;
+
+    text-align: center;
+
+    border-radius: 22px;
+
+    background: var(--surface-container);
+
+    color: var(--on-surface-variant);
+}
+
+.no-results .material-symbols-rounded {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 35px;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media(max-width:850px) {
+
+    .brand {
+        min-width: auto;
+    }
+
+    .brand-subtitle {
+        display: none;
+    }
+
+    .top-search {
+        max-width: none;
+    }
+
+    .drawer {
+
+        transform: translateX(-105%);
+
+        box-shadow:
+            10px 0 30px var(--shadow);
+
+        transition: transform .25s ease;
+    }
+
+    .drawer.open {
+        transform: translateX(0);
+    }
+
+    .mobile-menu {
+        display: flex;
+    }
+
+    main {
+        margin-left: 0;
+    }
+
+    footer {
+        margin-left: 0;
+    }
+
+    .content {
+        padding:
+            22px 20px
+            70px;
+    }
+
+    .quick-grid {
+        grid-template-columns:
+            repeat(2,minmax(0,1fr));
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:560px) {
+
+    :root {
+        --header-height: 64px;
+    }
+
+    .topbar-inner {
+        padding: 0 10px;
+    }
+
+    .brand {
+        gap: 8px;
+    }
+
+    .brand-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 12px;
+    }
+
+    .brand-text {
+        font-size: 13px;
+    }
+
+    .top-search {
+        display: none;
+    }
+
+    .content {
+        padding:
+            15px 13px
+            60px;
+    }
+
+    .hero {
+        padding:
+            35px 0
+            45px;
+    }
+
+    .hero-icon {
+        width: 76px;
+        height: 76px;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .hero-description {
+        font-size: 13px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .quick-grid {
+        grid-template-columns: 1fr 1fr;
+
+        gap: 9px;
+    }
+
+    .quick-card {
+        padding: 15px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        padding: 38px 0;
+    }
+
+    .section-title {
+        font-size: 27px;
+    }
+
+    .section-heading-icon {
+        width: 40px;
+        height: 40px;
+        flex-basis: 40px;
+    }
+
+    .ai-panel {
+        padding: 21px;
+    }
+
+    .screenshot {
+        width: 175px;
+        height: 350px;
+        flex-basis: 175px;
+    }
+
+    .info-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+}
+
+
+/* =====================================================
+   VERY SMALL PHONES
+===================================================== */
+
+@media(max-width:360px) {
+
+    .quick-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media(prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        scroll-behavior: auto !important;
+
+        transition: none !important;
+
+        animation: none !important;
+    }
+
+}
+
 </style>
 </head>
+
+
 <body>
 
-<div id="overlay" class="overlay"></div>
 
-<nav id="drawer" class="drawer">
-<h2>📖 MotivPlus Docs</h2>
-<a href="#intro">🚀 Introduction</a>
-<a href="#lunaris">🤖 Lunaris AI</a>
-<a href="#account">👤 Compte utilisateur</a>
-<a href="#posts">✨ Publications</a>
-<a href="#points">💰 Points</a>
-<a href="#security">🔒 Confidentialité</a>
-<a href="#faq">❓ FAQ</a>
-<a href="#changelog">📜 Changelog</a>
-</nav>
+<!-- =====================================================
+     TOP APP BAR
+===================================================== -->
 
 <header class="topbar">
-<button id="menuBtn" class="menu-btn">☰</button>
-<h3>MotivPlus Docs</h3>
+
+<div class="topbar-inner">
+
+
+<button
+    class="icon-button mobile-menu"
+    id="menuButton"
+    aria-label="Ouvrir le menu"
+>
+
+<span class="material-symbols-rounded">
+menu
+</span>
+
+</button>
+
+
+<a
+    href="#top"
+    class="brand"
+>
+
+<div class="brand-icon">
+M
+</div>
+
+<div>
+
+<div class="brand-text">
+<span>Motiv</span>Plus
+</div>
+
+<span class="brand-subtitle">
+Documentation officielle
+</span>
+
+</div>
+
+</a>
+
+
+<div class="top-search">
+
+<span class="material-symbols-rounded">
+search
+</span>
+
+<input
+    id="search"
+    type="search"
+    placeholder="Rechercher dans la documentation…"
+    autocomplete="off"
+>
+
+</div>
+
+
+<div class="top-actions">
+
+<button
+    class="icon-button"
+    id="themeButton"
+    aria-label="Changer le thème"
+>
+
+<span
+    class="material-symbols-rounded"
+    id="themeIcon"
+>
+dark_mode
+</span>
+
+</button>
+
+</div>
+
+</div>
+
 </header>
 
+
+<!-- =====================================================
+     OVERLAY
+===================================================== -->
+
+<div
+    class="overlay"
+    id="overlay"
+></div>
+
+
+<!-- =====================================================
+     DRAWER
+===================================================== -->
+
+<aside
+    class="drawer"
+    id="drawer"
+>
+
+<div class="drawer-label">
+Documentation
+</div>
+
+
+<a
+    href="#presentation"
+    class="drawer-link active"
+>
+
+<span class="material-symbols-rounded">
+home
+</span>
+
+<span>Introduction</span>
+
+</a>
+
+
+<a
+    href="#features"
+    class="drawer-link"
+>
+
+<span class="material-symbols-rounded">
+auto_awesome
+</span>
+
+<span>Fonctionnalités</span>
+
+</a>
+
+
+<a
+    href="#account"
+    class="drawer-link"
+>
+
+<span class="material-symbols-rounded">
+person
+</span>
+
+<span>Compte utilisateur</span>
+
+</a>
+
+
+<a
+    href="#publications"
+    class="drawer-link"
+>
+
+<span class="material-symbols-rounded">
+article
+</span>
+
+<span>Publications</span>
+
+</a>
+
+
+<a
+    href="#points"
+    class="drawer-link"
+>
+
+<span class="material-symbols-rounded">
+stars
+</span>
+
+<span>Points</span>
+
+</a>
+
+
+<a
+    href="#lunaris"
+    class="drawer-link"
+>
+
+<span class="material-symbols-rounded">
+smart_toy
+</span>
+
+<span>Lunaris AI</span>
+
+</a>
+
+
+<a
+    href="#screenshots"
+    class="drawer-link"
+>
+
+<span class="material-symbols-rounded">
+photo_library
+</span>
+
+<span>Captures</span>
+
+</a>
+
+
+<a
+    href="#security"
+    class="drawer-link"
+>
+
+<span class="material-symbols-rounded">
+security
+</span>
+
+<span>Sécurité</span>
+
+</a>
+
+
+<a
+    href="#faq"
+    class="drawer-link"
+>
+
+<span class="material-symbols-rounded">
+help
+</span>
+
+<span>FAQ</span>
+
+</a>
+
+
+<a
+    href="#changelog"
+    class="drawer-link"
+>
+
+<span class="material-symbols-rounded">
+history
+</span>
+
+<span>Changelog</span>
+
+</a>
+
+
+<div class="drawer-divider"></div>
+
+
+<a
+    href="https://t.me/GoStudioLLC"
+    target="_blank"
+    rel="noopener"
+    class="drawer-link"
+>
+
+<span class="material-symbols-rounded">
+open_in_new
+</span>
+
+<span>GO Studio</span>
+
+</a>
+
+</aside>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main>
+
+<div
+    class="content"
+    id="top"
+>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
 <section class="hero">
-<h1>Documentation officielle de MotivPlus</h1>
-<p>Découvrez toutes les fonctionnalités de MotivPlus et de Lunaris AI.</p>
-<input class="search" placeholder="Rechercher dans la documentation...">
+
+<div class="hero-icon">
+
+<span class="material-symbols-rounded">
+auto_awesome
+</span>
+
+</div>
+
+
+<div class="hero-badge">
+
+<span class="material-symbols-rounded">
+verified
+</span>
+
+DOCUMENTATION OFFICIELLE
+
+</div>
+
+
+<h1>
+Motiv<span>Plus</span>
+</h1>
+
+
+<p class="hero-description">
+
+Découvrez MotivPlus, ses fonctionnalités,
+son système de points et Lunaris AI à travers
+la documentation officielle de GO Studio LLC.
+
+</p>
+
+
+<div class="hero-actions">
+
+<a
+    href="#features"
+    class="btn btn-filled"
+>
+
+<span class="material-symbols-rounded">
+arrow_forward
+</span>
+
+Découvrir MotivPlus
+
+</a>
+
+
+<a
+    href="#lunaris"
+    class="btn btn-tonal"
+>
+
+<span class="material-symbols-rounded">
+smart_toy
+</span>
+
+Découvrir Lunaris AI
+
+</a>
+
+</div>
+
 </section>
 
-<section id="intro" class="card">
-<h2>🚀 Introduction</h2>
-<p>‎MotivPlus est une plateforme de motivation et de développement personnel conçue pour aider les utilisateurs à progresser au quotidien. L'application combine des contenus inspirants, une communauté interactive et des outils intelligents pour accompagner chacun dans l'atteinte de ses objectifs.</p>
 
-<p>Pourquoi MotivPlus ?
-‎MotivPlus a été créé pour offrir un espace positif où les utilisateurs peuvent trouver de la motivation, partager leurs expériences et bénéficier d'un accompagnement numérique adapté à leurs besoins.</p>
-<h3>Vision du projet</h3>
+<!-- =====================================================
+     QUICK INFO
+===================================================== -->
+
+<div class="quick-grid">
+
+
+<div class="quick-card">
+
+<div class="quick-icon">
+
+<span class="material-symbols-rounded">
+apps
+</span>
+
+</div>
+
+<strong>Plateforme</strong>
+
+<span>Sociale & motivation</span>
+
+</div>
+
+
+<div class="quick-card">
+
+<div class="quick-icon">
+
+<span class="material-symbols-rounded">
+smart_toy
+</span>
+
+</div>
+
+<strong>Lunaris AI</strong>
+
+<span>Assistant intelligent</span>
+
+</div>
+
+
+<div class="quick-card">
+
+<div class="quick-icon">
+
+<span class="material-symbols-rounded">
+stars
+</span>
+
+</div>
+
+<strong>Points</strong>
+
+<span>Système de récompense</span>
+
+</div>
+
+
+<div class="quick-card">
+
+<div class="quick-icon">
+
+<span class="material-symbols-rounded">
+menu_book
+</span>
+
+</div>
+
+<strong>Documentation</strong>
+
+<span>V3</span>
+
+</div>
+
+
+</div>
+
+
+<!-- =====================================================
+     PRESENTATION
+===================================================== -->
+
+<section
+    class="section searchable"
+    id="presentation"
+    data-search="introduction présentation motivplus plateforme motivation communauté go studio vision"
+>
+
+
+<div class="section-heading">
+
+<div class="section-heading-icon">
+
+<span class="material-symbols-rounded">
+home
+</span>
+
+</div>
+
+<div>
+
+<h2 class="section-title">
+Introduction
+</h2>
+
+</div>
+
+</div>
+
+
+<p class="section-description">
+
+MotivPlus est une plateforme orientée vers
+la motivation, le partage positif et les
+interactions communautaires.
+
+</p>
+
+
+<div class="callout">
+
+<div class="callout-icon">
+
+<span class="material-symbols-rounded">
+lightbulb
+</span>
+
+</div>
+
+<div>
+
+<strong>
+Créer • Partager • Inspirer
+</strong>
+
+<p>
+
+L'objectif de MotivPlus est de proposer un
+espace où les utilisateurs peuvent découvrir,
+créer et partager du contenu positif.
+
+</p>
+
+</div>
+
+</div>
+
+
+<div class="cards">
+
+
+<div class="card">
+
+<div class="card-icon">
+
+<span class="material-symbols-rounded">
+psychology
+</span>
+
+</div>
+
+<h3>
+Motivation
+</h3>
+
+<p>
+Découvrez des contenus destinés à encourager
+la motivation et l'inspiration au quotidien.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">
+
+<span class="material-symbols-rounded">
+groups
+</span>
+
+</div>
+
+<h3>
+Communauté
+</h3>
+
+<p>
+Partagez vos idées et interagissez avec
+d'autres membres de la communauté.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">
+
+<span class="material-symbols-rounded">
+smart_toy
+</span>
+
+</div>
+
+<h3>
+Intelligence artificielle
+</h3>
+
+<p>
+Lunaris AI apporte une dimension intelligente
+à l'écosystème MotivPlus.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">
+
+<span class="material-symbols-rounded">
+notifications
+</span>
+
+</div>
+
+<h3>
+Notifications
+</h3>
+
+<p>
+Restez informé des activités importantes
+de votre application.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     FEATURES
+===================================================== -->
+
+<section
+    class="section searchable"
+    id="features"
+    data-search="fonctionnalités accueil catégories notifications interactions profil messagerie"
+>
+
+
+<div class="section-heading">
+
+<div class="section-heading-icon">
+
+<span class="material-symbols-rounded">
+auto_awesome
+</span>
+
+</div>
+
+<div>
+
+<h2 class="section-title">
+Fonctionnalités
+</h2>
+
+</div>
+
+</div>
+
+
+<p class="section-description">
+
+Les principales fonctionnalités disponibles
+dans l'écosystème MotivPlus.
+
+</p>
+
+
+<div class="cards">
+
+
+<div class="card">
+
+<div class="card-icon">
+
+<span class="material-symbols-rounded">
+article
+</span>
+
+</div>
+
+<h3>
+Publications
+</h3>
+
+<p>
+Créez et partagez des publications avec
+la communauté MotivPlus.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">
+
+<span class="material-symbols-rounded">
+favorite
+</span>
+
+</div>
+
+<h3>
+Interactions
+</h3>
+
+<p>
+Interagissez avec les contenus et participez
+à la vie de la communauté.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">
+
+<span class="material-symbols-rounded">
+label
+</span>
+
+</div>
+
+<h3>
+Catégories
+</h3>
+
+<p>
+Organisez et découvrez différents types
+de contenus.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">
+
+<span class="material-symbols-rounded">
+person
+</span>
+
+</div>
+
+<h3>
+Profil
+</h3>
+
+<p>
+Gérez vos informations et retrouvez
+votre activité.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">
+
+<span class="material-symbols-rounded">
+chat
+</span>
+
+</div>
+
+<h3>
+Messagerie
+</h3>
+
+<p>
+Communiquez avec vos contacts depuis
+l'application.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">
+
+<span class="material-symbols-rounded">
+notifications
+</span>
+
+</div>
+
+<h3>
+Notifications
+</h3>
+
+<p>
+Recevez des informations liées à votre
+activité et à l'application.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     ACCOUNT
+===================================================== -->
+
+<section
+    class="section searchable"
+    id="account"
+    data-search="compte utilisateur inscription connexion profil nom utilisateur email mot de passe points référence"
+>
+
+
+<div class="section-heading">
+
+<div class="section-heading-icon">
+
+<span class="material-symbols-rounded">
+person
+</span>
+
+</div>
+
+<div>
+
+<h2 class="section-title">
+Compte utilisateur
+</h2>
+
+</div>
+
+</div>
+
+
+<p class="section-description">
+
+Votre compte permet d'accéder aux différentes
+fonctionnalités personnalisées de MotivPlus.
+
+</p>
+
+
+<div class="steps">
+
+
+<div class="step">
+
+<div class="step-number">1</div>
+
+<div>
+
+<h3>
+Créer un compte
+</h3>
+
+<p>
+Renseignez les informations demandées lors
+de l'inscription.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-number">2</div>
+
+<div>
+
+<h3>
+Configurer votre profil
+</h3>
+
+<p>
+Personnalisez les informations visibles
+sur votre profil.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-number">3</div>
+
+<div>
+
+<h3>
+Utiliser MotivPlus
+</h3>
+
+<p>
+Accédez aux publications, interactions,
+points et autres fonctionnalités.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="callout">
+
+<div class="callout-icon">
+
+<span class="material-symbols-rounded">
+stars
+</span>
+
+</div>
+
+<div>
+
+<strong>
+Points d'inscription
+</strong>
+
+<p>
+
+Selon le système documenté de MotivPlus,
+l'inscription peut attribuer des points
+de départ au nouvel utilisateur.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     PUBLICATIONS
+===================================================== -->
+
+<section
+    class="section searchable"
+    id="publications"
+    data-search="publications créer publier texte html arrière-plan catégorie points publication normale"
+>
+
+
+<div class="section-heading">
+
+<div class="section-heading-icon">
+
+<span class="material-symbols-rounded">
+article
+</span>
+
+</div>
+
+<div>
+
+<h2 class="section-title">
+Publications
+</h2>
+
+</div>
+
+</div>
+
+
+<p class="section-description">
+
+Les publications constituent l'un des
+éléments principaux de MotivPlus.
+
+</p>
+
+
+<div class="steps">
+
+
+<div class="step">
+
+<div class="step-number">1</div>
+
+<div>
+
+<h3>
+Ouvrir la création
+</h3>
+
+<p>
+Accédez à l'interface permettant de créer
+une nouvelle publication.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-number">2</div>
+
+<div>
+
+<h3>
+Ajouter votre contenu
+</h3>
+
+<p>
+Écrivez votre message et personnalisez
+la présentation selon les options disponibles.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-number">3</div>
+
+<div>
+
+<h3>
+Choisir une catégorie
+</h3>
+
+<p>
+Associez la publication à la catégorie
+appropriée.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-number">4</div>
+
+<div>
+
+<h3>
+Publier
+</h3>
+
+<p>
+Vérifiez le contenu puis publiez-le
+dans la communauté.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<h3 style="margin:28px 0 12px;">
+Système de points
+</h3>
+
+
+<table class="info-table">
+
+<thead>
+
+<tr>
+<th>Type</th>
+<th>Coût documenté</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td>Publication normale</td>
+<td>1 point</td>
+</tr>
+
+<tr>
+<td>Publication utilisant HTML</td>
+<td>2 points</td>
+</tr>
+
+</tbody>
+
+</table>
+
+
+<div class="callout">
+
+<div class="callout-icon">
+
+<span class="material-symbols-rounded">
+info
+</span>
+
+</div>
+
+<div>
+
+<strong>
+À retenir
+</strong>
+
+<p>
+
+Le coût en points dépend du type de
+publication utilisé.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     POINTS
+===================================================== -->
+
+<section
+    class="section searchable"
+    id="points"
+    data-search="points système récompense gagner utiliser publication solde"
+>
+
+
+<div class="section-heading">
+
+<div class="section-heading-icon">
+
+<span class="material-symbols-rounded">
+stars
+</span>
+
+</div>
+
+<div>
+
+<h2 class="section-title">
+Système de points
+</h2>
+
+</div>
+
+</div>
+
+
+<p class="section-description">
+
+Les points constituent un système intégré
+à certaines fonctionnalités de MotivPlus.
+
+</p>
+
+
+<div class="cards">
+
+
+<div class="card">
+
+<div class="card-icon">
+
+<span class="material-symbols-rounded">
+add_circle
+</span>
+
+</div>
+
+<h3>
+Obtenir des points
+</h3>
+
+<p>
+Certaines actions ou événements peuvent
+permettre de recevoir des points.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">
+
+<span class="material-symbols-rounded">
+account_balance_wallet
+</span>
+
+</div>
+
+<h3>
+Consulter son solde
+</h3>
+
+<p>
+Le solde permet de suivre les points
+disponibles sur le compte.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">
+
+<span class="material-symbols-rounded">
+payments
+</span>
+
+</div>
+
+<h3>
+Utiliser les points
+</h3>
+
+<p>
+Certaines fonctionnalités peuvent
+nécessiter l'utilisation de points.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">
+
+<span class="material-symbols-rounded">
+history
+</span>
+
+</div>
+
+<h3>
+Évolution
+</h3>
+
+<p>
+Le système peut évoluer avec les futures
+versions de MotivPlus.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     LUNARIS
+===================================================== -->
+
+<section
+    class="section searchable"
+    id="lunaris"
+    data-search="lunaris ai intelligence artificielle assistant conversation mémoire recherche web sources prompt"
+>
+
+
+<div class="section-heading">
+
+<div class="section-heading-icon">
+
+<span class="material-symbols-rounded">
+smart_toy
+</span>
+
+</div>
+
+<div>
+
+<h2 class="section-title">
+Lunaris AI
+</h2>
+
+</div>
+
+</div>
+
+
+<p class="section-description">
+
+L'assistant intelligent intégré à
+l'écosystème MotivPlus.
+
+</p>
+
+
+<div class="ai-panel">
+
+
+<div class="ai-header">
+
+<div class="ai-logo">
+
+<span class="material-symbols-rounded">
+smart_toy
+</span>
+
+</div>
+
+<div>
+
+<h3>
+Lunaris AI
+</h3>
+
+<p>
+Assistant intelligent de MotivPlus
+</p>
+
+</div>
+
+</div>
+
+
+<p>
+
+Lunaris peut aider l'utilisateur à comprendre,
+rédiger, analyser et rechercher différentes
+informations selon les fonctionnalités
+disponibles dans l'application.
+
+</p>
+
+</div>
+
+
+<h3 style="margin:30px 0 12px;">
+Exemple de conversation
+</h3>
+
+
+<div class="code-block">
+
+<div class="code-header">
+
+<span>
+Exemple de prompt
+</span>
+
+<button
+    class="copy-btn"
+    data-copy="Bonjour Lunaris, explique-moi simplement ce sujet."
+>
+
+<span class="material-symbols-rounded">
+content_copy
+</span>
+
+Copier
+
+</button>
+
+</div>
+
+
+<pre><code>Bonjour Lunaris,
+explique-moi simplement ce sujet.</code></pre>
+
+</div>
+
+
+<div class="cards">
+
+
+<div class="card">
+
+<div class="card-icon">
+
+<span class="material-symbols-rounded">
+chat
+</span>
+
+</div>
+
+<h3>
+Conversations
+</h3>
+
+<p>
+Discutez avec Lunaris à travers une
+conversation naturelle.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">
+
+<span class="material-symbols-rounded">
+search
+</span>
+
+</div>
+
+<h3>
+Recherche
+</h3>
+
+<p>
+Certaines fonctionnalités peuvent permettre
+à Lunaris d'utiliser des informations Web.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">
+
+<span class="material-symbols-rounded">
+source
+</span>
+
+</div>
+
+<h3>
+Sources
+</h3>
+
+<p>
+Lorsque la recherche Web est utilisée,
+des sources peuvent être présentées.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">
+
+<span class="material-symbols-rounded">
+memory
+</span>
+
+<h3>
+Contexte
+</h3>
+
+<p>
+Le fonctionnement du contexte dépend
+des mécanismes disponibles dans l'application.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="callout">
+
+<div class="callout-icon">
+
+<span class="material-symbols-rounded">
+shield
+</span>
+
+</div>
+
+<div>
+
+<strong>
+Utilisation responsable
+</strong>
+
+<p>
+
+Ne transmettez pas à une IA des mots de passe,
+codes de sécurité ou informations confidentielles
+qui ne sont pas nécessaires.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     SCREENSHOTS
+===================================================== -->
+
+<section
+    class="section searchable"
+    id="screenshots"
+    data-search="captures screenshots interface accueil feed profil lunaris application"
+>
+
+
+<div class="section-heading">
+
+<div class="section-heading-icon">
+
+<span class="material-symbols-rounded">
+photo_library
+</span>
+
+</div>
+
+<div>
+
+<h2 class="section-title">
+Captures d'écran
+</h2>
+
+</div>
+
+</div>
+
+
+<p class="section-description">
+
+Quelques aperçus de l'interface de MotivPlus.
+
+</p>
+
+
+<div class="screenshots">
+
+
+<div class="screenshot">
+
+<img
+    src="https://alainsmubbanji.github.io/MotivPlus/images/home.png"
+    alt="Accueil MotivPlus"
+    loading="lazy"
+>
+
+</div>
+
+
+<div class="screenshot">
+
+<img
+    src="https://alainsmubbanji.github.io/MotivPlus/images/feed.png"
+    alt="Publications MotivPlus"
+    loading="lazy"
+>
+
+</div>
+
+
+<div class="screenshot">
+
+<img
+    src="https://alainsmubbanji.github.io/MotivPlus/images/lunaris.png"
+    alt="Lunaris AI"
+    loading="lazy"
+>
+
+</div>
+
+
+<div class="screenshot">
+
+<img
+    src="https://alainsmubbanji.github.io/MotivPlus/images/profile.png"
+    alt="Profil MotivPlus"
+    loading="lazy"
+>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     SECURITY
+===================================================== -->
+
+<section
+    class="section searchable"
+    id="security"
+    data-search="sécurité confidentialité données compte mot de passe intelligence artificielle protection"
+>
+
+
+<div class="section-heading">
+
+<div class="section-heading-icon">
+
+<span class="material-symbols-rounded">
+security
+</span>
+
+</div>
+
+<div>
+
+<h2 class="section-title">
+Sécurité & confidentialité
+</h2>
+
+</div>
+
+</div>
+
+
+<p class="section-description">
+
+La protection du compte et l'utilisation
+responsable des données sont importantes
+dans l'utilisation de MotivPlus.
+
+</p>
+
+
+<div class="cards">
+
+
+<div class="card">
+
+<div class="card-icon">
+
+<span class="material-symbols-rounded">
+lock
+</span>
+
+</div>
+
+<h3>
+Compte
+</h3>
+
+<p>
+Protégez votre compte et évitez de partager
+vos informations d'authentification.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">
+
+<span class="material-symbols-rounded">
+database
+</span>
+
+</div>
+
+<h3>
+Données
+</h3>
+
+<p>
+Les données nécessaires au fonctionnement
+des services doivent être traitées avec soin.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">
+
+<span class="material-symbols-rounded">
+password
+</span>
+
+</div>
+
+<h3>
+Identifiants
+</h3>
+
+<p>
+Ne communiquez jamais vos mots de passe
+ou codes de sécurité.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">
+
+<span class="material-symbols-rounded">
+smart_toy
+</span>
+
+</div>
+
+<h3>
+IA
+</h3>
+
+<p>
+Évitez d'envoyer à Lunaris des informations
+personnelles ou confidentielles inutiles.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     FAQ
+===================================================== -->
+
+<section
+    class="section searchable"
+    id="faq"
+    data-search="faq questions réponses aide motivplus lunaris compte publication points"
+>
+
+
+<div class="section-heading">
+
+<div class="section-heading-icon">
+
+<span class="material-symbols-rounded">
+help
+</span>
+
+</div>
+
+<div>
+
+<h2 class="section-title">
+Questions fréquentes
+</h2>
+
+</div>
+
+</div>
+
+
+<div class="faq-list">
+
+
+<div class="faq">
+
+<button class="faq-question">
+
+<span>
+Qu'est-ce que MotivPlus ?
+</span>
+
+<span class="material-symbols-rounded">
+expand_more
+</span>
+
+</button>
+
+<div class="faq-answer">
+
+<p>
+
+MotivPlus est une plateforme orientée vers
+la motivation, le partage positif, les
+interactions communautaires et l'intelligence
+artificielle.
+
+</p>
+
+</div>
+
+</div>
+
+
+<div class="faq">
+
+<button class="faq-question">
+
+<span>
+Qu'est-ce que Lunaris AI ?
+</span>
+
+<span class="material-symbols-rounded">
+expand_more
+</span>
+
+</button>
+
+<div class="faq-answer">
+
+<p>
+
+Lunaris AI est l'assistant intelligent intégré
+à l'écosystème MotivPlus.
+
+</p>
+
+</div>
+
+</div>
+
+
+<div class="faq">
+
+<button class="faq-question">
+
+<span>
+Combien coûte une publication ?
+</span>
+
+<span class="material-symbols-rounded">
+expand_more
+</span>
+
+</button>
+
+<div class="faq-answer">
+
+<p>
+
+Selon la documentation actuelle, une publication
+normale coûte 1 point tandis qu'une publication
+utilisant HTML coûte 2 points.
+
+</p>
+
+</div>
+
+</div>
+
+
+<div class="faq">
+
+<button class="faq-question">
+
+<span>
+Lunaris peut-il utiliser le Web ?
+</span>
+
+<span class="material-symbols-rounded">
+expand_more
+</span>
+
+</button>
+
+<div class="faq-answer">
+
+<p>
+
+Selon les fonctionnalités disponibles, Lunaris
+peut utiliser des informations Web et présenter
+des sources permettant de vérifier certains
+résultats.
+
+</p>
+
+</div>
+
+</div>
+
+
+<div class="faq">
+
+<button class="faq-question">
+
+<span>
+La documentation évoluera-t-elle ?
+</span>
+
+<span class="material-symbols-rounded">
+expand_more
+</span>
+
+</button>
+
+<div class="faq-answer">
+
+<p>
+
+Oui. Cette documentation est conçue pour
+évoluer avec les nouvelles versions et
+fonctionnalités de MotivPlus.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     CHANGELOG
+===================================================== -->
+
+<section
+    class="section searchable"
+    id="changelog"
+    data-search="changelog version release mise à jour documentation v3 v2"
+>
+
+
+<div class="section-heading">
+
+<div class="section-heading-icon">
+
+<span class="material-symbols-rounded">
+history
+</span>
+
+</div>
+
+<div>
+
+<h2 class="section-title">
+Changelog
+</h2>
+
+</div>
+
+</div>
+
+
+<p class="section-description">
+
+Historique des évolutions de la documentation
+et de l'écosystème MotivPlus.
+
+</p>
+
+
+<div class="timeline">
+
+
+<div class="release">
+
+<div class="release-version">
+Documentation V3
+</div>
+
+<div class="release-date">
+2026
+</div>
+
 <ul>
-<li>Inspirer chaque jour.</li>
-<li>Créer une communauté positive.</li>
-<li>Accompagner les utilisateurs grâce à l'IA.</li>
-</ul>
-</section>
 
-<section id="lunaris" class="card">
-<h2>🤖 Lunaris AI</h2>
-<p>Lunaris est l'assistant intelligent intégré à MotivPlus.</p>
-<h3>Exemples de prompts</h3>
+<li>
+Refonte complète Material 3.
+</li>
+
+<li>
+Introduction des Material Symbols.
+</li>
+
+<li>
+Navigation responsive améliorée.
+</li>
+
+<li>
+Recherche globale.
+</li>
+
+<li>
+Présentation enrichie de Lunaris AI.
+</li>
+
+<li>
+Documentation du compte, des publications
+et du système de points.
+</li>
+
+<li>
+Nouvelle FAQ interactive.
+</li>
+
+<li>
+Nouvelle architecture visuelle.
+</li>
+
+</ul>
+
+</div>
+
+
+<div class="release">
+
+<div class="release-version">
+Documentation V2
+</div>
+
+<div class="release-date">
+2026
+</div>
+
 <ul>
-<li>Donne-moi une motivation pour aujourd'hui.</li>
-<li>Aide-moi à organiser ma semaine.</li>
-<li>Comment rester concentré ?</li>
+
+<li>
+Interface mobile améliorée.
+</li>
+
+<li>
+Mode clair et sombre.
+</li>
+
+<li>
+Recherche intégrée.
+</li>
+
+<li>
+FAQ interactive.
+</li>
+
+<li>
+Section Lunaris AI.
+</li>
+
+<li>
+Blocs de code avec copie.
+</li>
+
 </ul>
-<p>✔️ Lunaris AI est encore opérationnelle.</p>
-</section>
 
-<section id="account" class="card">
-<h2>👤 Compte utilisateur</h2>
-<p>Créez un compte, connectez-vous et personnalisez votre profil.</p>
-<h3>Comment créer un compte</h3>
-<ul>
-<li>Lisez les conditions d'utilisation et la politique de confidentialité puis acceptez les</li>
-<li>Continuer avec l'inscription avec email et mot de passe</li>
-<li>Entré votre nom d'utilisateur, votre adresse email, votre mot de passe et le code de référence</li>
-<li> Si vous n'avez pas de code de référence vous pouvez utiliser le code de référence officiel de MotivPlus "gnPUH265" </li>
-<li>Puis appuyez sur le bouton en bas à la droite</li>
-<li>Après l'inscription vous recevez automatiquement 20 points.</li>
-</ul>
-</section>
+</div>
 
-<section id="posts" class="card">
-<h2>✨ Publications</h2>
-<p>Partagez des publications inspirantes, commentez et interagissez avec la communauté.</p>
-<h3>Comment créer une publication ?</h3>
-<ul>
-<li>Si vous êtes à la page d'accueil appuyez sur le bouton en bas à la droite</li>
-<li>Écrivez votre inspiration dans le champ "Écrivez..."</li>
-<li>Modifier votre taille de police avec le slider </li>
-<li>Choisissez une image en background ou taper l'URL de votre photo dans le champ "URL"</li>
-<li>Sélectionnez une catégorie pour votre publication,puis appuyez sur "Publier" c'est fait ✓.</li>
-</ul>
-</section>
-
-<section id="points" class="card">
-<h2>💰 Points</h2>
-<p>Certaines fonctionnalité utilise vos points</p>
-<h3>Qu'elles sont les fonctionnalités utilisant de point ?</h3>
-<ul>
-<li>A chaque fois que vous publiez l'application soutire 1 point si vous n'utilisez pas html mais si vous l'utilisez l'application soutire 2 points.</li>
-</ul>
-</section>
-
-<section id="security" class="card">
-<h2>🔒 Confidentialité et sécurité</h2>
-<p>MotivPlus protège les données des utilisateurs et applique des mesures de sécurité adaptées.</p>
-<p>Vos conversation, Commentaires sont chiffré de bout en bout.</p>
-</section>
-
-<section id="faq" class="card">
-<h2>❓ FAQ</h2>
-
-<details>
-<summary>MotivPlus est-il gratuit ?</summary>
-<p>Oui, les fonctionnalités principales sont gratuites et accessibles à tous les utilisateurs.</p>
-</details>
-
-<details>
-<summary>Comment utiliser Lunaris ?</summary>
-<p>Ouvrez le profil de Lunaris, appuyez sur Message et envoyez votre question.</p>
-</details>
-
-<details>
-<summary>Dois-je créer un compte pour utiliser MotivPlus ?</summary>
-<p>Certaines fonctionnalités sont accessibles sans compte, mais un compte est recommandé pour profiter pleinement de l'expérience.</p>
-</details>
-
-<details>
-<summary>Comment créer un compte ?</summary>
-<p>Appuyez sur "Créer un compte", remplissez les informations demandées puis validez votre inscription.</p>
-</details>
-
-<details>
-<summary>J'ai oublié mon mot de passe, que faire ?</summary>
-<p>Utilisez l'option "Mot de passe oublié" disponible sur l'écran de connexion.</p>
-</details>
-
-<details>
-<summary>Comment modifier mon profil ?</summary>
-<p>Accédez à votre profil puis utilisez le bouton "Modifier le profil".</p>
-</details>
-
-<details>
-<summary>Comment changer ma photo de profil ?</summary>
-<p>Depuis votre profil, appuyez sur votre photo actuelle puis sélectionnez une nouvelle image.</p>
-</details>
-
-<details>
-<summary>Comment créer une publication ?</summary>
-<p>Appuyez sur le bouton "+" ou "Créer une publication", rédigez votre contenu puis publiez-le.</p>
-</details>
-
-<details>
-<summary>Puis-je modifier une publication après sa publication ?</summary>
-<p>Oui, les publications peuvent être modifiées depuis le menu d'options de la publication.</p>
-</details>
-
-<details>
-<summary>Comment supprimer une publication ?</summary>
-<p>Ouvrez les options de la publication puis choisissez "Supprimer".</p>
-</details>
-
-<details>
-<summary>Comment commenter une publication ?</summary>
-<p>Appuyez sur l'icône de commentaire située sous la publication.</p>
-</details>
-
-<details>
-<summary>Comment partager une publication ?</summary>
-<p>Utilisez le bouton de partage disponible sous chaque publication.</p>
-</details>
-
-<details>
-<summary>Mes données sont-elles sécurisées ?</summary>
-<p>Oui, MotivPlus applique différentes mesures de sécurité afin de protéger les informations des utilisateurs.</p>
-</details>
-
-<details>
-<summary>Une connexion Internet est-elle nécessaire ?</summary>
-<p>Oui, plusieurs fonctionnalités nécessitent une connexion Internet pour fonctionner correctement.</p>
-</details>
-
-<details>
-<summary>Comment recevoir des notifications ?</summary>
-<p>Assurez-vous que les notifications sont activées dans les paramètres de votre appareil et de l'application.</p>
-</details>
-
-<details>
-<summary>Puis-je désactiver les notifications ?</summary>
-<p>Oui, les notifications peuvent être gérées depuis les paramètres de MotivPlus.</p>
-</details>
-
-<details>
-<summary>Quels types de questions puis-je poser à Lunaris ?</summary>
-<p>Vous pouvez demander des conseils, des motivations, de l'aide pour vos études, votre organisation ou votre développement personnel.</p>
-</details>
-
-<details>
-<summary>Pourquoi Lunaris ne répond-il pas ?</summary>
-<p>Vérifiez votre connexion Internet et réessayez quelques instants plus tard.</p>
-</details>
-
-<details>
-<summary>Comment contacter l'assistance ?</summary>
-<p>Utilisez la section Contact ou Support disponible dans l'application.</p>
-</details>
-
-<details>
-<summary>Comment signaler un problème ou un bug ?</summary>
-<p>Vous pouvez envoyer un rapport depuis la section Support de l'application.</p>
-</details>
+</div>
 
 </section>
 
-<section id="changelog" class="card">
-<h2>📜 Changelog</h2>
-<p><b>Version 1.4.0 2026_06 release (30)</b></p>
-<p><b>Version de la documentation 1.2 2026_06</b></p>
-<ul>
-<li>Intégration de Lunaris AI.</li>
-<li>Interface Material 3.</li>
-<li>Ajout des la page de conversation (chat) dans MotivPlus et bien d'autre.</li>
-</ul>
+
+<!-- =====================================================
+     FINAL CTA
+===================================================== -->
+
+<section class="section">
+
+<div class="callout">
+
+<div class="callout-icon">
+
+<span class="material-symbols-rounded">
+rocket_launch
+</span>
+
+</div>
+
+<div>
+
+<strong>
+Bienvenue dans MotivPlus
+</strong>
+
+<p>
+
+Explorez les différentes sections de cette
+documentation pour découvrir l'écosystème
+MotivPlus et ses fonctionnalités.
+
+</p>
+
+</div>
+
+</div>
+
 </section>
 
 
-<script>
-const drawer=document.getElementById('drawer');
-const overlay=document.getElementById('overlay');
-document.getElementById('menuBtn').onclick=()=>{
-drawer.classList.add('open');
-overlay.classList.add('show');
-};
-overlay.onclick=()=>{
-drawer.classList.remove('open');
-overlay.classList.remove('show');
-};
-</script>
+</div>
 
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer>
-© 2026 MotivPlus • GO Studio LLC Tous droits réservés.
+
+<div class="footer-logo">
+M
+</div>
+
+<h2>
+MotivPlus
+</h2>
+
+<p>
+Créer • Partager • Inspirer
+</p>
+
+<p>
+© <span id="year"></span>
+GO Studio LLC — Tous droits réservés.
+</p>
+
 </footer>
 
+
 <script>
-const drawer=document.getElementById('drawer');
-const overlay=document.getElementById('overlay');
-document.getElementById('menuBtn').onclick=()=>{
-draw
-  
+
+/* =====================================================
+   THEME
+===================================================== */
+
+const themeButton =
+    document.getElementById("themeButton");
+
+const themeIcon =
+    document.getElementById("themeIcon");
+
+const savedTheme =
+    localStorage.getItem(
+        "motivplus-doc-theme"
+    );
+
+
+if(savedTheme === "dark") {
+
+    document.body.classList.add("dark");
+
+    themeIcon.textContent =
+        "light_mode";
+
+}
+
+
+themeButton.addEventListener(
+    "click",
+    function() {
+
+        document.body.classList.toggle("dark");
+
+        const dark =
+            document.body.classList.contains("dark");
+
+        localStorage.setItem(
+            "motivplus-doc-theme",
+            dark ? "dark" : "light"
+        );
+
+        themeIcon.textContent =
+            dark
+            ? "light_mode"
+            : "dark_mode";
+
+    }
+);
+
+
+/* =====================================================
+   MOBILE DRAWER
+===================================================== */
+
+const menuButton =
+    document.getElementById("menuButton");
+
+const drawer =
+    document.getElementById("drawer");
+
+const overlay =
+    document.getElementById("overlay");
+
+
+function closeDrawer() {
+
+    drawer.classList.remove("open");
+
+    overlay.classList.remove("show");
+
+}
+
+
+menuButton.addEventListener(
+    "click",
+    function() {
+
+        drawer.classList.toggle("open");
+
+        overlay.classList.toggle("show");
+
+    }
+);
+
+
+overlay.addEventListener(
+    "click",
+    closeDrawer
+);
+
+
+document
+    .querySelectorAll(".drawer-link")
+    .forEach(
+        link => {
+
+            link.addEventListener(
+                "click",
+                closeDrawer
+            );
+
+        }
+    );
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+const search =
+    document.getElementById("search");
+
+const searchable =
+    document.querySelectorAll(".searchable");
+
+
+search.addEventListener(
+    "input",
+    function() {
+
+        const query =
+            search.value
+                .toLowerCase()
+                .trim();
+
+
+        searchable.forEach(
+            section => {
+
+                const content =
+                    (
+                        section.innerText +
+                        " " +
+                        section.dataset.search
+                    )
+                    .toLowerCase();
+
+
+                const visible =
+                    query === "" ||
+                    content.includes(query);
+
+
+                section.style.display =
+                    visible ? "" : "none";
+
+            }
+        );
+
+    }
+);
+
+
+/* =====================================================
+   FAQ
+===================================================== */
+
+document
+    .querySelectorAll(".faq-question")
+    .forEach(
+        button => {
+
+            button.addEventListener(
+                "click",
+                function() {
+
+                    const faq =
+                        button.parentElement;
+
+                    faq.classList.toggle(
+                        "open"
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+/* =====================================================
+   COPY BUTTONS
+===================================================== */
+
+document
+    .querySelectorAll(".copy-btn")
+    .forEach(
+        button => {
+
+            button.addEventListener(
+                "click",
+                async function() {
+
+                    const text =
+                        button.dataset.copy;
+
+
+                    try {
+
+                        await navigator
+                            .clipboard
+                            .writeText(text);
+
+
+                        const oldHTML =
+                            button.innerHTML;
+
+
+                        button.innerHTML =
+                            '<span class="material-symbols-rounded">check</span> Copié';
+
+
+                        setTimeout(
+                            function() {
+
+                                button.innerHTML =
+                                    oldHTML;
+
+                            },
+                            1500
+                        );
+
+                    }
+                    catch(error) {
+
+                        button.textContent =
+                            "Erreur";
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+/* =====================================================
+   ACTIVE NAVIGATION
+===================================================== */
+
+const drawerLinks =
+    document.querySelectorAll(
+        ".drawer-link[href^='#']"
+    );
+
+const sections =
+    document.querySelectorAll(
+        ".section"
+    );
+
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(
+                entry => {
+
+                    if(!entry.isIntersecting) {
+                        return;
+                    }
+
+
+                    drawerLinks.forEach(
+                        link => {
+
+                            link.classList.remove(
+                                "active"
+                            );
+
+
+                            if(
+                                link.getAttribute(
+                                    "href"
+                                )
+                                ===
+                                "#" + entry.target.id
+                            ) {
+
+                                link.classList.add(
+                                    "active"
+                                );
+
+                            }
+
+                        }
+                    );
+
+                }
+            );
+
+        },
+        {
+            rootMargin:
+                "-20% 0px -65% 0px"
+        }
+    );
+
+
+sections.forEach(
+    section => {
+
+        observer.observe(section);
+
+    }
+);
+
+
+/* =====================================================
+   YEAR
+===================================================== */
+
+document.getElementById(
+    "year"
+).textContent =
+    new Date().getFullYear();
+
+
+/* =====================================================
+   KEYBOARD SEARCH
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if(
+            event.key === "/" &&
+            document.activeElement.tagName !== "INPUT"
+        ) {
+
+            event.preventDefault();
+
+            search.focus();
+
+        }
+
+        if(event.key === "Escape") {
+
+            search.value = "";
+
+            search.dispatchEvent(
+                new Event("input")
+            );
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
