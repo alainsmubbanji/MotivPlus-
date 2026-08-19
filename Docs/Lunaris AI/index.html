@@ -1,412 +1,3819 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Lunaris Docs</title>
+<meta name="theme-color" content="#6750A4">
 
-<meta name="description" content="Documentation officielle de Lunaris AI, l'assistante intelligente de MotivPlus développée par GO Studio. Découvrez ses fonctionnalités, ses capacités et ses guides d'utilisation.">
+<meta
+name="description"
+content="Documentation officielle de Lunaris AI — l'assistant intelligent de GO Studio."
+>
 
-<meta name="keywords" content="Lunaris, Lunaris AI, MotivPlus, Documentation, Intelligence Artificielle, GO Studio, Gemini API">
-
-<meta name="author" content="GO Studio">
-
-<meta name="theme-color" content="#2563eb">
-
-<link rel="icon" href="https://raw.githubusercontent.com/alainsmubbanji/MotivPlus-/refs/heads/main/file_00000000815c722f9a95edd0340cf61d.png">
-
-</head>
+<title>Lunaris AI — Documentation officielle</title>
 
 <style>
 
+/* =========================================================
+   LUNARIS AI DOCS V2
+   GO STUDIO LLC
+   Material 3 inspired design
+========================================================= */
+
 :root{
---primary:#2563eb;
---secondary:#60a5fa;
---surface:#f8fafc;
---card:#ffffff;
---text:#0f172a;
---outline:#e2e8f0;
---radius:28px;
+
+    --primary:#6750A4;
+    --on-primary:#FFFFFF;
+
+    --primary-container:#EADDFF;
+    --on-primary-container:#21005D;
+
+    --secondary:#625B71;
+    --secondary-container:#E8DEF8;
+
+    --background:#FFFBFE;
+    --surface:#FFFBFE;
+
+    --surface-container:#F3EDF7;
+    --surface-container-high:#ECE6F0;
+
+    --text:#1C1B1F;
+    --text-secondary:#49454F;
+    --text-muted:#79747E;
+
+    --outline:#79747E;
+    --outline-soft:#E7E0EC;
+
+    --success:#2E7D32;
+    --warning:#8A6116;
+    --danger:#BA1A1A;
+
+    --radius-small:12px;
+    --radius-medium:18px;
+    --radius-large:28px;
+
+    --sidebar-width:275px;
+
+    --shadow:
+        0 4px 20px rgba(0,0,0,.07);
+
 }
 
+
+/* =========================================================
+   DARK THEME
+========================================================= */
+
+body.dark{
+
+    --primary:#D0BCFF;
+    --on-primary:#381E72;
+
+    --primary-container:#4F378B;
+    --on-primary-container:#EADDFF;
+
+    --secondary:#CCC2DC;
+    --secondary-container:#4A4458;
+
+    --background:#101014;
+    --surface:#101014;
+
+    --surface-container:#1D1B20;
+    --surface-container-high:#29272C;
+
+    --text:#E6E1E5;
+    --text-secondary:#CAC4D0;
+    --text-muted:#938F99;
+
+    --outline:#938F99;
+    --outline-soft:#49454F;
+
+    --success:#81C784;
+    --warning:#E8C46A;
+    --danger:#FFB4AB;
+
+    --shadow:
+        0 4px 20px rgba(0,0,0,.30);
+
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Inter,Arial,sans-serif;
+
+    margin:0;
+    padding:0;
+
+    box-sizing:border-box;
+
+    font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
 }
 
 html{
-scroll-behavior:smooth;
+
+    scroll-behavior:smooth;
+
 }
 
 body{
-background:var(--surface);
-color:var(--text);
+
+    background:var(--background);
+    color:var(--text);
+
+    line-height:1.65;
+
+    transition:
+        background .3s ease,
+        color .3s ease;
+
 }
 
-/* Topbar */
+a{
+
+    color:inherit;
+    text-decoration:none;
+
+}
+
+button,
+input{
+
+    font-family:inherit;
+
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
 
 .topbar{
-position:sticky;
-top:0;
-z-index:1000;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:16px 24px;
-background:rgba(255,255,255,.9);
-backdrop-filter:blur(12px);
-border-bottom:1px solid var(--outline);
+
+    position:fixed;
+
+    top:0;
+    left:0;
+    right:0;
+
+    height:70px;
+
+    z-index:100;
+
+    background:
+        color-mix(
+            in srgb,
+            var(--background) 92%,
+            transparent
+        );
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border-bottom:
+        1px solid var(--outline-soft);
+
 }
 
-.logo{
-display:flex;
-align-items:center;
-gap:12px;
-font-size:20px;
-font-weight:700;
+.topbar-inner{
+
+    width:100%;
+    height:100%;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 22px;
+
 }
 
-.logo img{
-width:42px;
-height:42px;
-border-radius:50%;
+.brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:11px;
+
+    font-weight:800;
+
 }
 
-.nav{
-display:flex;
-gap:12px;
+.lunaris-logo{
+
+    width:40px;
+    height:40px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6750A4,
+            #7E57C2
+        );
+
+    color:#fff;
+
+    font-size:20px;
+
+    box-shadow:
+        0 5px 16px
+        rgba(103,80,164,.25);
+
 }
 
-.nav a{
-text-decoration:none;
-color:#334155;
-padding:10px 18px;
-border-radius:999px;
+.brand-text{
+
+    font-size:15px;
+
 }
 
-.nav a:hover{
-background:#eff6ff;
+.brand-text span{
+
+    color:var(--primary);
+
 }
 
-/* Hero */
+.brand-subtitle{
+
+    display:block;
+
+    color:var(--text-muted);
+
+    font-size:9px;
+
+    font-weight:500;
+
+    margin-top:-3px;
+
+}
+
+.top-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+.icon-button{
+
+    width:42px;
+    height:42px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:var(--surface-container);
+
+    color:var(--text);
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    transition:.2s;
+
+}
+
+.icon-button:hover{
+
+    transform:scale(1.05);
+
+}
+
+.menu-button{
+
+    display:none;
+
+}
+
+
+/* =========================================================
+   LAYOUT
+========================================================= */
+
+.layout{
+
+    display:flex;
+
+    padding-top:70px;
+
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar{
+
+    position:fixed;
+
+    top:70px;
+    left:0;
+    bottom:0;
+
+    width:var(--sidebar-width);
+
+    padding:24px 14px;
+
+    overflow-y:auto;
+
+    background:var(--background);
+
+    border-right:
+        1px solid var(--outline-soft);
+
+    z-index:90;
+
+}
+
+.sidebar-title{
+
+    padding:
+        0 13px
+        10px;
+
+    font-size:11px;
+
+    font-weight:800;
+
+    text-transform:uppercase;
+
+    letter-spacing:1.2px;
+
+    color:var(--text-muted);
+
+}
+
+.sidebar-link{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:11px 13px;
+
+    margin-bottom:3px;
+
+    border-radius:13px;
+
+    color:var(--text-secondary);
+
+    font-size:13px;
+
+    transition:.2s;
+
+}
+
+.sidebar-link:hover{
+
+    background:var(--surface-container);
+
+    color:var(--text);
+
+}
+
+.sidebar-link.active{
+
+    background:var(--primary-container);
+
+    color:var(--on-primary-container);
+
+    font-weight:700;
+
+}
+
+.sidebar-divider{
+
+    height:1px;
+
+    background:var(--outline-soft);
+
+    margin:18px 8px;
+
+}
+
+.sidebar-version{
+
+    padding:13px;
+
+    margin-top:10px;
+
+    border-radius:16px;
+
+    background:var(--surface-container);
+
+    border:
+        1px solid var(--outline-soft);
+
+}
+
+.sidebar-version small{
+
+    display:block;
+
+    color:var(--text-muted);
+
+    font-size:10px;
+
+}
+
+.sidebar-version strong{
+
+    display:block;
+
+    margin-top:3px;
+
+    color:var(--primary);
+
+    font-size:13px;
+
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+main{
+
+    margin-left:var(--sidebar-width);
+
+    width:
+        calc(100% - var(--sidebar-width));
+
+    min-width:0;
+
+}
+
+.content{
+
+    max-width:950px;
+
+    margin:auto;
+
+    padding:
+        55px 35px
+        100px;
+
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
 
 .hero{
-padding:100px 24px;
-text-align:center;
-background:
-linear-gradient(
-135deg,
-#dbeafe,
-#ffffff
-);
+
+    padding:
+        20px 0
+        60px;
+
 }
 
-.hero h1{
-font-size:60px;
-margin-bottom:20px;
+.hero-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:7px;
+
+    padding:7px 14px;
+
+    border-radius:50px;
+
+    background:var(--primary-container);
+
+    color:var(--on-primary-container);
+
+    font-size:11px;
+
+    font-weight:800;
+
+    margin-bottom:20px;
+
 }
 
-.hero p{
-max-width:800px;
-margin:auto;
-font-size:18px;
-line-height:1.8;
-color:#475569;
+.hero-title{
+
+    font-size:
+        clamp(40px,7vw,70px);
+
+    line-height:1;
+
+    letter-spacing:-3px;
+
+    margin-bottom:20px;
+
 }
 
-.hero-buttons{
-margin-top:30px;
+.hero-title .accent{
+
+    color:var(--primary);
+
 }
 
-.btn{
-display:inline-block;
-padding:14px 28px;
-border-radius:999px;
-text-decoration:none;
-margin:8px;
-font-weight:600;
+.hero-description{
+
+    max-width:720px;
+
+    color:var(--text-secondary);
+
+    font-size:16px;
+
 }
 
-.btn-primary{
-background:var(--primary);
-color:white;
+.hero-actions{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-top:28px;
+
 }
 
-.btn-secondary{
-background:white;
-color:var(--primary);
-border:1px solid var(--outline);
+.hero-button{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    padding:12px 20px;
+
+    border-radius:50px;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    transition:.2s;
+
 }
 
-/* Stats */
+.hero-button.primary{
 
-.stats{
-display:grid;
-grid-template-columns:
-repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-padding:40px;
-max-width:1200px;
-margin:auto;
+    background:var(--primary);
+
+    color:var(--on-primary);
+
 }
 
-.stat{
-background:var(--card);
-padding:24px;
-border-radius:var(--radius);
-box-shadow:0 4px 15px rgba(0,0,0,.05);
-text-align:center;
+.hero-button.secondary{
+
+    background:var(--surface-container);
+
+    color:var(--text);
+
+    border:
+        1px solid var(--outline-soft);
+
 }
 
-.stat h2{
-font-size:32px;
-color:var(--primary);
+.hero-button:hover{
+
+    transform:translateY(-2px);
+
 }
 
-/* Sections */
 
-.container{
-max-width:1200px;
-margin:auto;
-padding:24px;
+/* =========================================================
+   AI STATUS
+========================================================= */
+
+.ai-status{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:16px 18px;
+
+    margin-top:35px;
+
+    border-radius:20px;
+
+    background:var(--surface-container);
+
+    border:
+        1px solid var(--outline-soft);
+
 }
 
-.section{
-margin-top:40px;
+.status-dot{
+
+    width:10px;
+    height:10px;
+
+    border-radius:50%;
+
+    background:#4CAF50;
+
+    box-shadow:
+        0 0 0 5px
+        rgba(76,175,80,.12);
+
 }
 
-.section h2{
-font-size:36px;
-margin-bottom:20px;
+.ai-status strong{
+
+    display:block;
+
+    font-size:13px;
+
 }
 
-/* Cards */
+.ai-status span{
 
-.grid{
-display:grid;
-grid-template-columns:
-repeat(auto-fit,minmax(280px,1fr));
-gap:20px;
+    display:block;
+
+    font-size:11px;
+
+    color:var(--text-muted);
+
 }
 
-.card{
-background:white;
-padding:24px;
-border-radius:var(--radius);
-box-shadow:0 4px 15px rgba(0,0,0,.05);
-transition:.3s;
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.search-wrapper{
+
+    position:sticky;
+
+    top:88px;
+
+    z-index:30;
+
+    margin-bottom:35px;
+
 }
 
-.card:hover{
-transform:translateY(-5px);
+.search-box{
+
+    position:relative;
+
 }
 
-/* FAQ */
+.search{
 
-details{
-background:white;
-padding:18px;
-border-radius:20px;
-margin-bottom:12px;
-box-shadow:0 2px 8px rgba(0,0,0,.05);
+    width:100%;
+
+    height:55px;
+
+    padding:
+        0 18px
+        0 49px;
+
+    border:
+        1px solid var(--outline-soft);
+
+    border-radius:18px;
+
+    outline:none;
+
+    background:var(--surface-container);
+
+    color:var(--text);
+
+    font-size:14px;
+
+    transition:.2s;
+
 }
 
-summary{
-cursor:pointer;
-font-weight:600;
+.search::placeholder{
+
+    color:var(--text-muted);
+
 }
 
-details p{
-margin-top:12px;
-line-height:1.7;
+.search:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:
+        0 0 0 3px
+        color-mix(
+            in srgb,
+            var(--primary) 14%,
+            transparent
+        );
+
 }
 
-/* Footer */
+.search-icon{
+
+    position:absolute;
+
+    left:17px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:var(--text-muted);
+
+    font-size:20px;
+
+    pointer-events:none;
+
+}
+
+.no-results{
+
+    display:none;
+
+    padding:30px;
+
+    margin-bottom:30px;
+
+    text-align:center;
+
+    color:var(--text-muted);
+
+    background:var(--surface-container);
+
+    border-radius:18px;
+
+}
+
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+.doc-section{
+
+    scroll-margin-top:95px;
+
+    padding:
+        45px 0;
+
+    border-bottom:
+        1px solid var(--outline-soft);
+
+}
+
+.doc-section:last-child{
+
+    border-bottom:none;
+
+}
+
+.doc-section h2{
+
+    font-size:
+        clamp(27px,4vw,36px);
+
+    line-height:1.2;
+
+    letter-spacing:-1px;
+
+    margin-bottom:13px;
+
+}
+
+.doc-section h3{
+
+    margin:
+        30px 0
+        10px;
+
+    font-size:18px;
+
+}
+
+.doc-section p{
+
+    color:var(--text-secondary);
+
+    font-size:14px;
+
+    margin-bottom:15px;
+
+}
+
+.doc-section ul{
+
+    padding-left:21px;
+
+    color:var(--text-secondary);
+
+    font-size:14px;
+
+}
+
+.doc-section li{
+
+    margin-bottom:8px;
+
+}
+
+
+/* =========================================================
+   FEATURE GRID
+========================================================= */
+
+.feature-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:14px;
+
+    margin-top:25px;
+
+}
+
+.feature-card{
+
+    padding:22px;
+
+    border-radius:21px;
+
+    background:var(--surface-container);
+
+    border:
+        1px solid var(--outline-soft);
+
+    transition:.2s;
+
+}
+
+.feature-card:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:var(--shadow);
+
+}
+
+.feature-icon{
+
+    width:42px;
+    height:42px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:13px;
+
+    background:var(--primary-container);
+
+    margin-bottom:13px;
+
+    font-size:21px;
+
+}
+
+.feature-card h3{
+
+    margin:0 0 6px;
+
+    font-size:16px;
+
+}
+
+.feature-card p{
+
+    margin:0;
+
+    font-size:12px;
+
+}
+
+
+/* =========================================================
+   FLOW
+========================================================= */
+
+.flow{
+
+    display:grid;
+
+    gap:9px;
+
+    margin-top:22px;
+
+}
+
+.flow-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    padding:15px 17px;
+
+    border-radius:16px;
+
+    background:var(--surface-container);
+
+    border:
+        1px solid var(--outline-soft);
+
+}
+
+.flow-number{
+
+    flex:0 0 30px;
+
+    width:30px;
+    height:30px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+    color:var(--on-primary);
+
+    font-size:11px;
+
+    font-weight:800;
+
+}
+
+.flow-item p{
+
+    margin:0;
+
+    font-size:13px;
+
+}
+
+.flow-arrow{
+
+    text-align:center;
+
+    color:var(--primary);
+
+    font-size:15px;
+
+}
+
+
+/* =========================================================
+   CALLOUT
+========================================================= */
+
+.callout{
+
+    padding:19px 20px;
+
+    margin:
+        22px 0;
+
+    border-radius:18px;
+
+    background:var(--primary-container);
+
+    color:var(--on-primary-container);
+
+    border-left:
+        4px solid var(--primary);
+
+}
+
+.callout strong{
+
+    display:block;
+
+    margin-bottom:4px;
+
+    font-size:14px;
+
+}
+
+.callout p{
+
+    color:inherit;
+
+    margin:0;
+
+    font-size:13px;
+
+}
+
+
+/* =========================================================
+   INFO BOX
+========================================================= */
+
+.info-box{
+
+    padding:20px;
+
+    margin-top:20px;
+
+    border-radius:18px;
+
+    background:var(--surface-container);
+
+    border:
+        1px solid var(--outline-soft);
+
+}
+
+.info-box-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    font-weight:800;
+
+    font-size:14px;
+
+    margin-bottom:8px;
+
+}
+
+.info-box p{
+
+    margin:0;
+
+    font-size:13px;
+
+}
+
+
+/* =========================================================
+   PROMPTS
+========================================================= */
+
+.prompt-list{
+
+    display:grid;
+
+    gap:10px;
+
+    margin-top:18px;
+
+}
+
+.prompt{
+
+    padding:15px 17px;
+
+    border-radius:15px;
+
+    background:var(--surface-container-high);
+
+    border:
+        1px solid var(--outline-soft);
+
+    font-size:13px;
+
+    color:var(--text);
+
+}
+
+.prompt::before{
+
+    content:"";
+
+}
+
+
+/* =========================================================
+   SOURCE CARD
+========================================================= */
+
+.source-flow{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-top:20px;
+
+}
+
+.source-item{
+
+    padding:10px 13px;
+
+    border-radius:13px;
+
+    background:var(--surface-container);
+
+    border:
+        1px solid var(--outline-soft);
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+
+.source-arrow{
+
+    color:var(--primary);
+
+}
+
+
+/* =========================================================
+   MEMORY DIAGRAM
+========================================================= */
+
+.memory-diagram{
+
+    margin-top:22px;
+
+    padding:25px;
+
+    border-radius:22px;
+
+    background:var(--surface-container);
+
+    border:
+        1px solid var(--outline-soft);
+
+}
+
+.memory-row{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+}
+
+.memory-node{
+
+    padding:12px 16px;
+
+    border-radius:14px;
+
+    background:var(--surface-container-high);
+
+    font-size:12px;
+
+    font-weight:700;
+
+}
+
+.memory-node.highlight{
+
+    background:var(--primary-container);
+
+    color:var(--on-primary-container);
+
+}
+
+.memory-arrow{
+
+    color:var(--primary);
+
+    font-size:20px;
+
+}
+
+
+/* =========================================================
+   MODEL CARD
+========================================================= */
+
+.model-card{
+
+    padding:23px;
+
+    border-radius:21px;
+
+    background:var(--surface-container);
+
+    border:
+        1px solid var(--outline-soft);
+
+}
+
+.model-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.model-name{
+
+    font-weight:800;
+
+    font-size:17px;
+
+}
+
+.model-badge{
+
+    padding:5px 9px;
+
+    border-radius:50px;
+
+    background:var(--primary-container);
+
+    color:var(--on-primary-container);
+
+    font-size:10px;
+
+    font-weight:800;
+
+}
+
+.model-card p{
+
+    margin-top:10px;
+
+    font-size:13px;
+
+}
+
+
+/* =========================================================
+   SECURITY
+========================================================= */
+
+.security-list{
+
+    display:grid;
+
+    gap:10px;
+
+    margin-top:20px;
+
+}
+
+.security-item{
+
+    display:flex;
+
+    gap:13px;
+
+    padding:16px;
+
+    border-radius:16px;
+
+    background:var(--surface-container);
+
+    border:
+        1px solid var(--outline-soft);
+
+}
+
+.security-icon{
+
+    flex:0 0 34px;
+
+    width:34px;
+    height:34px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:11px;
+
+    background:var(--primary-container);
+
+}
+
+.security-item strong{
+
+    display:block;
+
+    font-size:13px;
+
+}
+
+.security-item p{
+
+    margin:3px 0 0;
+
+    font-size:12px;
+
+}
+
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+.faq{
+
+    overflow:hidden;
+
+    margin-bottom:10px;
+
+    border:
+        1px solid var(--outline-soft);
+
+    border-radius:18px;
+
+}
+
+.faq-question{
+
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    padding:17px 19px;
+
+    border:none;
+
+    background:var(--surface-container);
+
+    color:var(--text);
+
+    text-align:left;
+
+    cursor:pointer;
+
+    font-size:14px;
+
+    font-weight:700;
+
+}
+
+.faq-symbol{
+
+    color:var(--primary);
+
+    font-size:18px;
+
+}
+
+.faq-answer{
+
+    display:none;
+
+    padding:
+        0 19px
+        18px;
+
+    background:var(--surface-container);
+
+}
+
+.faq-answer p{
+
+    margin:0;
+
+    font-size:13px;
+
+}
+
+.faq.open .faq-answer{
+
+    display:block;
+
+}
+
+
+/* =========================================================
+   CHANGELOG
+========================================================= */
+
+.release{
+
+    padding:22px;
+
+    margin-bottom:12px;
+
+    border-radius:20px;
+
+    background:var(--surface-container);
+
+    border:
+        1px solid var(--outline-soft);
+
+}
+
+.release-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.release-version{
+
+    font-size:18px;
+
+    font-weight:800;
+
+    color:var(--primary);
+
+}
+
+.release-date{
+
+    font-size:11px;
+
+    color:var(--text-muted);
+
+}
+
+.release ul{
+
+    margin-top:14px;
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer{
-margin-top:60px;
-padding:40px;
-text-align:center;
-background:white;
-border-top:1px solid var(--outline);
+
+    margin-left:var(--sidebar-width);
+
+    padding:45px 20px;
+
+    text-align:center;
+
+    border-top:
+        1px solid var(--outline-soft);
+
 }
 
-@media(max-width:768px){
+footer strong{
 
-.hero h1{
-font-size:40px;
+    color:var(--primary);
+
 }
 
-.nav{
-display:none;
+footer p{
+
+    margin-top:5px;
+
+    color:var(--text-muted);
+
+    font-size:12px;
+
 }
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:850px){
+
+    .sidebar{
+
+        transform:
+            translateX(-100%);
+
+        transition:.3s;
+
+        box-shadow:
+            10px 0 35px
+            rgba(0,0,0,.15);
+
+    }
+
+    .sidebar.open{
+
+        transform:
+            translateX(0);
+
+    }
+
+    .menu-button{
+
+        display:flex;
+
+    }
+
+    main{
+
+        margin-left:0;
+
+        width:100%;
+
+    }
+
+    footer{
+
+        margin-left:0;
+
+    }
+
+    .content{
+
+        padding:
+            45px 20px
+            80px;
+
+    }
+
+    .search-wrapper{
+
+        top:82px;
+
+    }
+
+}
+
+@media(max-width:560px){
+
+    .feature-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .hero-title{
+
+        letter-spacing:-2px;
+
+    }
+
+    .hero-actions{
+
+        flex-direction:column;
+
+    }
+
+    .hero-button{
+
+        width:100%;
+
+    }
+
+    .source-flow{
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+    }
+
+    .source-arrow{
+
+        text-align:center;
+
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    *{
+
+        transition:none !important;
+
+        scroll-behavior:auto !important;
+
+    }
 
 }
 
 </style>
+
 </head>
+
+
 <body>
+
+
+<!-- =====================================================
+     TOP BAR
+===================================================== -->
 
 <header class="topbar">
 
-<div class="logo">
-🤖 Lunaris Docs
+<div class="topbar-inner">
+
+<a href="#top" class="brand">
+
+<div class="lunaris-logo">
+✦
 </div>
 
-<nav class="nav">
-<a href="#features">Fonctionnalités</a>
-<a href="#prompts">Prompts</a>
-<a href="#faq">FAQ</a>
-</nav>
+<div>
+
+<div class="brand-text">
+<span>Lunaris</span> AI
+</div>
+
+<span class="brand-subtitle">
+GO Studio LLC
+</span>
+
+</div>
+
+</a>
+
+
+<div class="top-actions">
+
+<button
+class="icon-button"
+id="themeButton"
+aria-label="Changer le thème"
+title="Changer le thème"
+>
+🌙
+</button>
+
+<button
+class="icon-button menu-button"
+id="menuButton"
+aria-label="Ouvrir le menu"
+title="Menu"
+>
+☰
+</button>
+
+</div>
+
+</div>
 
 </header>
 
+
+<div class="layout">
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside class="sidebar" id="sidebar">
+
+
+<div class="sidebar-title">
+Lunaris AI
+</div>
+
+
+<a
+href="#presentation"
+class="sidebar-link active"
+>
+✦ Présentation
+</a>
+
+
+<a
+href="#features"
+class="sidebar-link"
+>
+✨ Fonctionnalités
+</a>
+
+
+<a
+href="#conversation"
+class="sidebar-link"
+>
+💬 Conversations
+</a>
+
+
+<a
+href="#memory"
+class="sidebar-link"
+>
+🧠 Mémoire
+</a>
+
+
+<a
+href="#history"
+class="sidebar-link"
+>
+🗂️ Historique
+</a>
+
+
+<a
+href="#web"
+class="sidebar-link"
+>
+🌐 Recherche Web
+</a>
+
+
+<a
+href="#sources"
+class="sidebar-link"
+>
+🔎 Sources
+</a>
+
+
+<a
+href="#models"
+class="sidebar-link"
+>
+⚙️ Modèles IA
+</a>
+
+
+<a
+href="#limits"
+class="sidebar-link"
+>
+⚠️ Limites
+</a>
+
+
+<a
+href="#privacy"
+class="sidebar-link"
+>
+🔒 Confidentialité
+</a>
+
+
+<a
+href="#faq"
+class="sidebar-link"
+>
+❓ FAQ
+</a>
+
+
+<a
+href="#changelog"
+class="sidebar-link"
+>
+📜 Changelog
+</a>
+
+
+<div class="sidebar-divider"></div>
+
+
+<a
+href="https://alainsmubbanji.github.io/MotivPlus-/"
+target="_blank"
+rel="noopener"
+class="sidebar-link"
+>
+📱 MotivPlus
+</a>
+
+
+<a
+href="https://t.me/GoStudioLLC"
+target="_blank"
+rel="noopener"
+class="sidebar-link"
+>
+💬 GO Studio
+</a>
+
+
+<div class="sidebar-version">
+
+<small>
+Documentation
+</small>
+
+<strong>
+Lunaris AI Docs V2
+</strong>
+
+<small>
+Version évolutive
+</small>
+
+</div>
+
+
+</aside>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main>
+
+<div class="content" id="top">
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
 <section class="hero">
 
-<h1>🤖 Lunaris Docs</h1>
+<div class="hero-badge">
+🤖 DOCUMENTATION OFFICIELLE
+</div>
 
-<p>
-Documentation officielle de Lunaris AI,
-l'assistante intelligente de MotivPlus
-développée par GO Studio.
+
+<h1 class="hero-title">
+
+Lunaris
+<span class="accent">
+AI
+</span>
+
+</h1>
+
+
+<p class="hero-description">
+
+L'assistant intelligent de l'écosystème
+GO Studio. Lunaris est conçu pour comprendre
+les conversations, conserver le contexte utile,
+rechercher des informations et accompagner
+l'utilisateur dans ses différentes tâches.
+
 </p>
 
-<div class="hero-buttons">
 
-<a href="#features" class="btn btn-primary">
-Commencer
+<div class="hero-actions">
+
+<a
+href="#features"
+class="hero-button primary"
+>
+✨ Découvrir Lunaris
 </a>
 
-<a href="#faq" class="btn btn-secondary">
-FAQ
+
+<a
+href="#conversation"
+class="hero-button secondary"
+>
+💬 Comment l'utiliser
 </a>
 
 </div>
 
-</section>
 
-<div class="stats">
+<div class="ai-status">
 
-<div class="stat">
-<h2>24/7</h2>
-<p>Disponible</p>
-</div>
+<div class="status-dot"></div>
 
-<div class="stat">
-<h2>AI</h2>
-<p>Assistant intelligent</p>
-</div>
+<div>
 
-<div class="stat">
-<h2>∞</h2>
-<p>Possibilités</p>
-</div>
+<strong>
+Lunaris AI
+</strong>
 
-</div>
+<span>
+Assistant intelligent — Documentation officielle
+</span>
 
-<div class="container">
-
-<section id="features" class="section">
-
-<h2>✨ Capacités</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>💻 Programmation</h3>
-<p>Aide pour Sketchware Pro, Java, HTML, CSS et plus.</p>
-</div>
-
-<div class="card">
-<h3>📚 Études</h3>
-<p>Explications, révisions et accompagnement scolaire.</p>
-</div>
-
-<div class="card">
-<h3>🚀 Productivité</h3>
-<p>Organisation, objectifs et gestion du temps.</p>
-</div>
-
-<div class="card">
-<h3>💡 Motivation</h3>
-<p>Conseils et inspirations personnalisés.</p>
 </div>
 
 </div>
 
 </section>
 
-<section id="prompts" class="section">
 
-<h2>🎯 Exemples de prompts</h2>
+<!-- =====================================================
+     SEARCH
+===================================================== -->
 
-<div class="grid">
+<div class="search-wrapper">
 
-<div class="card">
-Donne-moi une motivation pour aujourd'hui.
+<div class="search-box">
+
+<span class="search-icon">
+⌕
+</span>
+
+<input
+type="search"
+class="search"
+id="search"
+placeholder="Rechercher dans la documentation Lunaris..."
+autocomplete="off"
+>
+
 </div>
 
-<div class="card">
-Explique-moi le système respiratoire.
 </div>
 
-<div class="card">
-Crée une application Sketchware.
+
+<div
+class="no-results"
+id="noResults"
+>
+
+Aucune section ne correspond à votre recherche.
+
 </div>
 
-<div class="card">
-Aide-moi à organiser ma semaine.
+
+<!-- =====================================================
+     PRESENTATION
+===================================================== -->
+
+<section
+class="doc-section searchable"
+id="presentation"
+data-search="
+présentation lunaris ai assistant intelligent go studio motivplus
+">
+
+<h2>
+✦ Présentation
+</h2>
+
+
+<p>
+
+Lunaris AI est l'assistant intelligent
+développé dans l'écosystème GO Studio.
+
+Il est intégré à MotivPlus afin de proposer
+une expérience conversationnelle capable
+d'accompagner l'utilisateur dans ses demandes.
+
+</p>
+
+
+<div class="callout">
+
+<strong>
+L'objectif de Lunaris
+</strong>
+
+<p>
+
+Ne pas être simplement un chatbot, mais
+un assistant capable de comprendre le contexte
+d'une conversation et d'utiliser différents
+outils lorsque cela est nécessaire.
+
+</p>
+
+</div>
+
+
+<h3>
+Une expérience pensée pour l'utilisateur
+</h3>
+
+
+<p>
+
+Lunaris privilégie une interaction naturelle :
+l'utilisateur écrit sa demande et l'assistant
+analyse le contexte afin de produire une réponse
+adaptée.
+
+</p>
+
+
+<div class="feature-grid">
+
+
+<div class="feature-card">
+
+<div class="feature-icon">
+💬
+</div>
+
+<h3>
+Conversation
+</h3>
+
+<p>
+Discutez naturellement avec Lunaris.
+</p>
+
+</div>
+
+
+<div class="feature-card">
+
+<div class="feature-icon">
+🧠
+</div>
+
+<h3>
+Contexte
+</h3>
+
+<p>
+L'historique peut permettre de conserver le contexte utile.
+</p>
+
+</div>
+
+
+<div class="feature-card">
+
+<div class="feature-icon">
+🌐
+</div>
+
+<h3>
+Web
+</h3>
+
+<p>
+Recherche d'informations lorsque cela est nécessaire.
+</p>
+
+</div>
+
+
+<div class="feature-card">
+
+<div class="feature-icon">
+🔎
+</div>
+
+<h3>
+Sources
+</h3>
+
+<p>
+Les informations issues du Web peuvent être accompagnées de sources.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     FEATURES
+===================================================== -->
+
+<section
+class="doc-section searchable"
+id="features"
+data-search="
+fonctionnalités conversation markdown historique mémoire recherche web sources modèles
+">
+
+<h2>
+✨ Fonctionnalités
+</h2>
+
+
+<p>
+
+Lunaris est construit autour de plusieurs
+fonctionnalités destinées à améliorer
+l'expérience de conversation avec l'IA.
+
+</p>
+
+
+<div class="feature-grid">
+
+
+<div class="feature-card">
+
+<div class="feature-icon">
+💬
+</div>
+
+<h3>
+Chat intelligent
+</h3>
+
+<p>
+Posez des questions et échangez avec Lunaris dans une interface conversationnelle.
+</p>
+
+</div>
+
+
+<div class="feature-card">
+
+<div class="feature-icon">
+🧠
+</div>
+
+<h3>
+Mémoire contextuelle
+</h3>
+
+<p>
+Lunaris peut utiliser le contexte disponible afin de mieux comprendre la conversation.
+</p>
+
+</div>
+
+
+<div class="feature-card">
+
+<div class="feature-icon">
+🗂️
+</div>
+
+<h3>
+Historique
+</h3>
+
+<p>
+Les conversations peuvent être sauvegardées afin de pouvoir être consultées ultérieurement.
+</p>
+
+</div>
+
+
+<div class="feature-card">
+
+<div class="feature-icon">
+🌐
+</div>
+
+<h3>
+Recherche Web
+</h3>
+
+<p>
+Lunaris peut rechercher des informations récentes lorsque la situation le nécessite.
+</p>
+
+</div>
+
+
+<div class="feature-card">
+
+<div class="feature-icon">
+🔎
+</div>
+
+<h3>
+Sources
+</h3>
+
+<p>
+Les résultats Web peuvent être présentés avec des références permettant de vérifier l'information.
+</p>
+
+</div>
+
+
+<div class="feature-card">
+
+<div class="feature-icon">
+📝
+</div>
+
+<h3>
+Markdown
+</h3>
+
+<p>
+Les réponses peuvent être présentées avec une mise en forme structurée.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     CONVERSATION
+===================================================== -->
+
+<section
+class="doc-section searchable"
+id="conversation"
+data-search="
+conversation chat message question réponse utiliser lunaris prompt
+">
+
+<h2>
+💬 Conversations
+</h2>
+
+
+<p>
+
+La conversation est le cœur de l'expérience
+Lunaris. Il suffit d'écrire une demande
+et de l'envoyer à l'assistant.
+
+</p>
+
+
+<h3>
+Exemples de demandes
+</h3>
+
+
+<div class="prompt-list">
+
+
+<div class="prompt">
+💡 « Explique-moi simplement la photosynthèse. »
+</div>
+
+
+<div class="prompt">
+📝 « Aide-moi à améliorer ce texte. »
+</div>
+
+
+<div class="prompt">
+📚 « Fais-moi un résumé de ce sujet. »
+</div>
+
+
+<div class="prompt">
+💻 « Explique-moi cette erreur Java. »
+</div>
+
+
+<div class="prompt">
+🌐 « Quelles sont les dernières informations sur ce sujet ? »
+</div>
+
+
+</div>
+
+
+<h3>
+Cycle d'une réponse
+</h3>
+
+
+<div class="flow">
+
+
+<div class="flow-item">
+
+<div class="flow-number">
+1
+</div>
+
+<p>
+L'utilisateur envoie une demande.
+</p>
+
+</div>
+
+
+<div class="flow-arrow">
+↓
+</div>
+
+
+<div class="flow-item">
+
+<div class="flow-number">
+2
+</div>
+
+<p>
+Lunaris analyse la demande et le contexte disponible.
+</p>
+
+</div>
+
+
+<div class="flow-arrow">
+↓
+</div>
+
+
+<div class="flow-item">
+
+<div class="flow-number">
+3
+</div>
+
+<p>
+L'assistant détermine les informations nécessaires.
+</p>
+
+</div>
+
+
+<div class="flow-arrow">
+↓
+</div>
+
+
+<div class="flow-item">
+
+<div class="flow-number">
+4
+</div>
+
+<p>
+Lunaris génère une réponse structurée.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     MEMORY
+===================================================== -->
+
+<section
+class="doc-section searchable"
+id="memory"
+data-search="
+mémoire lunarismemory contexte conversation contexte court mémoire conversationnelle
+">
+
+<h2>
+🧠 Mémoire et contexte
+</h2>
+
+
+<p>
+
+La mémoire conversationnelle permet à Lunaris
+de prendre en compte les informations disponibles
+dans le contexte de la conversation.
+
+</p>
+
+
+<div class="memory-diagram">
+
+
+<div class="memory-row">
+
+<div class="memory-node">
+Message utilisateur
+</div>
+
+<div class="memory-arrow">
+→
+</div>
+
+<div class="memory-node">
+Historique
+</div>
+
+<div class="memory-arrow">
+→
+</div>
+
+<div class="memory-node highlight">
+Contexte Lunaris
+</div>
+
+<div class="memory-arrow">
+→
+</div>
+
+<div class="memory-node">
+Réponse
+</div>
+
+</div>
+
+</div>
+
+
+<div class="info-box">
+
+<div class="info-box-title">
+🧩 Mémoire contextuelle
+</div>
+
+<p>
+
+La mémoire utilisée pendant une conversation
+sert principalement à fournir à l'IA le contexte
+nécessaire pour produire une réponse cohérente.
+
+</p>
+
+</div>
+
+
+<div class="callout">
+
+<strong>
+Important
+</strong>
+
+<p>
+
+La mémoire conversationnelle ne signifie pas
+que Lunaris se souvient automatiquement de
+toutes les informations personnelles de l'utilisateur.
+Le fonctionnement exact peut évoluer selon
+la version de l'application.
+
+</p>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     HISTORY
+===================================================== -->
+
+<section
+class="doc-section searchable"
+id="history"
+data-search="
+historique chat history sauvegarde conversation conversations locales suppression
+">
+
+<h2>
+🗂️ Historique des conversations
+</h2>
+
+
+<p>
+
+L'historique permet de conserver les conversations
+afin de pouvoir retrouver leur contenu plus tard.
+
+</p>
+
+
+<h3>
+Organisation logique
+</h3>
+
+
+<div class="flow">
+
+
+<div class="flow-item">
+
+<div class="flow-number">
+1
+</div>
+
+<p>
+Une nouvelle conversation est créée.
+</p>
+
+</div>
+
+
+<div class="flow-arrow">
+↓
+</div>
+
+
+<div class="flow-item">
+
+<div class="flow-number">
+2
+</div>
+
+<p>
+Les messages sont associés à cette conversation.
+</p>
+
+</div>
+
+
+<div class="flow-arrow">
+↓
+</div>
+
+
+<div class="flow-item">
+
+<div class="flow-number">
+3
+</div>
+
+<p>
+La conversation peut être enregistrée dans l'historique.
+</p>
+
+</div>
+
+
+<div class="flow-arrow">
+↓
+</div>
+
+
+<div class="flow-item">
+
+<div class="flow-number">
+4
+</div>
+
+<p>
+L'utilisateur peut reprendre la conversation ultérieurement.
+</p>
+
+</div>
+
+
+</div>
+
+
+<h3>
+Gestion des conversations
+</h3>
+
+
+<ul>
+
+<li>
+Créer une nouvelle conversation.
+</li>
+
+<li>
+Consulter une conversation précédente.
+</li>
+
+<li>
+Reprendre une conversation.
+</li>
+
+<li>
+Supprimer une conversation lorsque cette option est disponible.
+</li>
+
+</ul>
+
+</section>
+
+
+<!-- =====================================================
+     WEB SEARCH
+===================================================== -->
+
+<section
+class="doc-section searchable"
+id="web"
+data-search="
+recherche web internet actualité recherche internet informations récentes navigateur
+">
+
+<h2>
+🌐 Recherche Web
+</h2>
+
+
+<p>
+
+Certaines demandes nécessitent des informations
+récentes ou vérifiables. Dans ces situations,
+Lunaris peut utiliser une recherche Web lorsque
+cette capacité est disponible.
+
+</p>
+
+
+<div class="source-flow">
+
+<div class="source-item">
+💬 Question
+</div>
+
+<div class="source-arrow">
+→
+</div>
+
+<div class="source-item">
+🧠 Analyse
+</div>
+
+<div class="source-arrow">
+→
+</div>
+
+<div class="source-item">
+🌐 Recherche
+</div>
+
+<div class="source-arrow">
+→
+</div>
+
+<div class="source-item">
+📄 Résultats
+</div>
+
+<div class="source-arrow">
+→
+</div>
+
+<div class="source-item">
+🤖 Réponse
+</div>
+
+</div>
+
+
+<h3>
+Quand la recherche Web est utile ?
+</h3>
+
+
+<ul>
+
+<li>
+Actualités et événements récents.
+</li>
+
+<li>
+Informations susceptibles d'avoir changé.
+</li>
+
+<li>
+Documentation et ressources en ligne.
+</li>
+
+<li>
+Informations nécessitant des références.
+</li>
+
+</ul>
+
+
+<div class="callout">
+
+<strong>
+Toutes les questions ne nécessitent pas le Web
+</strong>
+
+<p>
+
+Pour une question générale, une explication,
+une reformulation ou une tâche de rédaction,
+une recherche Web n'est pas forcément nécessaire.
+
+</p>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     SOURCES
+===================================================== -->
+
+<section
+class="doc-section searchable"
+id="sources"
+data-search="
+sources références citations liens web vérification résultats recherche
+">
+
+<h2>
+🔎 Sources
+</h2>
+
+
+<p>
+
+Lorsqu'une réponse utilise des informations
+provenant du Web, les sources permettent
+à l'utilisateur de vérifier l'origine des
+informations présentées.
+
+</p>
+
+
+<div class="info-box">
+
+<div class="info-box-title">
+🔗 Pourquoi les sources sont importantes ?
+</div>
+
+<p>
+
+Elles permettent de consulter les pages
+d'origine et de mieux distinguer une réponse
+générée d'une information provenant d'une
+source externe.
+
+</p>
+
+</div>
+
+
+<h3>
+Utiliser les sources correctement
+</h3>
+
+
+<ul>
+
+<li>
+Ouvrez la source lorsque l'information est importante.
+</li>
+
+<li>
+Comparez plusieurs sources lorsque cela est nécessaire.
+</li>
+
+<li>
+Vérifiez la date de publication.
+</li>
+
+<li>
+Privilégiez les sources officielles pour les informations importantes.
+</li>
+
+</ul>
+
+
+<div class="callout">
+
+<strong>
+Lunaris ne remplace pas la source
+</strong>
+
+<p>
+
+Une référence affichée par Lunaris doit être
+considérée comme un moyen de vérification.
+Pour les informations importantes, consultez
+directement la source.
+
+</p>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     MODELS
+===================================================== -->
+
+<section
+class="doc-section searchable"
+id="models"
+data-search="
+modèles ia modèle intelligence artificielle groq api fournisseur configuration
+">
+
+<h2>
+⚙️ Modèles IA
+</h2>
+
+
+<p>
+
+Lunaris est conçu pour pouvoir fonctionner
+avec différents modèles ou services d'intelligence
+artificielle selon la configuration disponible.
+
+</p>
+
+
+<div class="model-card">
+
+<div class="model-header">
+
+<div class="model-name">
+Architecture multi-modèle
+</div>
+
+<div class="model-badge">
+ÉVOLUTIVE
+</div>
+
+</div>
+
+<p>
+
+Les modèles disponibles peuvent évoluer.
+La documentation ne fixe donc pas une liste
+permanente de modèles afin de rester compatible
+avec les futures versions de Lunaris.
+
+</p>
+
+</div>
+
+
+<h3>
+Pourquoi plusieurs modèles ?
+</h3>
+
+
+<ul>
+
+<li>
+Différentes capacités de raisonnement.
+</li>
+
+<li>
+Différents niveaux de rapidité.
+</li>
+
+<li>
+Différents contextes d'utilisation.
+</li>
+
+<li>
+Disponibilité et limites variables selon les fournisseurs.
+</li>
+
+</ul>
+
+
+<div class="callout">
+
+<strong>
+Disponibilité
+</strong>
+
+<p>
+
+Un modèle peut devenir temporairement indisponible,
+être remplacé ou ne plus être proposé selon
+le fournisseur utilisé.
+
+</p>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     LIMITS
+===================================================== -->
+
+<section
+class="doc-section searchable"
+id="limits"
+data-search="
+limites erreurs hallucination intelligence artificielle sécurité exactitude
+">
+
+<h2>
+⚠️ Limites de Lunaris
+</h2>
+
+
+<p>
+
+Comme tout système d'intelligence artificielle,
+Lunaris peut produire des réponses incorrectes,
+incomplètes ou approximatives.
+
+</p>
+
+
+<div class="security-list">
+
+
+<div class="security-item">
+
+<div class="security-icon">
+⚠️
+</div>
+
+<div>
+
+<strong>
+Exactitude
+</strong>
+
+<p>
+Une réponse générée n'est pas automatiquement exacte.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="security-item">
+
+<div class="security-icon">
+🌐
+</div>
+
+<div>
+
+<strong>
+Informations récentes
+</strong>
+
+<p>
+Les informations récentes nécessitent idéalement une vérification avec des sources.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="security-item">
+
+<div class="security-icon">
+🧠
+</div>
+
+<div>
+
+<strong>
+Contexte
+</strong>
+
+<p>
+Une conversation trop longue ou ambiguë peut affecter la compréhension.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="security-item">
+
+<div class="security-icon">
+🔐
+</div>
+
+<div>
+
+<strong>
+Données sensibles
+</strong>
+
+<p>
+Évitez de transmettre des informations personnelles ou confidentielles inutiles.
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="callout">
+
+<strong>
+Pour les sujets importants
+</strong>
+
+<p>
+
+Pour les questions médicales, juridiques,
+financières ou autres décisions importantes,
+utilisez Lunaris comme outil d'assistance et
+vérifiez toujours les informations auprès
+d'une source compétente.
+
+</p>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     PRIVACY
+===================================================== -->
+
+<section
+class="doc-section searchable"
+id="privacy"
+data-search="
+confidentialité données vie privée sécurité informations personnelles conversation
+">
+
+<h2>
+🔒 Confidentialité
+</h2>
+
+
+<p>
+
+La confidentialité constitue un élément
+important de l'utilisation d'un assistant IA.
+
+</p>
+
+
+<div class="security-list">
+
+
+<div class="security-item">
+
+<div class="security-icon">
+🔑
+</div>
+
+<div>
+
+<strong>
+Identifiants
+</strong>
+
+<p>
+Ne partagez jamais vos mots de passe ou codes de sécurité avec Lunaris.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="security-item">
+
+<div class="security-icon">
+👤
+</div>
+
+<div>
+
+<strong>
+Informations personnelles
+</strong>
+
+<p>
+Évitez de fournir des données personnelles qui ne sont pas nécessaires à votre demande.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="security-item">
+
+<div class="security-icon">
+💬
+</div>
+
+<div>
+
+<strong>
+Conversations
+</strong>
+
+<p>
+Le traitement et la conservation des conversations dépendent de l'architecture et de la version utilisées.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="security-item">
+
+<div class="security-icon">
+🌐
+</div>
+
+<div>
+
+<strong>
+Services externes
+</strong>
+
+<p>
+Certaines fonctionnalités peuvent nécessiter des services externes d'IA ou de recherche.
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="callout">
+
+<strong>
+Principe important
+</strong>
+
+<p>
+
+Ne transmettez à une intelligence artificielle
+que les informations nécessaires à votre demande
+et évitez les informations confidentielles.
+
+</p>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     FAQ
+===================================================== -->
+
+<section
+class="doc-section searchable"
+id="faq"
+data-search="
+faq questions réponses lunaris ia web mémoire historique sources
+">
+
+<h2>
+❓ Questions fréquentes
+</h2>
+
+
+<div class="faq">
+
+<button class="faq-question">
+
+Qu'est-ce que Lunaris AI ?
+
+<span class="faq-symbol">
++
+</span>
+
+</button>
+
+<div class="faq-answer">
+
+<p>
+
+Lunaris AI est l'assistant intelligent
+de l'écosystème GO Studio, notamment intégré
+à MotivPlus.
+
+</p>
+
+</div>
+
+</div>
+
+
+<div class="faq">
+
+<button class="faq-question">
+
+Lunaris peut-il utiliser Internet ?
+
+<span class="faq-symbol">
++
+</span>
+
+</button>
+
+<div class="faq-answer">
+
+<p>
+
+Certaines versions ou configurations de Lunaris
+peuvent utiliser une recherche Web pour obtenir
+des informations récentes ou des références.
+
+</p>
+
+</div>
+
+</div>
+
+
+<div class="faq">
+
+<button class="faq-question">
+
+Pourquoi Lunaris affiche-t-il des sources ?
+
+<span class="faq-symbol">
++
+</span>
+
+</button>
+
+<div class="faq-answer">
+
+<p>
+
+Les sources permettent de vérifier les informations
+provenant de recherches Web et d'accéder aux pages
+d'origine.
+
+</p>
+
+</div>
+
+</div>
+
+
+<div class="faq">
+
+<button class="faq-question">
+
+Lunaris se souvient-il de mes conversations ?
+
+<span class="faq-symbol">
++
+</span>
+
+</button>
+
+<div class="faq-answer">
+
+<p>
+
+Lunaris peut utiliser l'historique et le contexte
+disponible selon les fonctionnalités de la version
+installée. La mémoire n'implique pas que toutes
+les informations soient conservées indéfiniment.
+
+</p>
+
+</div>
+
+</div>
+
+
+<div class="faq">
+
+<button class="faq-question">
+
+Puis-je poser n'importe quelle question ?
+
+<span class="faq-symbol">
++
+</span>
+
+</button>
+
+<div class="faq-answer">
+
+<p>
+
+Vous pouvez poser de nombreuses questions,
+mais Lunaris peut refuser certaines demandes
+ou fournir une réponse limitée lorsque cela
+est nécessaire pour des raisons de sécurité.
+
+</p>
+
+</div>
+
+</div>
+
+
+<div class="faq">
+
+<button class="faq-question">
+
+Pourquoi une réponse peut-elle être incorrecte ?
+
+<span class="faq-symbol">
++
+</span>
+
+</button>
+
+<div class="faq-answer">
+
+<p>
+
+Les modèles d'IA génèrent des réponses à partir
+de modèles statistiques et de leur contexte.
+Ils peuvent donc produire des erreurs. Vérifiez
+les informations importantes.
+
+</p>
+
+</div>
+
+</div>
+
+
+<div class="faq">
+
+<button class="faq-question">
+
+Les modèles de Lunaris peuvent-ils changer ?
+
+<span class="faq-symbol">
++
+</span>
+
+</button>
+
+<div class="faq-answer">
+
+<p>
+
+Oui. Les modèles et fournisseurs peuvent évoluer
+selon leur disponibilité, leurs performances,
+leurs limites et les évolutions de Lunaris.
+
+</p>
+
 </div>
 
 </div>
 
 </section>
 
-<section id="faq" class="section">
 
-<h2>❓ FAQ</h2>
+<!-- =====================================================
+     CHANGELOG
+===================================================== -->
 
-<details>
-<summary>Qu'est-ce que Lunaris ?</summary>
-<p>Lunaris est l'assistante intelligente officielle de MotivPlus.</p>
-</details>
+<section
+class="doc-section searchable"
+id="changelog"
+data-search="
+changelog versions mises à jour lunaris release documentation
+">
 
-<details>
-<summary>Comment démarrer une conversation ?</summary>
-<p>Ouvrez le profil de Lunaris puis appuyez sur Message.</p>
-</details>
+<h2>
+📜 Changelog
+</h2>
 
-<details>
-<summary>Lunaris est-elle gratuite ?</summary>
-<p>Oui, elle est intégrée à MotivPlus.</p>
-</details>
 
-<details>
-<summary>Pourquoi "Réflexion en cours..." ?</summary>
-<p>Ce statut indique que Lunaris prépare sa réponse.</p>
-</details>
+<div class="release">
 
-<details>
-<summary>Lunaris peut-elle aider pour les études ?</summary>
-<p>Oui, elle peut expliquer des notions et créer des fiches de révision.</p>
-</details>
+<div class="release-header">
+
+<div class="release-version">
+Lunaris AI Docs V2
+</div>
+
+<div class="release-date">
+2026
+</div>
+
+</div>
+
+
+<ul>
+
+<li>
+Nouvelle documentation dédiée à Lunaris AI.
+</li>
+
+<li>
+Nouvelle navigation par fonctionnalités.
+</li>
+
+<li>
+Documentation de la mémoire conversationnelle.
+</li>
+
+<li>
+Documentation de l'historique.
+</li>
+
+<li>
+Documentation de la recherche Web.
+</li>
+
+<li>
+Documentation des sources.
+</li>
+
+<li>
+Documentation de l'architecture multi-modèle.
+</li>
+
+<li>
+Nouvelle section confidentialité.
+</li>
+
+<li>
+FAQ interactive.
+</li>
+
+<li>
+Recherche intégrée.
+</li>
+
+<li>
+Mode sombre Material 3.
+</li>
+
+<li>
+Interface responsive pour mobile et ordinateur.
+</li>
+
+</ul>
+
+</div>
+
+
+<div class="callout">
+
+<strong>
+Documentation évolutive
+</strong>
+
+<p>
+
+Lunaris AI continue d'évoluer.
+Cette documentation sera mise à jour avec
+les nouvelles fonctionnalités, améliorations
+et changements importants.
+
+</p>
+
+</div>
 
 </section>
 
+
 </div>
+
+</main>
+
+</div>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer>
 
-<h3>🤖 Lunaris Docs</h3>
+<strong>
+Lunaris AI
+</strong>
 
 <p>
-Assistant officiel de MotivPlus • Développé par GO Studio
+Documentation officielle — GO Studio LLC
+</p>
+
+<p>
+Créer • Innover • Inspirer
+</p>
+
+<p>
+© <span id="year"></span>
+GO Studio LLC — Tous droits réservés.
 </p>
 
 </footer>
+
+
+<script>
+
+/* =========================================================
+   THEME
+========================================================= */
+
+const themeButton =
+document.getElementById("themeButton");
+
+const savedTheme =
+localStorage.getItem(
+"lunaris-docs-theme"
+);
+
+
+if(savedTheme === "dark"){
+
+    document.body.classList.add("dark");
+
+    themeButton.textContent="☀️";
+
+}
+
+
+themeButton.addEventListener(
+"click",
+function(){
+
+    document.body.classList.toggle("dark");
+
+    const isDark =
+        document.body.classList.contains("dark");
+
+    localStorage.setItem(
+        "lunaris-docs-theme",
+        isDark ? "dark" : "light"
+    );
+
+    themeButton.textContent =
+        isDark ? "☀️" : "🌙";
+
+});
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+const menuButton =
+document.getElementById("menuButton");
+
+const sidebar =
+document.getElementById("sidebar");
+
+
+menuButton.addEventListener(
+"click",
+function(){
+
+    sidebar.classList.toggle("open");
+
+});
+
+
+document
+.querySelectorAll(".sidebar-link")
+.forEach(
+link => {
+
+    link.addEventListener(
+        "click",
+        function(){
+
+            sidebar.classList.remove("open");
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+const search =
+document.getElementById("search");
+
+const sections =
+document.querySelectorAll(
+".searchable"
+);
+
+const noResults =
+document.getElementById(
+"noResults"
+);
+
+
+search.addEventListener(
+"input",
+function(){
+
+    const query =
+        search.value
+        .toLowerCase()
+        .trim();
+
+    let visible = 0;
+
+
+    sections.forEach(
+    section => {
+
+        const text =
+            (
+                section.innerText +
+                " " +
+                section.dataset.search
+            )
+            .toLowerCase();
+
+
+        const match =
+            query === "" ||
+            text.includes(query);
+
+
+        section.style.display =
+            match ? "" : "none";
+
+
+        if(match){
+
+            visible++;
+
+        }
+
+    });
+
+
+    noResults.style.display =
+        visible === 0
+        ? "block"
+        : "none";
+
+});
+
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+document
+.querySelectorAll(".faq-question")
+.forEach(
+button => {
+
+    button.addEventListener(
+        "click",
+        function(){
+
+            const faq =
+                button.parentElement;
+
+            faq.classList.toggle("open");
+
+
+            const symbol =
+                button.querySelector(
+                    ".faq-symbol"
+                );
+
+
+            symbol.textContent =
+                faq.classList.contains("open")
+                ? "−"
+                : "+";
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   ACTIVE NAVIGATION
+========================================================= */
+
+const navLinks =
+document.querySelectorAll(
+".sidebar-link[href^='#']"
+);
+
+
+const observedSections =
+document.querySelectorAll(
+".doc-section"
+);
+
+
+const observer =
+new IntersectionObserver(
+entries => {
+
+    entries.forEach(
+    entry => {
+
+        if(!entry.isIntersecting){
+            return;
+        }
+
+
+        navLinks.forEach(
+        link => {
+
+            link.classList.remove(
+                "active"
+            );
+
+
+            if(
+                link.getAttribute("href")
+                ===
+                "#" + entry.target.id
+            ){
+
+                link.classList.add(
+                    "active"
+                );
+
+            }
+
+        });
+
+    });
+
+},
+{
+    rootMargin:
+        "-20% 0px -65% 0px"
+}
+);
+
+
+observedSections.forEach(
+section => {
+
+    observer.observe(section);
+
+});
+
+
+/* =========================================================
+   YEAR
+========================================================= */
+
+document.getElementById(
+"year"
+).textContent =
+new Date().getFullYear();
+
+
+</script>
 
 </body>
 </html>
