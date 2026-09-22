@@ -4,20 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="theme-color" content="#6750A4">
-  <meta name="description"
-        content="MotivPlus — Une expérience de motivation, communauté et accompagnement par GO Studio.">
+  <title>MotivPlus — Motivation, Communauté & Accompagnement</title>
 
-  <title>MotivPlus — GO Studio</title>
+  <meta
+    name="description"
+    content="Découvrez MotivPlus, une application Android développée par GO Studio autour de la motivation, de la communauté, des échanges et de l'accompagnement avec Lunaris AI."
+  >
+
+  <meta name="theme-color" content="#6750A4">
 
   <!-- Material Symbols -->
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0">
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0"
+  >
 
   <style>
     /* =========================================================
-       M3 — MOTIVPLUS / GO STUDIO
-       Violet Material 3 cohérent
+       MOTIVPLUS V4
+       GO STUDIO × MATERIAL 3
        ========================================================= */
 
     :root {
@@ -41,35 +46,27 @@
 
       --surface: #FFFBFE;
       --surface-container: #F3EDF7;
-      --surface-container-low: #F7F2FA;
       --surface-container-high: #ECE6F0;
-      --surface-container-highest: #E6E0E9;
 
       --outline: #79747E;
       --outline-variant: #CAC4D0;
 
       --success: #386A20;
-      --error: #B3261E;
+      --warning: #7A5900;
 
-      --radius-small: 8px;
-      --radius-medium: 16px;
+      --shadow:
+        0 10px 30px rgba(35, 20, 55, .08);
+
+      --shadow-large:
+        0 24px 60px rgba(35, 20, 55, .14);
+
+      --radius-small: 12px;
+      --radius-medium: 20px;
       --radius-large: 28px;
-      --radius-extra-large: 32px;
+      --radius-extra-large: 36px;
 
-      --shadow-1:
-        0 1px 3px rgba(40, 30, 50, .10),
-        0 1px 2px rgba(40, 30, 50, .06);
-
-      --shadow-2:
-        0 4px 12px rgba(40, 30, 50, .12);
-
-      --transition:
-        180ms cubic-bezier(.2, 0, 0, 1);
+      --max-width: 1180px;
     }
-
-    /* =========================================================
-       DARK M3
-       ========================================================= */
 
     body.dark {
       --primary: #D0BCFF;
@@ -88,30 +85,21 @@
       --on-tertiary: #492532;
 
       --background: #141218;
-      --on-background: #E6E0E9;
+      --on-background: #E6E1E9;
 
       --surface: #141218;
       --surface-container: #211F26;
-      --surface-container-low: #1D1B20;
       --surface-container-high: #2B2930;
-      --surface-container-highest: #36343B;
 
       --outline: #938F99;
       --outline-variant: #49454F;
 
-      --success: #8FD36F;
-      --error: #F2B8B5;
+      --shadow:
+        0 10px 30px rgba(0, 0, 0, .25);
 
-      --shadow-1:
-        0 1px 3px rgba(0, 0, 0, .30);
-
-      --shadow-2:
-        0 5px 16px rgba(0, 0, 0, .35);
+      --shadow-large:
+        0 24px 60px rgba(0, 0, 0, .38);
     }
-
-    /* =========================================================
-       BASE
-       ========================================================= */
 
     * {
       box-sizing: border-box;
@@ -126,7 +114,6 @@
     body {
       font-family:
         Inter,
-        Roboto,
         system-ui,
         -apple-system,
         BlinkMacSystemFont,
@@ -135,11 +122,12 @@
 
       background: var(--background);
       color: var(--on-background);
+
       line-height: 1.6;
 
       transition:
-        background var(--transition),
-        color var(--transition);
+        background .3s ease,
+        color .3s ease;
     }
 
     a {
@@ -147,77 +135,118 @@
       text-decoration: none;
     }
 
-    button {
-      font: inherit;
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
     }
 
     .material-symbols-rounded {
-      font-size: 22px;
+      font-size: 24px;
       line-height: 1;
-      vertical-align: middle;
+      font-variation-settings:
+        "FILL" 0,
+        "wght" 500,
+        "GRAD" 0,
+        "opsz" 24;
+    }
+
+    .container {
+      width: min(
+        calc(100% - 40px),
+        var(--max-width)
+      );
+
+      margin: 0 auto;
     }
 
     /* =========================================================
-       TOP BAR
+       TOP APP BAR
        ========================================================= */
 
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
 
-      height: 72px;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+
+      background: color-mix(
+        in srgb,
+        var(--background) 84%,
+        transparent
+      );
+
+      border-bottom:
+        1px solid
+        color-mix(
+          in srgb,
+          var(--outline-variant) 55%,
+          transparent
+        );
+    }
+
+    .topbar-inner {
+      min-height: 72px;
 
       display: flex;
       align-items: center;
       justify-content: space-between;
 
-      padding: 0 6%;
-
-      background: color-mix(
-        in srgb,
-        var(--surface) 88%,
-        transparent
-      );
-
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-
-      border-bottom: 1px solid var(--outline-variant);
+      gap: 20px;
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 12px;
+
+      min-width: 0;
     }
 
     .brand-logo {
       width: 44px;
       height: 44px;
 
+      border-radius: 14px;
+
       display: grid;
       place-items: center;
 
-      border-radius: 14px;
+      color: white;
 
-      background: var(--primary);
-      color: var(--on-primary);
+      background:
+        linear-gradient(
+          135deg,
+          #6750A4,
+          #7E57C2
+        );
 
-      font-size: 22px;
+      box-shadow:
+        0 8px 20px rgba(103, 80, 164, .25);
+
+      font-size: 21px;
       font-weight: 800;
-
-      box-shadow: var(--shadow-1);
     }
 
-    .brand-text strong {
-      display: block;
-      font-size: 16px;
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
     }
 
-    .brand-text span {
-      display: block;
-      color: var(--secondary);
+    .brand-name {
+      font-weight: 800;
+      letter-spacing: -.02em;
+    }
+
+    .brand-sub {
+      color: var(--outline);
       font-size: 12px;
     }
 
@@ -228,24 +257,33 @@
     }
 
     .nav a {
-      padding: 9px 14px;
+      padding: 10px 13px;
+
       border-radius: 999px;
 
-      color: var(--secondary);
+      color: var(--on-background);
+
+      font-size: 14px;
+      font-weight: 600;
 
       transition:
-        background var(--transition),
-        color var(--transition);
+        background .2s ease,
+        transform .2s ease;
     }
 
     .nav a:hover {
-      background: var(--primary-container);
-      color: var(--on-primary-container);
+      background: var(--surface-container);
     }
 
-    .theme-btn {
-      width: 42px;
-      height: 42px;
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .icon-button {
+      width: 44px;
+      height: 44px;
 
       border: none;
       border-radius: 50%;
@@ -255,106 +293,44 @@
 
       cursor: pointer;
 
-      color: var(--on-primary-container);
-      background: var(--primary-container);
+      background: var(--surface-container);
+      color: var(--on-background);
 
       transition:
-        transform var(--transition),
-        background var(--transition);
+        transform .2s ease,
+        background .2s ease;
     }
 
-    .theme-btn:hover {
-      transform: rotate(8deg) scale(1.04);
+    .icon-button:hover {
+      transform: scale(1.04);
+      background: var(--surface-container-high);
     }
 
     /* =========================================================
-       HERO
+       BUTTONS
        ========================================================= */
 
-    .hero {
-      max-width: 1200px;
-      margin: auto;
+    .btn {
+      min-height: 50px;
 
-      min-height: 720px;
-
-      padding: 90px 6%;
-
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: 70px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-
-      padding: 8px 14px;
+      padding: 0 22px;
 
       border-radius: 999px;
-
-      background: var(--primary-container);
-      color: var(--on-primary-container);
-
-      font-size: 13px;
-      font-weight: 650;
-
-      margin-bottom: 22px;
-    }
-
-    .hero h1 {
-      max-width: 620px;
-
-      font-size:
-        clamp(42px, 6vw, 72px);
-
-      line-height: 1.04;
-      letter-spacing: -2px;
-
-      margin-bottom: 24px;
-    }
-
-    .hero h1 span {
-      color: var(--primary);
-    }
-
-    .hero p {
-      max-width: 590px;
-
-      color: var(--secondary);
-
-      font-size: 18px;
-      line-height: 1.75;
-
-      margin-bottom: 30px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .btn {
-      min-height: 48px;
 
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 9px;
 
-      padding: 0 22px;
+      font-weight: 700;
+      font-size: 14px;
 
-      border-radius: 999px;
       border: 1px solid transparent;
 
-      cursor: pointer;
-
       transition:
-        transform var(--transition),
-        box-shadow var(--transition),
-        background var(--transition);
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
     }
 
     .btn:hover {
@@ -364,38 +340,129 @@
     .btn-primary {
       background: var(--primary);
       color: var(--on-primary);
-      box-shadow: var(--shadow-1);
+
+      box-shadow:
+        0 8px 22px
+        color-mix(
+          in srgb,
+          var(--primary) 24%,
+          transparent
+        );
     }
 
-    .btn-primary:hover {
-      box-shadow: var(--shadow-2);
-    }
-
-    .btn-tonal {
+    .btn-secondary {
       background: var(--secondary-container);
       color: var(--on-secondary-container);
     }
 
-    .btn-outline {
+    .btn-outlined {
+      background: transparent;
       border-color: var(--outline);
       color: var(--on-background);
-      background: transparent;
+    }
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+
+    .hero {
+      padding: 92px 0 80px;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns:
+        minmax(0, 1.05fr)
+        minmax(360px, .95fr);
+
+      align-items: center;
+      gap: 80px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+
+      padding: 7px 12px;
+
+      border-radius: 999px;
+
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin-top: 22px;
+
+      font-size:
+        clamp(42px, 6vw, 72px);
+
+      line-height: 1.02;
+      letter-spacing: -.055em;
+
+      max-width: 720px;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero-description {
+      margin-top: 24px;
+
+      max-width: 620px;
+
+      color: color-mix(
+        in srgb,
+        var(--on-background) 72%,
+        transparent
+      );
+
+      font-size: 18px;
+    }
+
+    .hero-actions {
+      margin-top: 32px;
+
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-note {
+      margin-top: 18px;
+
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      color: var(--outline);
+
+      font-size: 13px;
     }
 
     /* =========================================================
        PHONE MOCKUP
        ========================================================= */
 
-    .preview-area {
+    .phone-area {
       position: relative;
 
-      min-height: 620px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-      display: grid;
-      place-items: center;
+      min-height: 620px;
     }
 
-    .preview-glow {
+    .phone-glow {
       position: absolute;
 
       width: 380px;
@@ -403,52 +470,60 @@
 
       border-radius: 50%;
 
-      background: var(--primary-container);
+      background:
+        radial-gradient(
+          circle,
+          color-mix(
+            in srgb,
+            var(--primary) 22%,
+            transparent
+          ),
+          transparent 68%
+        );
 
-      filter: blur(35px);
-      opacity: .65;
+      filter: blur(8px);
     }
 
     .phone {
       position: relative;
       z-index: 2;
 
-      width: 310px;
-      height: 620px;
+      width: 300px;
+      height: 610px;
 
-      padding: 10px;
+      padding: 9px;
 
-      border-radius: 42px;
+      border-radius: 44px;
 
       background: #111014;
 
-      box-shadow:
-        0 25px 60px rgba(30, 20, 40, .28),
-        0 5px 20px rgba(30, 20, 40, .16);
+      box-shadow: var(--shadow-large);
 
-      transform: rotate(2deg);
+      transform:
+        perspective(1000px)
+        rotateY(-7deg)
+        rotateX(2deg);
 
-      animation: phoneFloat 5s ease-in-out infinite;
+      animation:
+        phoneFloat 5s ease-in-out infinite;
     }
 
-    .phone::before {
-      content: "";
+    @keyframes phoneFloat {
+      0%, 100% {
+        transform:
+          perspective(1000px)
+          rotateY(-7deg)
+          rotateX(2deg)
+          translateY(0);
+      }
 
-      position: absolute;
-
-      width: 92px;
-      height: 25px;
-
-      top: 9px;
-      left: 50%;
-
-      transform: translateX(-50%);
-
-      border-radius: 0 0 18px 18px;
-
-      background: #111014;
-
-      z-index: 10;
+      50% {
+        transform:
+          perspective(1000px)
+          rotateY(-7deg)
+          rotateX(2deg)
+          translateY(-9px);
+      }
     }
 
     .phone-screen {
@@ -456,146 +531,152 @@
 
       overflow: hidden;
 
-      border-radius: 34px;
+      border-radius: 36px;
 
-      background: var(--surface);
+      background: var(--background);
 
-      color: var(--on-background);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .phone-status {
+      height: 30px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      flex-shrink: 0;
+    }
+
+    .phone-camera {
+      width: 74px;
+      height: 22px;
+
+      border-radius: 999px;
+
+      background: #111014;
     }
 
     .phone-header {
-      height: 72px;
+      padding: 10px 15px;
 
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
 
-      padding: 0 16px;
-
-      border-bottom: 1px solid var(--outline-variant);
-
-      background: var(--surface);
+      border-bottom:
+        1px solid
+        var(--outline-variant);
     }
 
     .phone-title {
-      font-weight: 750;
-      color: var(--primary);
+      font-weight: 800;
+      font-size: 17px;
     }
 
-    .phone-icons {
+    .phone-demo {
+      margin: 9px 11px 5px;
+
+      padding: 7px 9px;
+
+      border-radius: 10px;
+
+      background: var(--secondary-container);
+      color: var(--on-secondary-container);
+
+      text-align: center;
+
+      font-size: 9px;
+      font-weight: 800;
+    }
+
+    .feed {
+      flex: 1;
+      overflow: hidden;
+
+      padding: 6px 10px;
+    }
+
+    .post {
+      padding: 10px 0 14px;
+
+      border-bottom:
+        1px solid
+        var(--outline-variant);
+
+      animation:
+        postIn .45s ease both;
+    }
+
+    .post:nth-child(2) {
+      animation-delay: .08s;
+    }
+
+    .post:nth-child(3) {
+      animation-delay: .16s;
+    }
+
+    @keyframes postIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .post-user {
       display: flex;
+      align-items: center;
       gap: 8px;
     }
 
-    .phone-icon {
-      width: 34px;
-      height: 34px;
-
-      display: grid;
-      place-items: center;
+    .avatar {
+      width: 31px;
+      height: 31px;
 
       border-radius: 50%;
 
-      color: var(--secondary);
-    }
-
-    /* =========================================================
-       DEMO CONTENT
-       ========================================================= */
-
-    .demo-label {
-      margin: 10px 12px 0;
-
-      padding: 7px 10px;
-
-      display: flex;
-      align-items: center;
-      gap: 6px;
-
-      border-radius: 10px;
+      display: grid;
+      place-items: center;
 
       background: var(--primary-container);
       color: var(--on-primary-container);
 
       font-size: 10px;
-      font-weight: 700;
-
-      text-transform: uppercase;
-      letter-spacing: .5px;
+      font-weight: 800;
     }
 
-    .demo-feed {
-      height: 460px;
+    .post-name {
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .post-label {
+      color: var(--outline);
+      font-size: 8px;
+    }
+
+    .post-text {
+      margin: 8px 0;
+
+      font-size: 10px;
+      line-height: 1.45;
+    }
+
+    .post-media {
+      height: 120px;
+
+      border-radius: 17px;
+
+      display: grid;
+      place-items: center;
 
       overflow: hidden;
-    }
-
-    .feed-track {
-      animation: feedMove 12s ease-in-out infinite;
-    }
-
-    .demo-post {
-      margin: 12px;
-
-      padding: 13px;
-
-      border-radius: 20px;
-
-      background: var(--surface-container);
-
-      border: 1px solid var(--outline-variant);
-    }
-
-    .demo-user {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-
-      margin-bottom: 10px;
-    }
-
-    .avatar {
-      width: 34px;
-      height: 34px;
-
-      display: grid;
-      place-items: center;
-
-      border-radius: 50%;
-
-      background: var(--primary-container);
-      color: var(--on-primary-container);
-
-      font-size: 12px;
-      font-weight: 750;
-    }
-
-    .demo-user strong {
-      font-size: 12px;
-    }
-
-    .demo-user span {
-      display: block;
-      color: var(--secondary);
-      font-size: 9px;
-    }
-
-    .demo-post p {
-      font-size: 11px;
-      line-height: 1.55;
-
-      margin-bottom: 12px;
-    }
-
-    .demo-media {
-      height: 115px;
-
-      display: grid;
-      place-items: center;
-
-      margin-bottom: 10px;
-
-      border-radius: 15px;
 
       background:
         linear-gradient(
@@ -607,204 +688,207 @@
       color: var(--on-primary-container);
     }
 
-    .demo-actions {
+    .post-media .material-symbols-rounded {
+      font-size: 42px;
+    }
+
+    .post-actions {
+      margin-top: 8px;
+
       display: flex;
       align-items: center;
       gap: 15px;
-
-      color: var(--secondary);
-
-      font-size: 10px;
     }
 
-    .demo-actions span {
-      display: inline-flex;
+    .post-action {
+      display: flex;
       align-items: center;
       gap: 3px;
-    }
 
-    .demo-comment {
-      margin-top: 10px;
-      padding: 8px 10px;
-
-      border-radius: 12px;
-
-      background: var(--surface-container-high);
-
-      color: var(--secondary);
+      color: var(--outline);
 
       font-size: 9px;
+
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .post-action .material-symbols-rounded {
+      font-size: 18px;
+    }
+
+    .post-action.liked {
+      color: var(--primary);
+    }
+
+    .phone-bottom {
+      padding: 8px 8px 10px;
+
+      display: grid;
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      border-top:
+        1px solid
+        var(--outline-variant);
     }
 
     .phone-nav {
-      height: 67px;
-
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-
-      border-top: 1px solid var(--outline-variant);
-
-      background: var(--surface);
-    }
-
-    .phone-nav-item {
-      display: grid;
-      place-items: center;
-
-      align-content: center;
-
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       gap: 2px;
 
-      color: var(--secondary);
+      color: var(--outline);
 
-      font-size: 8px;
+      font-size: 7px;
     }
 
-    .phone-nav-item.active {
-      color: var(--on-primary-container);
+    .phone-nav.active {
+      color: var(--primary);
     }
 
-    .phone-nav-item.active .material-symbols-rounded {
-      padding: 5px 13px;
-
-      border-radius: 999px;
-
-      background: var(--primary-container);
+    .phone-nav .material-symbols-rounded {
+      font-size: 20px;
     }
 
     /* =========================================================
-       SECTIONS
+       SECTION
        ========================================================= */
 
     section {
-      padding: 90px 6%;
+      scroll-margin-top: 90px;
     }
 
-    .section-container {
-      max-width: 1150px;
-      margin: auto;
+    .section {
+      padding: 90px 0;
     }
 
-    .section-heading {
+    .section-header {
       max-width: 700px;
-      margin-bottom: 40px;
+
+      margin-bottom: 44px;
     }
 
-    .section-heading .eyebrow {
-      margin-bottom: 15px;
+    .section-header h2 {
+      margin-top: 14px;
+
+      font-size:
+        clamp(32px, 4vw, 48px);
+
+      line-height: 1.08;
+
+      letter-spacing: -.035em;
     }
 
-    .section-heading h2 {
-      font-size: clamp(30px, 5vw, 48px);
-      line-height: 1.1;
-      margin-bottom: 14px;
-    }
+    .section-header p {
+      margin-top: 15px;
 
-    .section-heading p {
-      color: var(--secondary);
-      font-size: 16px;
+      color: color-mix(
+        in srgb,
+        var(--on-background) 68%,
+        transparent
+      );
     }
 
     /* =========================================================
-       MAQUETTE NOTICE
+       EXPERIENCE
        ========================================================= */
 
-    .notice {
-      display: flex;
-      align-items: flex-start;
-      gap: 15px;
+    .experience {
+      background: var(--surface-container);
+    }
 
-      padding: 20px;
+    .experience-card {
+      padding: 34px;
 
+      border-radius: var(--radius-extra-large);
+
+      background: var(--surface);
+
+      box-shadow: var(--shadow);
+
+      border:
+        1px solid
+        color-mix(
+          in srgb,
+          var(--outline-variant) 55%,
+          transparent
+        );
+    }
+
+    .demo-notice {
       margin-bottom: 28px;
 
-      border-radius: var(--radius-large);
+      padding: 18px 20px;
+
+      display: flex;
+      gap: 14px;
+
+      border-radius: 20px;
 
       background: var(--primary-container);
       color: var(--on-primary-container);
     }
 
-    .notice .material-symbols-rounded {
-      margin-top: 2px;
-    }
-
-    .notice strong {
+    .demo-notice strong {
       display: block;
       margin-bottom: 4px;
     }
 
-    .notice p {
-      font-size: 14px;
-      opacity: .88;
+    .demo-notice p {
+      font-size: 13px;
+      opacity: .85;
     }
 
-    /* =========================================================
-       COMMUNITY
-       ========================================================= */
-
-    .community-grid {
+    .experience-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 16px;
     }
 
-    .post-card {
-      padding: 22px;
+    .mini-card {
+      padding: 24px;
 
-      border-radius: var(--radius-large);
+      border-radius: 24px;
 
       background: var(--surface-container);
 
-      border: 1px solid var(--outline-variant);
-
       transition:
-        transform var(--transition),
-        box-shadow var(--transition);
+        transform .25s ease,
+        background .25s ease;
     }
 
-    .post-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-2);
+    .mini-card:hover {
+      transform: translateY(-5px);
+      background: var(--surface-container-high);
     }
 
-    .post-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .mini-icon {
+      width: 46px;
+      height: 46px;
 
-      margin-bottom: 18px;
+      border-radius: 15px;
+
+      display: grid;
+      place-items: center;
+
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+
+      margin-bottom: 17px;
     }
 
-    .post-author {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    .mini-card h3 {
+      font-size: 17px;
     }
 
-    .post-author strong {
-      display: block;
-    }
+    .mini-card p {
+      margin-top: 7px;
 
-    .post-author small {
-      color: var(--secondary);
-    }
-
-    .post-text {
-      margin-bottom: 18px;
-    }
-
-    .post-actions {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-
-      color: var(--secondary);
-    }
-
-    .post-actions span {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
+      color: var(--outline);
 
       font-size: 13px;
     }
@@ -813,93 +897,323 @@
        FEATURES
        ========================================================= */
 
-    .features {
-      background: var(--surface-container-low);
-    }
-
-    .feature-grid {
+    .features-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
       gap: 16px;
     }
 
-    .feature-card {
-      padding: 24px;
+    .feature {
+      padding: 27px;
 
-      border-radius: var(--radius-large);
+      border:
+        1px solid
+        var(--outline-variant);
+
+      border-radius: 26px;
 
       background: var(--surface);
 
-      border: 1px solid var(--outline-variant);
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
     }
 
     .feature-icon {
       width: 52px;
       height: 52px;
 
+      border-radius: 17px;
+
       display: grid;
       place-items: center;
 
+      background: var(--secondary-container);
+      color: var(--on-secondary-container);
+
       margin-bottom: 20px;
-
-      border-radius: 17px;
-
-      background: var(--primary-container);
-      color: var(--on-primary-container);
     }
 
-    .feature-card h3 {
-      margin-bottom: 8px;
+    .feature h3 {
+      font-size: 18px;
     }
 
-    .feature-card p {
-      color: var(--secondary);
-      font-size: 14px;
+    .feature p {
+      margin-top: 8px;
+
+      color: var(--outline);
+
+      font-size: 13px;
     }
 
     /* =========================================================
        LUNARIS
        ========================================================= */
 
-    .lunaris-card {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
-      gap: 25px;
-
-      padding: 30px;
-
-      border-radius: var(--radius-extra-large);
-
+    .lunaris {
       background:
         linear-gradient(
           135deg,
           var(--primary-container),
           var(--secondary-container)
         );
-
-      color: var(--on-primary-container);
     }
 
-    .lunaris-icon {
-      width: 64px;
-      height: 64px;
+    .lunaris-card {
+      padding: 50px;
+
+      display: grid;
+
+      grid-template-columns:
+        1fr .75fr;
+
+      gap: 50px;
+
+      align-items: center;
+
+      border-radius: var(--radius-extra-large);
+
+      background:
+        color-mix(
+          in srgb,
+          var(--surface) 82%,
+          transparent
+        );
+
+      border:
+        1px solid
+        color-mix(
+          in srgb,
+          var(--outline-variant) 45%,
+          transparent
+        );
+
+      box-shadow: var(--shadow);
+    }
+
+    .lunaris-logo {
+      width: 70px;
+      height: 70px;
+
+      border-radius: 23px;
 
       display: grid;
       place-items: center;
 
-      border-radius: 20px;
+      background: var(--primary);
+      color: var(--on-primary);
 
-      background: rgba(255,255,255,.45);
+      box-shadow:
+        0 14px 30px
+        color-mix(
+          in srgb,
+          var(--primary) 25%,
+          transparent
+        );
     }
 
-    .lunaris-card h2 {
-      margin-bottom: 6px;
+    .lunaris h2 {
+      margin-top: 20px;
+
+      font-size:
+        clamp(34px, 4vw, 50px);
+
+      letter-spacing: -.04em;
+      line-height: 1.05;
     }
 
-    .lunaris-card p {
-      max-width: 650px;
+    .lunaris p {
+      margin-top: 18px;
+
+      max-width: 600px;
+
+      color: color-mix(
+        in srgb,
+        var(--on-background) 72%,
+        transparent
+      );
+    }
+
+    .lunaris-tags {
+      margin-top: 25px;
+
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      padding: 8px 12px;
+
+      border-radius: 999px;
+
+      background: var(--surface);
+      color: var(--on-background);
+
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .ai-preview {
+      min-height: 300px;
+
+      padding: 18px;
+
+      border-radius: 27px;
+
+      background: var(--background);
+
+      box-shadow:
+        inset 0 0 0 1px
+        var(--outline-variant);
+    }
+
+    .ai-message {
+      max-width: 82%;
+
+      padding: 13px 15px;
+
+      border-radius: 18px;
+
+      margin-bottom: 10px;
+
+      font-size: 13px;
+    }
+
+    .ai-message.user {
+      margin-left: auto;
+
+      background: var(--primary);
+      color: var(--on-primary);
+
+      border-bottom-right-radius: 5px;
+    }
+
+    .ai-message.bot {
+      background: var(--surface-container);
+      color: var(--on-background);
+
+      border-bottom-left-radius: 5px;
+    }
+
+    .ai-label {
+      margin-bottom: 12px;
+
+      color: var(--outline);
+
+      font-size: 10px;
+      font-weight: 800;
+
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       DOWNLOAD
+       ========================================================= */
+
+    .download {
+      padding-top: 30px;
+    }
+
+    .download-card {
+      position: relative;
+      overflow: hidden;
+
+      padding: 48px;
+
+      display: grid;
+
+      grid-template-columns:
+        auto 1fr auto;
+
+      align-items: center;
+
+      gap: 28px;
+
+      border-radius: var(--radius-extra-large);
+
+      background: var(--primary);
+      color: var(--on-primary);
+
+      box-shadow:
+        0 22px 55px
+        color-mix(
+          in srgb,
+          var(--primary) 28%,
+          transparent
+        );
+    }
+
+    .download-card::after {
+      content: "";
+
+      position: absolute;
+
+      width: 260px;
+      height: 260px;
+
+      right: -80px;
+      bottom: -120px;
+
+      border-radius: 50%;
+
+      background:
+        color-mix(
+          in srgb,
+          white 10%,
+          transparent
+        );
+    }
+
+    .download-icon {
+      width: 72px;
+      height: 72px;
+
+      border-radius: 23px;
+
+      display: grid;
+      place-items: center;
+
+      background:
+        color-mix(
+          in srgb,
+          white 15%,
+          transparent
+        );
+    }
+
+    .download-content h2 {
+      font-size:
+        clamp(28px, 4vw, 42px);
+
+      line-height: 1.1;
+      letter-spacing: -.035em;
+    }
+
+    .download-content p {
+      margin-top: 8px;
+
       opacity: .82;
+
+      font-size: 14px;
+    }
+
+    .download-button {
+      position: relative;
+      z-index: 2;
+
+      background: var(--on-primary);
+      color: var(--primary);
+
+      white-space: nowrap;
     }
 
     /* =========================================================
@@ -908,35 +1222,46 @@
 
     .screenshots {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 16px;
     }
 
-    .shot {
+    .screenshot {
       overflow: hidden;
 
-      border-radius: var(--radius-large);
-
-      border: 1px solid var(--outline-variant);
+      border-radius: 25px;
 
       background: var(--surface-container);
 
-      box-shadow: var(--shadow-1);
+      border:
+        1px solid
+        var(--outline-variant);
+
+      box-shadow: var(--shadow);
     }
 
-    .shot img {
-      display: block;
-
+    .screenshot img {
       width: 100%;
-      height: 380px;
+      height: 350px;
 
       object-fit: cover;
 
-      transition: transform 300ms ease;
+      transition:
+        transform .4s ease;
     }
 
-    .shot:hover img {
-      transform: scale(1.03);
+    .screenshot:hover img {
+      transform: scale(1.035);
+    }
+
+    .screenshot-caption {
+      padding: 15px;
+
+      font-size: 13px;
+      font-weight: 700;
     }
 
     /* =========================================================
@@ -945,49 +1270,68 @@
 
     .resources {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
       gap: 16px;
     }
 
     .resource {
-      display: flex;
-      align-items: center;
-      gap: 15px;
+      padding: 28px;
 
-      padding: 20px;
-
-      border-radius: var(--radius-large);
+      border-radius: 27px;
 
       background: var(--surface-container);
 
-      border: 1px solid var(--outline-variant);
+      border:
+        1px solid
+        var(--outline-variant);
 
       transition:
-        background var(--transition),
-        transform var(--transition);
+        transform .25s ease;
     }
 
     .resource:hover {
-      background: var(--primary-container);
-      transform: translateY(-2px);
+      transform: translateY(-5px);
     }
 
     .resource-icon {
       width: 48px;
       height: 48px;
 
+      border-radius: 16px;
+
       display: grid;
       place-items: center;
-
-      border-radius: 15px;
 
       background: var(--primary-container);
       color: var(--on-primary-container);
     }
 
+    .resource h3 {
+      margin-top: 19px;
+    }
+
     .resource p {
-      color: var(--secondary);
+      margin-top: 7px;
+
+      color: var(--outline);
+
       font-size: 13px;
+    }
+
+    .resource-link {
+      margin-top: 18px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+
+      color: var(--primary);
+
+      font-size: 13px;
+      font-weight: 800;
     }
 
     /* =========================================================
@@ -995,50 +1339,75 @@
        ========================================================= */
 
     .studio {
-      text-align: center;
+      background: var(--surface-container);
     }
 
     .studio-card {
-      max-width: 850px;
-      margin: auto;
-
-      padding: 55px 30px;
+      padding: 48px;
 
       border-radius: var(--radius-extra-large);
 
-      background: var(--surface-container);
+      background: var(--surface);
 
-      border: 1px solid var(--outline-variant);
+      display: grid;
+
+      grid-template-columns:
+        1fr auto;
+
+      align-items: center;
+
+      gap: 40px;
+
+      border:
+        1px solid
+        var(--outline-variant);
     }
 
-    .studio-logo {
-      width: 72px;
-      height: 72px;
+    .studio-mark {
+      width: 70px;
+      height: 70px;
+
+      border-radius: 22px;
 
       display: grid;
       place-items: center;
 
-      margin: 0 auto 20px;
+      background:
+        linear-gradient(
+          135deg,
+          #6750A4,
+          #FCA53E
+        );
 
-      border-radius: 23px;
+      color: white;
 
-      background: var(--primary);
-      color: var(--on-primary);
+      font-size: 26px;
+      font-weight: 900;
 
-      font-size: 32px;
-      font-weight: 850;
+      margin-bottom: 20px;
     }
 
-    .studio-card h2 {
-      font-size: 38px;
-      margin-bottom: 10px;
+    .studio h2 {
+      font-size:
+        clamp(30px, 4vw, 44px);
+
+      letter-spacing: -.035em;
     }
 
-    .studio-card p {
-      max-width: 600px;
-      margin: auto auto 25px;
+    .studio p {
+      margin-top: 10px;
 
-      color: var(--secondary);
+      max-width: 680px;
+
+      color: var(--outline);
+    }
+
+    .studio-motto {
+      margin-top: 17px;
+
+      color: var(--primary);
+
+      font-weight: 800;
     }
 
     /* =========================================================
@@ -1046,60 +1415,56 @@
        ========================================================= */
 
     footer {
-      padding: 35px 6%;
+      padding: 42px 0;
 
-      border-top: 1px solid var(--outline-variant);
+      border-top:
+        1px solid
+        var(--outline-variant);
+    }
 
-      color: var(--secondary);
+    .footer-inner {
+      display: flex;
 
-      text-align: center;
+      justify-content: space-between;
+      align-items: center;
+
+      gap: 20px;
+    }
+
+    .footer-copy {
+      color: var(--outline);
 
       font-size: 13px;
     }
 
-    footer strong {
-      color: var(--on-background);
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .footer-links a {
+      color: var(--outline);
+
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
     }
 
     /* =========================================================
-       ANIMATIONS
+       SCROLL REVEAL
        ========================================================= */
-
-    @keyframes phoneFloat {
-      0%, 100% {
-        transform: translateY(0) rotate(2deg);
-      }
-
-      50% {
-        transform: translateY(-12px) rotate(2deg);
-      }
-    }
-
-    @keyframes feedMove {
-      0%, 18% {
-        transform: translateY(0);
-      }
-
-      35%, 55% {
-        transform: translateY(-125px);
-      }
-
-      72%, 88% {
-        transform: translateY(-255px);
-      }
-
-      100% {
-        transform: translateY(0);
-      }
-    }
 
     .reveal {
       opacity: 0;
       transform: translateY(20px);
 
       transition:
-        opacity 600ms ease,
-        transform 600ms ease;
+        opacity .7s ease,
+        transform .7s ease;
     }
 
     .reveal.visible {
@@ -1111,46 +1476,56 @@
        RESPONSIVE
        ========================================================= */
 
-    @media (max-width: 950px) {
+    @media (max-width: 980px) {
 
-      .nav a {
+      .nav {
         display: none;
       }
 
-      .hero {
+      .hero-grid {
         grid-template-columns: 1fr;
-        text-align: center;
 
+        gap: 30px;
+      }
+
+      .hero {
         padding-top: 65px;
       }
 
-      .hero p,
-      .hero h1 {
-        margin-left: auto;
-        margin-right: auto;
+      .phone-area {
+        min-height: 600px;
       }
 
-      .hero-actions {
-        justify-content: center;
+      .features-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
       }
 
-      .preview-area {
-        min-height: 650px;
-      }
-
-      .feature-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .screenshots {
-        grid-template-columns: repeat(2, 1fr);
+      .experience-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
       }
 
       .lunaris-card {
-        grid-template-columns: auto 1fr;
+        grid-template-columns: 1fr;
       }
 
-      .lunaris-card .btn {
+      .screenshots {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .resources {
+        grid-template-columns:
+          1fr;
+      }
+
+      .download-card {
+        grid-template-columns:
+          auto 1fr;
+      }
+
+      .download-button {
         grid-column: 1 / -1;
         justify-self: start;
       }
@@ -1158,56 +1533,110 @@
 
     @media (max-width: 650px) {
 
-      .topbar {
-        padding: 0 18px;
+      .container {
+        width: min(
+          calc(100% - 28px),
+          var(--max-width)
+        );
       }
 
-      section {
-        padding: 65px 18px;
+      .topbar-inner {
+        min-height: 64px;
+      }
+
+      .brand-sub {
+        display: none;
       }
 
       .hero {
-        padding-left: 18px;
-        padding-right: 18px;
+        padding: 55px 0 55px;
+      }
+
+      .hero h1 {
+        font-size: 43px;
+      }
+
+      .hero-description {
+        font-size: 16px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
       }
 
       .phone {
         width: 285px;
-        height: 570px;
+        height: 580px;
       }
 
-      .preview-area {
-        min-height: 600px;
+      .phone-area {
+        min-height: 590px;
       }
 
-      .community-grid,
-      .resources {
+      .experience-card {
+        padding: 20px;
+      }
+
+      .experience-grid {
         grid-template-columns: 1fr;
       }
 
-      .feature-grid {
+      .features-grid {
         grid-template-columns: 1fr;
+      }
+
+      .lunaris-card {
+        padding: 28px;
       }
 
       .screenshots {
         grid-template-columns: 1fr 1fr;
+        gap: 10px;
       }
 
-      .shot img {
-        height: 280px;
+      .screenshot img {
+        height: 250px;
       }
 
-      .lunaris-card {
+      .download-card {
+        padding: 30px 24px;
+
         grid-template-columns: 1fr;
       }
 
-      .lunaris-card .btn {
-        grid-column: auto;
+      .download-button {
         width: 100%;
       }
 
-      .studio-card h2 {
-        font-size: 30px;
+      .studio-card {
+        padding: 30px 24px;
+
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .section {
+        padding: 70px 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
       }
     }
   </style>
@@ -1216,325 +1645,348 @@
 <body>
 
   <!-- =======================================================
-       TOPBAR
-       ======================================================== -->
+       TOP BAR
+       ======================================================= -->
 
   <header class="topbar">
+    <div class="container topbar-inner">
 
-    <a class="brand" href="#">
-      <div class="brand-logo">M</div>
+      <a href="#top" class="brand">
 
-      <div class="brand-text">
-        <strong>MotivPlus</strong>
-        <span>by GO Studio LLC</span>
+        <div class="brand-logo">
+          M+
+        </div>
+
+        <div class="brand-text">
+          <span class="brand-name">
+            MotivPlus
+          </span>
+
+          <span class="brand-sub">
+            by GO Studio LLC
+          </span>
+        </div>
+
+      </a>
+
+      <nav class="nav">
+
+        <a href="#experience">
+          Expérience
+        </a>
+
+        <a href="#features">
+          Fonctionnalités
+        </a>
+
+        <a href="#lunaris">
+          Lunaris
+        </a>
+
+        <a href="#screenshots">
+          Aperçu
+        </a>
+
+        <a href="#docs">
+          Docs
+        </a>
+
+      </nav>
+
+      <div class="top-actions">
+
+        <a
+          href="https://dttwkposqrlknrmobfzg.supabase.co/storage/v1/object/public/Files/MotivPlus.apk"
+          class="icon-button"
+          aria-label="Télécharger MotivPlus"
+          title="Télécharger MotivPlus"
+        >
+          <span class="material-symbols-rounded">
+            download
+          </span>
+        </a>
+
+        <button
+          class="icon-button"
+          id="themeButton"
+          aria-label="Changer le thème"
+          title="Changer le thème"
+        >
+          <span
+            class="material-symbols-rounded"
+            id="themeIcon"
+          >
+            dark_mode
+          </span>
+        </button>
+
       </div>
-    </a>
 
-    <nav class="nav">
-      <a href="#communaute">Communauté</a>
-      <a href="#fonctionnalites">Fonctionnalités</a>
-      <a href="#lunaris">Lunaris</a>
-      <a href="#apercu">Aperçu</a>
-      <a href="#documentation">Documentation</a>
-    </nav>
-
-    <button
-      class="theme-btn"
-      id="themeBtn"
-      aria-label="Changer le thème">
-
-      <span
-        class="material-symbols-rounded"
-        id="themeIcon">
-        dark_mode
-      </span>
-
-    </button>
-
+    </div>
   </header>
 
 
-  <!-- =======================================================
-       HERO
-       ======================================================== -->
+  <main id="top">
 
-  <main>
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
 
     <section class="hero">
 
-      <div class="hero-content reveal">
+      <div class="container hero-grid">
 
-        <div class="eyebrow">
-          <span class="material-symbols-rounded">
-            auto_awesome
+        <div class="hero-content reveal">
+
+          <span class="eyebrow">
+            <span class="material-symbols-rounded">
+              auto_awesome
+            </span>
+
+            GO Studio × MotivPlus
           </span>
 
-          Expérience numérique · GO Studio
-        </div>
+          <h1>
+            Motivation.
+            <span>Communauté.</span>
+            Accompagnement.
+          </h1>
 
-        <h1>
-          Motivation.
-          <span>Communauté.</span>
-          Accompagnement.
-        </h1>
+          <p class="hero-description">
+            MotivPlus est une application Android pensée pour
+            partager ses activités, échanger avec les autres
+            et créer progressivement une expérience autour de
+            la motivation et de l'accompagnement.
+          </p>
 
-        <p>
-          MotivPlus est pensé comme un espace où la motivation,
-          les échanges et les activités peuvent se retrouver
-          dans une même expérience.
-        </p>
+          <div class="hero-actions">
 
-        <div class="hero-actions">
-
-          <a
-            class="btn btn-primary"
-            href="#apercu">
-
-            <span class="material-symbols-rounded">
-              smartphone
-            </span>
-
-            Voir la maquette
-          </a>
-
-          <a
-            class="btn btn-tonal"
-            href="#documentation">
-
-            <span class="material-symbols-rounded">
-              menu_book
-            </span>
-
-            Documentation
-          </a>
-
-        </div>
-
-      </div>
-
-
-      <!-- PHONE -->
-
-      <div class="preview-area reveal">
-
-        <div class="preview-glow"></div>
-
-        <div class="phone">
-
-          <div class="phone-screen">
-
-            <div class="phone-header">
-
-              <div class="phone-title">
-                MotivPlus
-              </div>
-
-              <div class="phone-icons">
-
-                <div class="phone-icon">
-                  <span class="material-symbols-rounded">
-                    search
-                  </span>
-                </div>
-
-                <div class="phone-icon">
-                  <span class="material-symbols-rounded">
-                    notifications
-                  </span>
-                </div>
-
-              </div>
-
-            </div>
-
-
-            <div class="demo-label">
-
+            <a
+              href="https://dttwkposqrlknrmobfzg.supabase.co/storage/v1/object/public/Files/MotivPlus.apk"
+              class="btn btn-primary"
+              download
+            >
               <span class="material-symbols-rounded">
-                visibility
+                download
               </span>
 
-              Maquette · contenu de démonstration
+              Télécharger l'application
+            </a>
 
-            </div>
+            <a
+              href="#experience"
+              class="btn btn-secondary"
+            >
+              <span class="material-symbols-rounded">
+                play_circle
+              </span>
+
+              Découvrir l'expérience
+            </a>
+
+          </div>
+
+          <div class="hero-note">
+
+            <span class="material-symbols-rounded">
+              android
+            </span>
+
+            Application Android · Version en évolution
+
+          </div>
+
+        </div>
 
 
-            <div class="demo-feed">
+        <!-- PHONE -->
 
-              <div class="feed-track">
+        <div class="phone-area reveal">
 
-                <!-- DEMO POST 1 -->
+          <div class="phone-glow"></div>
 
-                <article class="demo-post">
+          <div class="phone">
 
-                  <div class="demo-user">
+            <div class="phone-screen">
+
+              <div class="phone-status">
+                <div class="phone-camera"></div>
+              </div>
+
+              <div class="phone-header">
+
+                <span class="phone-title">
+                  MotivPlus
+                </span>
+
+                <span class="material-symbols-rounded">
+                  notifications
+                </span>
+
+              </div>
+
+              <div class="phone-demo">
+                MAQUETTE · CONTENU DE DÉMONSTRATION
+              </div>
+
+              <div class="feed" id="demoFeed">
+
+                <!-- POST 1 -->
+
+                <article class="post">
+
+                  <div class="post-user">
 
                     <div class="avatar">
                       A
                     </div>
 
                     <div>
-                      <strong>Utilisateur démo</strong>
-                      <span>Exemple de publication</span>
+                      <div class="post-name">
+                        Utilisateur démo
+                      </div>
+
+                      <div class="post-label">
+                        Publication fictive
+                      </div>
                     </div>
 
                   </div>
 
-                  <p>
-                    Chaque petite étape compte.
-                    Continue ton activité à ton rythme.
+                  <p class="post-text">
+                    Aujourd'hui, je commence une nouvelle
+                    activité. Chaque étape compte.
                   </p>
 
-                  <div class="demo-media">
-
-                    <span
-                      class="material-symbols-rounded"
-                      style="font-size:42px">
-
-                      play_circle
+                  <div class="post-media">
+                    <span class="material-symbols-rounded">
+                      directions_run
                     </span>
-
                   </div>
 
-                  <div class="demo-actions">
+                  <div class="post-actions">
 
-                    <span>
+                    <div
+                      class="post-action like-button"
+                      onclick="toggleLike(this)"
+                    >
                       <span class="material-symbols-rounded">
                         favorite
                       </span>
-                      Exemple
-                    </span>
+                      <span>J'aime</span>
+                    </div>
 
-                    <span>
+                    <div class="post-action">
                       <span class="material-symbols-rounded">
-                        chat
+                        chat_bubble
                       </span>
-                      Commentaires
-                    </span>
+                      <span>Commenter</span>
+                    </div>
 
-                    <span>
+                    <div class="post-action">
                       <span class="material-symbols-rounded">
                         share
                       </span>
-                    </span>
+                    </div>
 
-                  </div>
-
-                  <div class="demo-comment">
-                    Exemple de commentaire
                   </div>
 
                 </article>
 
 
-                <!-- DEMO POST 2 -->
+                <!-- POST 2 -->
 
-                <article class="demo-post">
+                <article class="post">
 
-                  <div class="demo-user">
+                  <div class="post-user">
 
                     <div class="avatar">
                       M
                     </div>
 
                     <div>
-                      <strong>MotivPlus</strong>
-                      <span>Publication fictive</span>
+                      <div class="post-name">
+                        Profil exemple
+                      </div>
+
+                      <div class="post-label">
+                        Contenu fictif
+                      </div>
                     </div>
 
                   </div>
 
-                  <p>
-                    Une interface pensée pour favoriser
-                    les échanges autour des activités.
+                  <p class="post-text">
+                    Une petite progression aujourd'hui
+                    peut devenir une grande habitude demain.
                   </p>
 
-                  <div class="demo-media">
+                  <div class="post-actions">
 
-                    <span
-                      class="material-symbols-rounded"
-                      style="font-size:42px">
-
-                      groups
-                    </span>
-
-                  </div>
-
-                  <div class="demo-actions">
-
-                    <span>
+                    <div
+                      class="post-action like-button"
+                      onclick="toggleLike(this)"
+                    >
                       <span class="material-symbols-rounded">
                         favorite
                       </span>
-                      Démo
-                    </span>
+                      <span>J'aime</span>
+                    </div>
 
-                    <span>
+                    <div class="post-action">
                       <span class="material-symbols-rounded">
-                        chat
+                        chat_bubble
                       </span>
-                      Démo
-                    </span>
-
-                    <span>
-                      <span class="material-symbols-rounded">
-                        share
-                      </span>
-                    </span>
+                      <span>Commenter</span>
+                    </div>
 
                   </div>
 
                 </article>
 
 
-                <!-- DEMO POST 3 -->
+                <!-- POST 3 -->
 
-                <article class="demo-post">
+                <article class="post">
 
-                  <div class="demo-user">
+                  <div class="post-user">
 
                     <div class="avatar">
                       L
                     </div>
 
                     <div>
-                      <strong>Profil exemple</strong>
-                      <span>Contenu fictif</span>
+                      <div class="post-name">
+                        Utilisateur exemple
+                      </div>
+
+                      <div class="post-label">
+                        Démonstration
+                      </div>
                     </div>
 
                   </div>
 
-                  <p>
-                    Discute, partage et avance avec
-                    une communauté.
+                  <p class="post-text">
+                    Échanger avec les autres peut rendre
+                    une activité plus motivante.
                   </p>
 
-                  <div class="demo-media">
+                  <div class="post-actions">
 
-                    <span
-                      class="material-symbols-rounded"
-                      style="font-size:42px">
-
-                      forum
-                    </span>
-
-                  </div>
-
-                  <div class="demo-actions">
-
-                    <span>
+                    <div class="post-action">
                       <span class="material-symbols-rounded">
                         favorite
                       </span>
-                      Démo
-                    </span>
+                      <span>J'aime</span>
+                    </div>
 
-                    <span>
+                    <div class="post-action">
                       <span class="material-symbols-rounded">
-                        chat
+                        chat_bubble
                       </span>
-                      Démo
-                    </span>
+                      <span>Commenter</span>
+                    </div>
 
                   </div>
 
@@ -1542,58 +1994,36 @@
 
               </div>
 
-            </div>
 
+              <div class="phone-bottom">
 
-            <div class="phone-nav">
+                <div class="phone-nav active">
+                  <span class="material-symbols-rounded">
+                    home
+                  </span>
+                  Accueil
+                </div>
 
-              <div class="phone-nav-item active">
+                <div class="phone-nav">
+                  <span class="material-symbols-rounded">
+                    groups
+                  </span>
+                  Communauté
+                </div>
 
-                <span class="material-symbols-rounded">
-                  home
-                </span>
+                <div class="phone-nav">
+                  <span class="material-symbols-rounded">
+                    chat
+                  </span>
+                  Messages
+                </div>
 
-                Accueil
-
-              </div>
-
-              <div class="phone-nav-item">
-
-                <span class="material-symbols-rounded">
-                  search
-                </span>
-
-                Recherche
-
-              </div>
-
-              <div class="phone-nav-item">
-
-                <span class="material-symbols-rounded">
-                  add_circle
-                </span>
-
-                Publier
-
-              </div>
-
-              <div class="phone-nav-item">
-
-                <span class="material-symbols-rounded">
-                  chat
-                </span>
-
-                Messages
-
-              </div>
-
-              <div class="phone-nav-item">
-
-                <span class="material-symbols-rounded">
-                  person
-                </span>
-
-                Profil
+                <div class="phone-nav">
+                  <span class="material-symbols-rounded">
+                    person
+                  </span>
+                  Profil
+                </div>
 
               </div>
 
@@ -1609,332 +2039,237 @@
 
 
     <!-- =====================================================
-         APERÇU
-         ====================================================== -->
-
-    <section id="apercu">
-
-      <div class="section-container">
-
-        <div class="section-heading reveal">
-
-          <div class="eyebrow">
-
-            <span class="material-symbols-rounded">
-              design_services
-            </span>
-
-            Aperçu de l'expérience
-
-          </div>
-
-          <h2>
-            Une maquette interactive,
-            pas du contenu réel.
-          </h2>
-
-          <p>
-            Cette présentation permet de visualiser
-            l'esprit de l'interface MotivPlus avant
-            de connecter les véritables données.
-          </p>
-
-        </div>
-
-
-        <div class="notice reveal">
-
-          <span class="material-symbols-rounded">
-            info
-          </span>
-
-          <div>
-
-            <strong>
-              Maquette de démonstration
-            </strong>
-
-            <p>
-              Les publications, profils, commentaires,
-              interactions et compteurs visibles dans
-              cet aperçu sont fictifs. Ils servent uniquement
-              à présenter l'interface et l'expérience utilisateur.
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         COMMUNAUTÉ
-         ====================================================== -->
-
-    <section id="communaute">
-
-      <div class="section-container">
-
-        <div class="section-heading reveal">
-
-          <div class="eyebrow">
-
-            <span class="material-symbols-rounded">
-              groups
-            </span>
-
-            Maquette communauté
-
-          </div>
-
-          <h2>
-            Publications et échanges
-          </h2>
-
-          <p>
-            Exemple visuel d'un espace où les utilisateurs
-            peuvent partager leurs activités et échanger
-            avec la communauté.
-          </p>
-
-        </div>
-
-
-        <div class="community-grid">
-
-          <article class="post-card reveal">
-
-            <div class="post-top">
-
-              <div class="post-author">
-
-                <div class="avatar">
-                  A
-                </div>
-
-                <div>
-                  <strong>Utilisateur exemple</strong>
-                  <small>Contenu fictif</small>
-                </div>
-
-              </div>
-
-              <span class="material-symbols-rounded">
-                more_horiz
-              </span>
-
-            </div>
-
-            <p class="post-text">
-              Exemple de publication pour illustrer
-              l'apparence du fil communautaire.
-            </p>
-
-            <div class="post-actions">
-
-              <span>
-                <span class="material-symbols-rounded">
-                  favorite
-                </span>
-                Interaction
-              </span>
-
-              <span>
-                <span class="material-symbols-rounded">
-                  chat
-                </span>
-                Commentaires
-              </span>
-
-              <span>
-                <span class="material-symbols-rounded">
-                  share
-                </span>
-                Partager
-              </span>
-
-            </div>
-
-          </article>
-
-
-          <article class="post-card reveal">
-
-            <div class="post-top">
-
-              <div class="post-author">
-
-                <div class="avatar">
-                  M
-                </div>
-
-                <div>
-                  <strong>Profil de démonstration</strong>
-                  <small>Maquette</small>
-                </div>
-
-              </div>
-
-              <span class="material-symbols-rounded">
-                more_horiz
-              </span>
-
-            </div>
-
-            <p class="post-text">
-              Les cartes ci-dessus ne représentent
-              aucune publication réelle de MotivPlus.
-            </p>
-
-            <div class="post-actions">
-
-              <span>
-                <span class="material-symbols-rounded">
-                  favorite
-                </span>
-                Exemple
-              </span>
-
-              <span>
-                <span class="material-symbols-rounded">
-                  chat
-                </span>
-                Exemple
-              </span>
-
-              <span>
-                <span class="material-symbols-rounded">
-                  share
-                </span>
-                Exemple
-              </span>
-
-            </div>
-
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         FONCTIONNALITÉS
-         ====================================================== -->
+         EXPERIENCE
+         ===================================================== -->
 
     <section
-      id="fonctionnalites"
-      class="features">
+      class="section experience"
+      id="experience"
+    >
 
-      <div class="section-container">
+      <div class="container">
 
-        <div class="section-heading reveal">
+        <div class="section-header reveal">
 
-          <div class="eyebrow">
-
-            <span class="material-symbols-rounded">
-              widgets
-            </span>
-
-            Concept
-
-          </div>
+          <span class="eyebrow">
+            Aperçu de l'expérience
+          </span>
 
           <h2>
-            Une expérience construite
-            autour des échanges.
+            Une expérience pensée autour de l'activité.
           </h2>
 
           <p>
-            Quelques éléments représentatifs de
-            l'expérience que MotivPlus cherche à proposer.
+            La maquette interactive présente une vision de
+            l'expérience MotivPlus : publications, réactions,
+            commentaires, communauté et messages.
           </p>
 
         </div>
 
 
-        <div class="feature-grid">
+        <div class="experience-card reveal">
 
-          <article class="feature-card reveal">
+          <div class="demo-notice">
 
-            <div class="feature-icon">
+            <span class="material-symbols-rounded">
+              info
+            </span>
 
-              <span class="material-symbols-rounded">
-                psychology
-              </span>
+            <div>
+
+              <strong>
+                Maquette de démonstration
+              </strong>
+
+              <p>
+                Les publications, profils, commentaires,
+                interactions et éléments affichés dans
+                cette présentation sont fictifs. Ils servent
+                uniquement à présenter l'interface et
+                l'expérience utilisateur.
+              </p>
 
             </div>
 
-            <h3>Motivation</h3>
+          </div>
+
+
+          <div class="experience-grid">
+
+            <div class="mini-card">
+
+              <div class="mini-icon">
+                <span class="material-symbols-rounded">
+                  dynamic_feed
+                </span>
+              </div>
+
+              <h3>
+                Publications
+              </h3>
+
+              <p>
+                Un espace pour partager ses activités
+                et expériences.
+              </p>
+
+            </div>
+
+
+            <div class="mini-card">
+
+              <div class="mini-icon">
+                <span class="material-symbols-rounded">
+                  forum
+                </span>
+              </div>
+
+              <h3>
+                Discussions
+              </h3>
+
+              <p>
+                Échanger autour des activités directement
+                avec les autres utilisateurs.
+              </p>
+
+            </div>
+
+
+            <div class="mini-card">
+
+              <div class="mini-icon">
+                <span class="material-symbols-rounded">
+                  favorite
+                </span>
+              </div>
+
+              <h3>
+                Interactions
+              </h3>
+
+              <p>
+                Réagir et participer à la vie de la communauté.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FEATURES
+         ===================================================== -->
+
+    <section
+      class="section"
+      id="features"
+    >
+
+      <div class="container">
+
+        <div class="section-header reveal">
+
+          <span class="eyebrow">
+            Fonctionnalités
+          </span>
+
+          <h2>
+            Plusieurs briques réunies dans une même application.
+          </h2>
+
+          <p>
+            MotivPlus évolue progressivement autour de plusieurs
+            espaces complémentaires.
+          </p>
+
+        </div>
+
+
+        <div class="features-grid">
+
+          <article class="feature reveal">
+
+            <div class="feature-icon">
+              <span class="material-symbols-rounded">
+                emoji_objects
+              </span>
+            </div>
+
+            <h3>
+              Motivation
+            </h3>
 
             <p>
-              Encourager la progression et
-              l'accomplissement des activités.
+              Mettre l'activité et la progression au centre
+              de l'expérience.
             </p>
 
           </article>
 
 
-          <article class="feature-card reveal">
+          <article class="feature reveal">
 
             <div class="feature-icon">
-
               <span class="material-symbols-rounded">
                 groups
               </span>
-
             </div>
 
-            <h3>Communauté</h3>
+            <h3>
+              Communauté
+            </h3>
 
             <p>
-              Partager des expériences et
-              découvrir les activités des autres.
+              Découvrir les activités et échanger avec
+              d'autres personnes.
             </p>
 
           </article>
 
 
-          <article class="feature-card reveal">
+          <article class="feature reveal">
 
             <div class="feature-icon">
-
               <span class="material-symbols-rounded">
-                forum
+                chat
               </span>
-
             </div>
 
-            <h3>Messagerie</h3>
+            <h3>
+              Messagerie
+            </h3>
 
             <p>
-              Échanger directement autour
-              d'une activité ou d'un sujet.
+              Communiquer directement autour des activités
+              et des expériences.
             </p>
 
           </article>
 
 
-          <article class="feature-card reveal">
+          <article class="feature reveal">
 
             <div class="feature-icon">
-
               <span class="material-symbols-rounded">
-                notifications
+                smart_toy
               </span>
-
             </div>
 
-            <h3>Interactions</h3>
+            <h3>
+              Lunaris AI
+            </h3>
 
             <p>
-              Recevoir des notifications et
-              suivre les interactions importantes.
+              Une couche d'intelligence artificielle destinée
+              à accompagner l'expérience MotivPlus.
             </p>
 
           </article>
@@ -1948,45 +2283,139 @@
 
     <!-- =====================================================
          LUNARIS
-         ====================================================== -->
+         ===================================================== -->
 
-    <section id="lunaris">
+    <section
+      class="section lunaris"
+      id="lunaris"
+    >
 
-      <div class="section-container">
+      <div class="container">
 
         <div class="lunaris-card reveal">
 
-          <div class="lunaris-icon">
+          <div>
 
-            <span
-              class="material-symbols-rounded"
-              style="font-size:34px">
+            <div class="lunaris-logo">
+              <span class="material-symbols-rounded">
+                auto_awesome
+              </span>
+            </div>
 
-              auto_awesome
+            <h2>
+              Découvrez Lunaris AI.
+            </h2>
+
+            <p>
+              Lunaris fait partie de l'écosystème MotivPlus
+              et apporte des services d'intelligence artificielle
+              destinés à enrichir les échanges et l'accompagnement.
+            </p>
+
+            <div class="lunaris-tags">
+
+              <span class="tag">
+                IA
+              </span>
+
+              <span class="tag">
+                Accompagnement
+              </span>
+
+              <span class="tag">
+                Conversations
+              </span>
+
+              <span class="tag">
+                Évolution
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="ai-preview">
+
+            <div class="ai-label">
+              Aperçu conceptuel
+            </div>
+
+            <div class="ai-message user">
+              J'aimerais rester motivé pour cette activité.
+            </div>
+
+            <div class="ai-message bot">
+              Chaque étape peut être abordée progressivement.
+              L'important est de continuer à avancer.
+            </div>
+
+            <div class="ai-message user">
+              Et si je veux en discuter davantage ?
+            </div>
+
+            <div class="ai-message bot">
+              Les conversations peuvent justement servir
+              à réfléchir, échanger et trouver un accompagnement
+              adapté à ton activité.
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         DOWNLOAD
+         ===================================================== -->
+
+    <section
+      class="section download"
+      id="download"
+    >
+
+      <div class="container">
+
+        <div class="download-card reveal">
+
+          <div class="download-icon">
+
+            <span class="material-symbols-rounded">
+              android
             </span>
 
           </div>
 
-          <div>
 
-            <h2>Lunaris AI</h2>
+          <div class="download-content">
+
+            <h2>
+              Prêt à découvrir MotivPlus ?
+            </h2>
 
             <p>
-              L'espace IA associé à l'écosystème MotivPlus,
-              présenté ici comme une fonctionnalité du projet.
+              Téléchargez l'application Android depuis
+              le site officiel.
             </p>
 
           </div>
 
-          <a
-            class="btn btn-primary"
-            href="Docs/Lunaris%20AI/">
 
-            Documentation
+          <a
+            href="https://dttwkposqrlknrmobfzg.supabase.co/storage/v1/object/public/Files/MotivPlus.apk"
+            class="btn download-button"
+            download
+          >
 
             <span class="material-symbols-rounded">
-              arrow_forward
+              download
             </span>
+
+            Télécharger l'application
 
           </a>
 
@@ -1999,31 +2428,28 @@
 
     <!-- =====================================================
          SCREENSHOTS
-         ====================================================== -->
+         ===================================================== -->
 
-    <section>
+    <section
+      class="section"
+      id="screenshots"
+    >
 
-      <div class="section-container">
+      <div class="container">
 
-        <div class="section-heading reveal">
+        <div class="section-header reveal">
 
-          <div class="eyebrow">
-
-            <span class="material-symbols-rounded">
-              photo_library
-            </span>
-
-            Interface
-
-          </div>
+          <span class="eyebrow">
+            Aperçu de l'application
+          </span>
 
           <h2>
-            Aperçus visuels
+            Découvrez l'interface de MotivPlus.
           </h2>
 
           <p>
             Quelques captures permettant de découvrir
-            l'univers graphique de MotivPlus.
+            l'évolution visuelle de l'application.
           </p>
 
         </div>
@@ -2031,35 +2457,62 @@
 
         <div class="screenshots">
 
-          <div class="shot reveal">
+          <div class="screenshot reveal">
 
             <img
               src="https://raw.githubusercontent.com/alainsmubbanji/MotivPlus-/refs/heads/main/1780260263827.png"
-              alt="Aperçu de l'interface MotivPlus">
+              alt="Interface MotivPlus"
+              loading="lazy"
+            >
+
+            <div class="screenshot-caption">
+              Interface MotivPlus
+            </div>
 
           </div>
 
-          <div class="shot reveal">
+
+          <div class="screenshot reveal">
 
             <img
               src="https://alainsmubbanji.github.io/MotivPlus/images/feed.png"
-              alt="Aperçu du fil MotivPlus">
+              alt="Flux MotivPlus"
+              loading="lazy"
+            >
+
+            <div class="screenshot-caption">
+              Flux
+            </div>
 
           </div>
 
-          <div class="shot reveal">
+
+          <div class="screenshot reveal">
 
             <img
               src="https://alainsmubbanji.github.io/MotivPlus/images/lunaris.png"
-              alt="Aperçu de Lunaris">
+              alt="Lunaris AI dans MotivPlus"
+              loading="lazy"
+            >
+
+            <div class="screenshot-caption">
+              Lunaris AI
+            </div>
 
           </div>
 
-          <div class="shot reveal">
+
+          <div class="screenshot reveal">
 
             <img
               src="https://alainsmubbanji.github.io/MotivPlus/images/profile.png"
-              alt="Aperçu du profil MotivPlus">
+              alt="Profil MotivPlus"
+              loading="lazy"
+            >
+
+            <div class="screenshot-caption">
+              Profil
+            </div>
 
           </div>
 
@@ -2071,32 +2524,29 @@
 
 
     <!-- =====================================================
-         DOCUMENTATION
-         ====================================================== -->
+         RESOURCES
+         ===================================================== -->
 
-    <section id="documentation">
+    <section
+      class="section"
+      id="docs"
+    >
 
-      <div class="section-container">
+      <div class="container">
 
-        <div class="section-heading reveal">
+        <div class="section-header reveal">
 
-          <div class="eyebrow">
-
-            <span class="material-symbols-rounded">
-              menu_book
-            </span>
-
+          <span class="eyebrow">
             Ressources
-
-          </div>
+          </span>
 
           <h2>
-            Explorer MotivPlus
+            Comprendre et explorer le projet.
           </h2>
 
           <p>
-            Retrouvez les informations et documentations
-            du projet.
+            Les ressources de MotivPlus permettent de découvrir
+            le projet, son fonctionnement et son évolution.
           </p>
 
         </div>
@@ -2105,62 +2555,90 @@
         <div class="resources">
 
           <a
+            href="https://alainsmubbanji.github.io/MotivPlus-/Docs/"
             class="resource reveal"
-            href="Docs/">
+          >
 
             <div class="resource-icon">
-
               <span class="material-symbols-rounded">
-                description
+                menu_book
               </span>
-
             </div>
 
-            <div>
+            <h3>
+              Documentation
+            </h3>
 
-              <strong>
-                Documentation MotivPlus
-              </strong>
+            <p>
+              Consultez la documentation générale
+              de MotivPlus.
+            </p>
 
-              <p>
-                Présentation et informations du projet.
-              </p>
-
-            </div>
-
-            <span class="material-symbols-rounded">
-              arrow_forward
+            <span class="resource-link">
+              Ouvrir la documentation
+              <span class="material-symbols-rounded">
+                arrow_forward
+              </span>
             </span>
 
           </a>
 
 
           <a
+            href="https://alainsmubbanji.github.io/MotivPlus-/Docs/Lunaris%20AI/"
             class="resource reveal"
-            href="Docs/Lunaris%20AI/">
+          >
 
             <div class="resource-icon">
-
               <span class="material-symbols-rounded">
-                auto_awesome
+                smart_toy
               </span>
-
             </div>
 
-            <div>
+            <h3>
+              Lunaris AI
+            </h3>
 
-              <strong>
-                Documentation Lunaris AI
-              </strong>
+            <p>
+              Découvrez la documentation consacrée
+              à Lunaris AI.
+            </p>
 
-              <p>
-                Informations sur l'espace IA.
-              </p>
+            <span class="resource-link">
+              Explorer Lunaris
+              <span class="material-symbols-rounded">
+                arrow_forward
+              </span>
+            </span>
 
+          </a>
+
+
+          <a
+            href="https://alainsmubbanji.github.io/GO-Studio/"
+            class="resource reveal"
+          >
+
+            <div class="resource-icon">
+              <span class="material-symbols-rounded">
+                hub
+              </span>
             </div>
 
-            <span class="material-symbols-rounded">
-              arrow_forward
+            <h3>
+              GO Studio
+            </h3>
+
+            <p>
+              Découvrez l'écosystème et les projets
+              de GO Studio LLC.
+            </p>
+
+            <span class="resource-link">
+              Visiter GO Studio
+              <span class="material-symbols-rounded">
+                arrow_forward
+              </span>
             </span>
 
           </a>
@@ -2174,38 +2652,51 @@
 
     <!-- =====================================================
          GO STUDIO
-         ====================================================== -->
+         ===================================================== -->
 
-    <section class="studio">
+    <section
+      class="section studio"
+      id="studio"
+    >
 
-      <div class="section-container">
+      <div class="container">
 
         <div class="studio-card reveal">
 
-          <div class="studio-logo">
-            G
+          <div>
+
+            <div class="studio-mark">
+              GO
+            </div>
+
+            <h2>
+              Une expérience signée GO Studio.
+            </h2>
+
+            <p>
+              MotivPlus fait partie des projets développés
+              dans l'écosystème GO Studio LLC, avec une approche
+              centrée sur l'expérience utilisateur, l'expérimentation
+              et l'évolution progressive des produits numériques.
+            </p>
+
+            <div class="studio-motto">
+              Harmonie · Stabilité · Confort
+            </div>
+
           </div>
 
-          <h2>
-            GO Studio
-          </h2>
-
-          <p>
-            MotivPlus fait partie des projets développés
-            dans l'écosystème GO Studio, avec une approche
-            orientée vers des expériences numériques simples,
-            modernes et accessibles.
-          </p>
 
           <a
+            href="https://alainsmubbanji.github.io/GO-Studio/"
             class="btn btn-primary"
-            href="https://alainsmubbanji.github.io/GO-Studio/">
-
-            Découvrir GO Studio
+          >
 
             <span class="material-symbols-rounded">
-              arrow_forward
+              open_in_new
             </span>
+
+            Découvrir GO Studio
 
           </a>
 
@@ -2220,39 +2711,81 @@
 
   <!-- =======================================================
        FOOTER
-       ======================================================== -->
+       ======================================================= -->
 
   <footer>
 
-   <div class="footer-brand">
-   GO Studio LLC
-   
-   </div>
+    <div class="container footer-inner">
 
-   <p>
-   Créer • Innover • Inspirer
-   </p>
+      <div class="footer-copy">
 
-    <p>
-    MotivPlus · © 2026 · Tous droits réservés
-   </p>
+        <strong>
+          MotivPlus
+        </strong>
+
+        · Application Android développée par GO Studio LLC.
+
+        <br>
+
+        Motivation · Communauté · Accompagnement
+
+      </div>
+
+
+      <div class="footer-links">
+
+        <a href="#top">
+          Accueil
+        </a>
+
+        <a href="#download">
+          Télécharger
+        </a>
+
+        <a href="#docs">
+          Documentation
+        </a>
+
+        <a href="https://alainsmubbanji.github.io/GO-Studio/">
+          GO Studio
+        </a>
+
+      </div>
+
+    </div>
 
   </footer>
 
 
   <!-- =======================================================
        JAVASCRIPT
-       ======================================================== -->
+       ======================================================= -->
 
   <script>
 
     /* =======================================================
        THEME
-       ======================================================== */
+       ======================================================= */
 
     const body = document.body;
-    const themeBtn = document.getElementById("themeBtn");
-    const themeIcon = document.getElementById("themeIcon");
+    const themeButton =
+      document.getElementById("themeButton");
+
+    const themeIcon =
+      document.getElementById("themeIcon");
+
+
+    function updateThemeIcon() {
+
+      const dark =
+        body.classList.contains("dark");
+
+      themeIcon.textContent =
+        dark
+          ? "light_mode"
+          : "dark_mode";
+    }
+
 
     const savedTheme =
       localStorage.getItem("motivplus-theme");
@@ -2261,35 +2794,31 @@
       body.classList.add("dark");
     }
 
-    function updateThemeIcon() {
-
-      themeIcon.textContent =
-        body.classList.contains("dark")
-          ? "light_mode"
-          : "dark_mode";
-    }
-
     updateThemeIcon();
 
-    themeBtn.addEventListener("click", () => {
 
-      body.classList.toggle("dark");
+    themeButton.addEventListener(
+      "click",
+      () => {
 
-      localStorage.setItem(
-        "motivplus-theme",
-        body.classList.contains("dark")
-          ? "dark"
-          : "light"
-      );
+        body.classList.toggle("dark");
 
-      updateThemeIcon();
+        localStorage.setItem(
+          "motivplus-theme",
+          body.classList.contains("dark")
+            ? "dark"
+            : "light"
+        );
 
-    });
+        updateThemeIcon();
+
+      }
+    );
 
 
     /* =======================================================
        SCROLL REVEAL
-       ======================================================== */
+       ======================================================= */
 
     const observer =
       new IntersectionObserver(
@@ -2299,9 +2828,13 @@
 
             if (entry.isIntersecting) {
 
-              entry.target.classList.add("visible");
+              entry.target.classList.add(
+                "visible"
+              );
 
-              observer.unobserve(entry.target);
+              observer.unobserve(
+                entry.target
+              );
 
             }
 
@@ -2309,41 +2842,132 @@
 
         },
         {
-          threshold: 0.12
+          threshold: .12
         }
       );
+
 
     document
       .querySelectorAll(".reveal")
       .forEach(element => {
-
         observer.observe(element);
-
       });
 
 
     /* =======================================================
-       PHONE FEED
-       ======================================================== */
+       DEMO LIKE
+       ======================================================= */
 
-    const phone =
-      document.querySelector(".phone");
+    function toggleLike(element) {
+
+      element.classList.toggle("liked");
+
+      const icon =
+        element.querySelector(
+          ".material-symbols-rounded"
+        );
+
+      if (
+        element.classList.contains("liked")
+      ) {
+
+        icon.textContent = "favorite";
+
+      } else {
+
+        icon.textContent = "favorite";
+
+      }
+
+    }
+
+
+    /* =======================================================
+       DEMO FEED ANIMATION
+       ======================================================= */
 
     const feed =
-      document.querySelector(".feed-track");
+      document.getElementById("demoFeed");
 
-    phone.addEventListener("click", () => {
+    let feedPaused = false;
 
-      feed.style.animation = "none";
 
-      requestAnimationFrame(() => {
+    feed.addEventListener(
+      "mouseenter",
+      () => {
+        feedPaused = true;
+      }
+    );
 
-        feed.style.animation =
-          "feedMove 12s ease-in-out infinite";
+
+    feed.addEventListener(
+      "mouseleave",
+      () => {
+        feedPaused = false;
+      }
+    );
+
+
+    let feedTimer =
+      setInterval(() => {
+
+        if (feedPaused) {
+          return;
+        }
+
+        feed.scrollBy({
+          top: 1,
+          behavior: "smooth"
+        });
+
+        if (
+          feed.scrollTop +
+          feed.clientHeight >=
+          feed.scrollHeight - 2
+        ) {
+
+          setTimeout(() => {
+
+            feed.scrollTo({
+              top: 0,
+              behavior: "smooth"
+            });
+
+          }, 900);
+
+        }
+
+      }, 90);
+
+
+    /* =======================================================
+       DOWNLOAD TRACKING VISUEL
+       ======================================================= */
+
+    document
+      .querySelectorAll(
+        'a[href*="MotivPlus.apk"]'
+      )
+      .forEach(button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            button.style.transform =
+              "scale(.97)";
+
+            setTimeout(() => {
+
+              button.style.transform =
+                "";
+
+            }, 160);
+
+          }
+        );
 
       });
-
-    });
 
   </script>
 
